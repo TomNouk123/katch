@@ -4,7 +4,7 @@ import i18n from '@/modules/_Locales';
 import { PageName } from '@/utils/_Constants';
 
 import LocaleView from '@/components/LocaleView.vue';
-import Home from '../views/Home.vue';
+import SplashScreen from '../views/SplashScreen.vue';
 
 const { VITE_MULTILINGUAL_SUPPORTED_LOCALE, VITE_MULTILINGUAL_DEFAULT_LOCALE }: IEnv = import.meta.env;
 
@@ -12,7 +12,7 @@ const paths = [
   {
     path: '',
     name: PageName.HOME,
-    component: Home,
+    component: SplashScreen,
   },
 ];
 
