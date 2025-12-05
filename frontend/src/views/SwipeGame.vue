@@ -76,14 +76,35 @@ interface Artist {
 // Import all western artist images
 const imageModules = import.meta.glob('@/assets/images/western-artists/*', { eager: true, as: 'url' });
 
+// Number of artists per game
+const ARTISTS_PER_GAME = 20;
+
+// Fisher-Yates shuffle algorithm
+function shuffleArray<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+// Get random selection of artists
+function getRandomArtists(allArtists: Artist[], count: number): Artist[] {
+  const shuffled = shuffleArray(allArtists);
+  return shuffled.slice(0, count);
+}
+
 export default defineComponent({
   name: 'SwipeGame',
   setup() {
     const router = useRouter();
-    const artists = ref<Artist[]>([...artistData.artists]);
+    
+    // Get 20 random artists from the pool of 26
+    const artists = ref<Artist[]>(getRandomArtists(artistData.artists as Artist[], ARTISTS_PER_GAME));
     const likedArtists = ref<string[]>([]);
     const currentIndex = ref(0);
-    const totalCards = artistData.artists.length;
+    const totalCards = ARTISTS_PER_GAME;
 
     // Swipe state
     const startX = ref(0);
