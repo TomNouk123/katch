@@ -196,6 +196,7 @@ export default defineComponent({
 
     const onTouchMove = (e: TouchEvent) => {
       if (!isDragging.value) return;
+      e.preventDefault(); // Prevent iOS Safari rubber band scrolling
       currentX.value = e.touches[0].clientX;
     };
 
@@ -274,6 +275,9 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  touch-action: pan-x;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: auto;
 }
 
 .header {
@@ -316,6 +320,7 @@ export default defineComponent({
   cursor: grab;
   user-select: none;
   transition: transform 0.3s ease;
+  touch-action: none;
 
   &:active {
     cursor: grabbing;
