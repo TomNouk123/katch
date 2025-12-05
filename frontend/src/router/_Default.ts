@@ -1,12 +1,12 @@
 import { PageName } from '@/utils/_Constants';
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
+import SplashScreen from '../views/SplashScreen.vue';
 
 const routes = [
   {
     path: '/',
     name: PageName.HOME,
-    component: Home,
+    component: SplashScreen,
   },
 ];
 
