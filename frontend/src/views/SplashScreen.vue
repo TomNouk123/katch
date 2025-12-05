@@ -59,6 +59,8 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onUnmounted } from 'vue';
+import { useRouter } from 'vue-router';
+import { PageName } from '@/utils/_Constants';
 
 // Import images
 import aespaImg from '@/assets/images/splash/aespa.jpeg';
@@ -79,6 +81,7 @@ interface Artist {
 export default defineComponent({
   name: 'SplashScreen',
   setup() {
+    const router = useRouter();
     const currentIndex = ref(0);
     let intervalId: number | null = null;
 
@@ -141,8 +144,7 @@ export default defineComponent({
     };
 
     const handleStart = () => {
-      // Navigate to the main app or emit event
-      console.log('Starting app...');
+      router.push({ name: PageName.SWIPE_GAME });
     };
 
     onMounted(() => {

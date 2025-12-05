@@ -1,0 +1,186 @@
+{
+  "artists": [
+    {
+      "id": "sabrina",
+      "name": "Sabrina Carpenter",
+      "genres": "POP, DANCE, R&B",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "sabrina.jpg"
+    },
+    {
+      "id": "travisscott",
+      "name": "Travis Scott",
+      "genres": "HIP HOP, RAP, TRAP",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "travisscott.jpg"
+    },
+    {
+      "id": "dualipa",
+      "name": "Dua Lipa",
+      "genres": "POP, DANCE, DISCO",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "dualipa.jpg"
+    },
+    {
+      "id": "sza",
+      "name": "SZA",
+      "genres": "R&B, NEO-SOUL, POP",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "sza.jpg"
+    },
+    {
+      "id": "lanadelrey",
+      "name": "Lana Del Rey",
+      "genres": "INDIE POP, DREAM POP, BAROQUE",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "lanadelrey.jpg"
+    },
+    {
+      "id": "charli",
+      "name": "Charli XCX",
+      "genres": "HYPERPOP, ELECTROPOP, DANCE",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "charli.jpg"
+    },
+    {
+      "id": "rosalia",
+      "name": "Rosalía",
+      "genres": "FLAMENCO, REGGAETON, POP",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "rosalia.jpg"
+    },
+    {
+      "id": "laufey",
+      "name": "Laufey",
+      "genres": "JAZZ, BOSSA NOVA, INDIE",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "laufey.jpg"
+    },
+    {
+      "id": "phoebe",
+      "name": "Phoebe Bridgers",
+      "genres": "INDIE ROCK, FOLK, SAD ROCK",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "phoebe.jpg"
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "genres": "ART POP, ELECTROPOP, FOLK",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "aurora.jpg"
+    },
+    {
+      "id": "troyesivan",
+      "name": "Troye Sivan",
+      "genres": "POP, SYNTH-POP, DANCE",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "troyesivan.jpg"
+    },
+    {
+      "id": "ashnikko",
+      "name": "Ashnikko",
+      "genres": "HYPERPOP, RAP, ELECTROPOP",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "ashnikko.jpg"
+    },
+    {
+      "id": "denzelcurry",
+      "name": "Denzel Curry",
+      "genres": "HIP HOP, TRAP, HARDCORE RAP",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "denzelcurry.jpg"
+    },
+    {
+      "id": "burnaboy",
+      "name": "Burna Boy",
+      "genres": "AFROBEATS, DANCEHALL, REGGAE",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "burnaboy.jpg"
+    },
+    {
+      "id": "jbalvin",
+      "name": "J Balvin",
+      "genres": "REGGAETON, LATIN TRAP, URBANO",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "jbalvin.jpg"
+    },
+    {
+      "id": "martingarrix",
+      "name": "Martin Garrix",
+      "genres": "EDM, PROGRESSIVE HOUSE, ELECTRO",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "martingarrix.jpg"
+    },
+    {
+      "id": "diplo",
+      "name": "Diplo",
+      "genres": "EDM, DANCEHALL, MOOMBAHTON",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "diplo.jpg"
+    },
+    {
+      "id": "avicii",
+      "name": "Avicii",
+      "genres": "EDM, PROGRESSIVE HOUSE, ELECTRO",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "avicii.jpg"
+    },
+    {
+      "id": "hanszimmer",
+      "name": "Hans Zimmer",
+      "genres": "FILM SCORE, ORCHESTRAL, EPIC",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "hanszimmer.jpg"
+    },
+    {
+      "id": "maxrichter",
+      "name": "Max Richter",
+      "genres": "NEOCLASSICAL, AMBIENT, MINIMALIST",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "maxrichter.jpg"
+    },
+    {
+      "id": "norahjones",
+      "name": "Norah Jones",
+      "genres": "JAZZ, SOUL, COUNTRY",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "norah jones.jpg"
+    },
+    {
+      "id": "lukecombs",
+      "name": "Luke Combs",
+      "genres": "COUNTRY, AMERICANA, FOLK",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "lukecombs.jpg"
+    },
+    {
+      "id": "maneskin",
+      "name": "Måneskin",
+      "genres": "ROCK, GLAM ROCK, ALT ROCK",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "maneskin.jpg"
+    },
+    {
+      "id": "foofighters",
+      "name": "Foo Fighters",
+      "genres": "ROCK, ALT ROCK, POST-GRUNGE",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "foofighters.jpg"
+    },
+    {
+      "id": "bmth",
+      "name": "Bring Me The Horizon",
+      "genres": "METALCORE, ALT METAL, ELECTRO",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "bmth.jpg"
+    },
+    {
+      "id": "system",
+      "name": "System of a Down",
+      "genres": "NU METAL, ALT METAL, HARD ROCK",
+      "description": "Sabrina Carpenter is een Amerikaanse popartiest met een energieke, zelfverzekerde stijl, bekend van hits als Espresso en Feather.",
+      "image": "system.jpg"
+    }
+  ]
+}

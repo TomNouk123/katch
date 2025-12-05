@@ -1,0 +1,622 @@
+{
+  "groups": [
+    {
+      "id": "twice",
+      "name": "TWICE",
+      "nameKr": "트와이스",
+      "color": "#ff5fa2",
+      "company": "JYP ENTERTAINMENT",
+      "description": "TWICE is de ultieme feel-good K-pop groep met aanstekelijke hooks en iconische choreografieën. Hun muziek combineert bubblegum pop met dance beats, perfect voor fans van catchy, vrolijke pop muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/7n2Ycct7Beij7Dj7meI4X0",
+      "image": "twice/twice-group.jpg",
+      "tags": ["pop", "dance", "bright", "catchy", "upbeat", "disco"],
+      "members": [
+        {
+          "name": "Nayeon",
+          "nameKr": "나연",
+          "role": "Lead Vocalist, Lead Dancer, Center",
+          "image": "twice/nayeon.jpeg",
+          "description": "De energieke frontvrouw van TWICE met een onweerstaanbare glimlach en krachtige vocals die elke performance naar een hoger niveau tillen."
+        },
+        {
+          "name": "Jeongyeon",
+          "nameKr": "정연",
+          "role": "Lead Vocalist",
+          "image": "twice/jeongyeon.jpeg",
+          "description": "Bekend om haar sterke, stabiele stem en no-nonsense persoonlijkheid. Jeongyeon brengt balans en kracht naar de groep."
+        },
+        {
+          "name": "Momo",
+          "nameKr": "모모",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "twice/momo.jpeg",
+          "description": "Een danslegende wiens moves viral gaan. Momo's precisie en passie maken haar tot een van de beste dansers in K-pop."
+        },
+        {
+          "name": "Sana",
+          "nameKr": "사나",
+          "role": "Sub Vocalist",
+          "image": "twice/sana.jpeg",
+          "description": "De schattige en charismatische Sana wiens 'Shy Shy Shy' moment iconisch werd. Haar energie is aanstekelijk."
+        },
+        {
+          "name": "Jihyo",
+          "nameKr": "지효",
+          "role": "Leader, Main Vocalist",
+          "image": "twice/jihyo.jpeg",
+          "description": "De powerhouse leader met een stem die bergen kan verzetten. Jihyo's leiderschap en vocale kracht zijn ongeëvenaard."
+        },
+        {
+          "name": "Mina",
+          "nameKr": "미나",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "twice/mina.jpeg",
+          "description": "De elegante ballerina van TWICE. Mina's gratie en zachte stem brengen een verfijnde touch aan de groep."
+        },
+        {
+          "name": "Dahyun",
+          "nameKr": "다현",
+          "role": "Lead Rapper, Sub Vocalist",
+          "image": "twice/dahyun.jpeg",
+          "description": "Het entertainment powerhouse met haar iconische eagle dance en eindeloze energie die fans wereldwijd laat lachen."
+        },
+        {
+          "name": "Chaeyoung",
+          "nameKr": "채영",
+          "role": "Main Rapper, Sub Vocalist",
+          "image": "twice/chaeyoung.jpeg",
+          "description": "De artistieke ziel van TWICE met een unieke stijl en creatieve geest. Chaeyoung brengt edge en originaliteit."
+        },
+        {
+          "name": "Tzuyu",
+          "nameKr": "쯔위",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "twice/tzuyu.jpeg",
+          "description": "De statige visual van TWICE wiens schoonheid en talent haar tot een van de meest bewonderde idols maken."
+        }
+      ]
+    },
+    {
+      "id": "blackpink",
+      "name": "BLACKPINK",
+      "nameKr": "블랙핑크",
+      "color": "#ff007f",
+      "company": "YG ENTERTAINMENT",
+      "description": "BLACKPINK is het ultieme girl crush icoon met een mix van fierce hip-hop en addictieve pop. Hun stijl combineert luxe met attitude, perfect voor fans van krachtige performances en trendsettende mode.",
+      "spotifyUrl": "https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF",
+      "image": "blackpink/blackpink-group.jpg",
+      "tags": ["pop", "hip-hop", "trap", "girl-crush", "dance", "edm", "reggaeton"],
+      "members": [
+        {
+          "name": "Jisoo",
+          "nameKr": "지수",
+          "role": "Lead Vocalist, Visual",
+          "image": "blackpink/jisoo.jpeg",
+          "description": "De elegante visual met een warm karakter. Jisoo's acteertalent en vocale stabiliteit maken haar veelzijdig en geliefd."
+        },
+        {
+          "name": "Jennie",
+          "nameKr": "제니",
+          "role": "Main Rapper, Lead Vocalist",
+          "image": "blackpink/jennie.jpeg",
+          "description": "De 'Human Chanel' met killer rap skills en ongeëvenaarde stage presence. Jennie definieert cool in K-pop."
+        },
+        {
+          "name": "Rosé",
+          "nameKr": "로제",
+          "role": "Main Vocalist, Lead Dancer",
+          "image": "blackpink/rose.jpeg",
+          "description": "Een unieke stem die je direct herkent. Rosé's emotionele diepte en gitaarskills maken haar tot een echte artiest."
+        },
+        {
+          "name": "Lisa",
+          "nameKr": "리사",
+          "role": "Main Dancer, Lead Rapper, Sub Vocalist",
+          "image": "blackpink/lisa.jpeg",
+          "description": "De dance machine met miljoenen solo fans. Lisa's moves zijn legendarisch en haar rap delivery is ongeëvenaard."
+        }
+      ]
+    },
+    {
+      "id": "aespa",
+      "name": "AESPA",
+      "nameKr": "에스파",
+      "color": "#8b5cf6",
+      "company": "SM ENTERTAINMENT",
+      "description": "aespa is K-pop's meest futuristische groep met een uniek AI-concept en baanbrekende hyperpop sound. Ze combineren cutting-edge productie met sci-fi storytelling, perfect voor fans van experimentele pop en gaming.",
+      "spotifyUrl": "https://open.spotify.com/artist/6YVMFz59CuY7ngCxTxjpxE",
+      "image": "aespa/aespa-group.jpg",
+      "tags": ["hyperpop", "electropop", "edm", "experimental", "synth-pop", "art-pop", "dance"],
+      "members": [
+        {
+          "name": "Karina",
+          "nameKr": "카리나",
+          "role": "Leader, Main Dancer, Lead Vocalist, Center",
+          "image": "aespa/karina.jpeg",
+          "description": "Het charismatische uithangbord van aespa met betoverende stage presence. Karina's veelzijdigheid als danser en zanger is indrukwekkend."
+        },
+        {
+          "name": "Giselle",
+          "nameKr": "지젤",
+          "role": "Main Rapper, Sub Vocalist",
+          "image": "aespa/giselle.jpeg",
+          "description": "De tweetalige rapper met een edgy vibe. Giselle brengt internationale flair en scherpe rap skills naar de groep."
+        },
+        {
+          "name": "Winter",
+          "nameKr": "윈터",
+          "role": "Lead Vocalist, Lead Dancer",
+          "image": "aespa/winter.jpeg",
+          "description": "Een vocaal powerhouse met een engelachtig gezicht. Winter's krachtige stem en cute persoonlijkheid zijn een perfecte mix."
+        },
+        {
+          "name": "NingNing",
+          "nameKr": "닝닝",
+          "role": "Main Vocalist",
+          "image": "aespa/ningning.jpeg",
+          "description": "Het vocale wonder met een stem van een ander niveau. NingNing's techniek en emotie maken elke song speciaal."
+        }
+      ]
+    },
+    {
+      "id": "nmixx",
+      "name": "NMIXX",
+      "nameKr": "엔믹스",
+      "color": "#06b6d4",
+      "company": "JYP ENTERTAINMENT",
+      "description": "NMIXX pioniert met hun 'MIXX POP' concept - songs die meerdere genres in één track combineren. Hun vocale kracht en experimentele sound maken ze perfect voor fans die van verrassingen houden.",
+      "spotifyUrl": "https://open.spotify.com/artist/28ot3wh4oNmoFOdVajibBl",
+      "image": "nmixx/nmixx-group.jpg",
+      "tags": ["hyperpop", "experimental", "art-pop", "dance", "vocal", "electropop"],
+      "members": [
+        {
+          "name": "Lily",
+          "nameKr": "릴리",
+          "role": "Main Vocalist",
+          "image": "nmixx/lily.jpeg",
+          "description": "Een vocale krachtpatser met een bereik dat zijn gelijke niet kent. Lily's riffs en runs zijn adembenemend."
+        },
+        {
+          "name": "Haewon",
+          "nameKr": "해원",
+          "role": "Leader, Lead Vocalist",
+          "image": "nmixx/haewon.jpeg",
+          "description": "De betrouwbare leader met stabiele vocals en natuurlijk leiderschap. Haewon houdt de groep samen."
+        },
+        {
+          "name": "Sullyoon",
+          "nameKr": "설윤",
+          "role": "Lead Vocalist, Visual",
+          "image": "nmixx/sullyoon.jpeg",
+          "description": "De betoverende visual wiens schoonheid viral ging. Sullyoon combineert stunning looks met solide vocalen."
+        },
+        {
+          "name": "Bae",
+          "nameKr": "배이",
+          "role": "Lead Rapper, Sub Vocalist",
+          "image": "nmixx/bae.jpeg",
+          "description": "De veelzijdige entertainer met rap skills en een bubbly persoonlijkheid die elke show verlicht."
+        },
+        {
+          "name": "Jiwoo",
+          "nameKr": "지우",
+          "role": "Main Dancer, Sub Vocalist, Sub Rapper",
+          "image": "nmixx/jiwoo.jpeg",
+          "description": "Een explosieve performer met energie voor tien. Jiwoo's dans en expressie zijn altijd on point."
+        },
+        {
+          "name": "Kyujin",
+          "nameKr": "규진",
+          "role": "Main Dancer, Lead Rapper, Sub Vocalist, Maknae",
+          "image": "nmixx/kyujin.jpeg",
+          "description": "De powerhouse maknae met een intensiteit die niet past bij haar leeftijd. Kyujin's talent is grenzeloos."
+        }
+      ]
+    },
+    {
+      "id": "straykids",
+      "name": "STRAY KIDS",
+      "nameKr": "스트레이 키즈",
+      "color": "#ef4444",
+      "company": "JYP ENTERTAINMENT",
+      "description": "Stray Kids produceert hun eigen muziek met 3RACHA, hun producing unit. Hun sound is een mix van hard-hitting hip-hop, EDM en experimentele genres, perfect voor fans die authentieke, zelf-gemaakte muziek waarderen.",
+      "spotifyUrl": "https://open.spotify.com/artist/2dIgFjalVxs4ThymZ67YCE",
+      "image": "straykids/straykids-group.jpeg",
+      "tags": ["hip-hop", "trap", "edm", "experimental", "rock", "nu-metal", "hardcore"],
+      "members": [
+        {
+          "name": "Bang Chan",
+          "nameKr": "방찬",
+          "role": "Leader, Lead Vocalist, Lead Dancer, Producer",
+          "image": "straykids/bangchan.jpeg",
+          "description": "De Australische leader en producer die Stray Kids vormde. Chan's toewijding aan fans en muziek is legendarisch."
+        },
+        {
+          "name": "Lee Know",
+          "nameKr": "리노",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "straykids/leeknow.jpeg",
+          "description": "De mysterieuze danser met een droog gevoel voor humor. Lee Know's precisie en cattige persoonlijkheid zijn iconisch."
+        },
+        {
+          "name": "Changbin",
+          "nameKr": "창빈",
+          "role": "Main Rapper, Sub Vocalist, Producer",
+          "image": "straykids/changbin.jpeg",
+          "description": "Een rap machine met een ongelooflijke flow. Changbin's verse zijn altijd highlights van elke track."
+        },
+        {
+          "name": "Hyunjin",
+          "nameKr": "현진",
+          "role": "Main Dancer, Lead Rapper, Sub Vocalist, Visual",
+          "image": "straykids/hyunjin.jpeg",
+          "description": "De artistieke visual met bewegingen als water. Hyunjin's dans en visuals zijn adembenemend mooi."
+        },
+        {
+          "name": "Han",
+          "nameKr": "한",
+          "role": "Main Rapper, Lead Vocalist, Producer",
+          "image": "straykids/han.jpeg",
+          "description": "Een veelzijdig genie dat rapt, zingt én produceert op topniveau. Han's emotionele diepte raakt fans."
+        },
+        {
+          "name": "Felix",
+          "nameKr": "필릭스",
+          "role": "Lead Dancer, Lead Rapper, Sub Vocalist",
+          "image": "straykids/felix.jpeg",
+          "description": "De Australische sunshine met de diepste stem in K-pop. Felix's contrast tussen looks en stem is iconisch."
+        },
+        {
+          "name": "Seungmin",
+          "nameKr": "승민",
+          "role": "Lead Vocalist",
+          "image": "straykids/seungmin.jpeg",
+          "description": "De stabiele vocalist met een kristalheldere stem. Seungmin's techniek en toewijding zijn bewonderenswaardig."
+        },
+        {
+          "name": "I.N",
+          "nameKr": "아이엔",
+          "role": "Sub Vocalist, Maknae",
+          "image": "straykids/in.jpeg",
+          "description": "De lieve maknae met een groeiende vocale presence. I.N's ontwikkeling en charme winnen harten."
+        }
+      ]
+    },
+    {
+      "id": "ateez",
+      "name": "ATEEZ",
+      "nameKr": "에이티즈",
+      "color": "#1e3a5f",
+      "company": "KQ ENTERTAINMENT",
+      "description": "ATEEZ levert epische performances met theatrale concepten en anthemische nummers. Hun energie en storytelling zijn cinematisch, perfect voor fans van grandiose shows en emotioneel geladen muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/68KmkJeZGfwe1TUj9Krmna",
+      "image": "ateez/ateez-group.jpg",
+      "tags": ["edm", "theatrical", "epic", "orchestral", "dance", "anthemic", "progressive"],
+      "members": [
+        {
+          "name": "Hongjoong",
+          "nameKr": "홍중",
+          "role": "Leader, Main Rapper, Sub Vocalist, Producer",
+          "image": "ateez/hongjoong.jpeg",
+          "description": "De creatieve leider die ATEEZ's visie vormgeeft. Hongjoong's passie voor muziek en mode inspireren miljoenen."
+        },
+        {
+          "name": "Seonghwa",
+          "nameKr": "성화",
+          "role": "Lead Vocalist, Visual",
+          "image": "ateez/seonghwa.jpeg",
+          "description": "De elegante performer met perfecte uitdrukkingen. Seonghwa's transformatie op stage is magnetisch."
+        },
+        {
+          "name": "Yunho",
+          "nameKr": "윤호",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "ateez/yunho.jpeg",
+          "description": "De vriendelijke reus met ongelooflijke danstalent. Yunho's grootte en gratie maken een unieke combinatie."
+        },
+        {
+          "name": "Yeosang",
+          "nameKr": "여상",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "ateez/yeosang.jpeg",
+          "description": "De stille, mysterieuze visual met scherpe features. Yeosang's presence op stage is onderschat maar krachtig."
+        },
+        {
+          "name": "San",
+          "nameKr": "산",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "ateez/san.jpeg",
+          "description": "Een performance beast wiens expressies viraal gaan. San geeft 200% bij elke performance."
+        },
+        {
+          "name": "Mingi",
+          "nameKr": "밍기",
+          "role": "Main Rapper, Sub Vocalist",
+          "image": "ateez/mingi.jpeg",
+          "description": "De rapper met een diepe stem en groter-dan-leven energie. Mingi's presence vult elk podium."
+        },
+        {
+          "name": "Wooyoung",
+          "nameKr": "우영",
+          "role": "Main Dancer, Lead Vocalist",
+          "image": "ateez/wooyoung.jpeg",
+          "description": "De energieke entertainer die nooit stopt met shinen. Wooyoung's charisma en talent zijn aanstekelijk."
+        },
+        {
+          "name": "Jongho",
+          "nameKr": "종호",
+          "role": "Main Vocalist, Maknae",
+          "image": "ateez/jongho.jpeg",
+          "description": "De vocale powerhouse die appels breekt met zijn blote handen. Jongho's stem is fenomenaal krachtig."
+        }
+      ]
+    },
+    {
+      "id": "mamamoo",
+      "name": "MAMAMOO",
+      "nameKr": "마마무",
+      "color": "#10b981",
+      "company": "RBW ENTERTAINMENT",
+      "description": "MAMAMOO staat bekend om hun ongelooflijke live vocals en retro-geïnspireerde R&B sound. Hun zelfvertrouwen en vocale kracht maken ze perfect voor fans van echte zangeressen en soulvolle muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/0XATRDCYuuGhk0oE7C0o5G",
+      "image": "mamamoo/mamamoo-group.jpg",
+      "tags": ["r&b", "soul", "jazz", "vocal", "retro", "neo-soul", "ballad"],
+      "members": [
+        {
+          "name": "Solar",
+          "nameKr": "솔라",
+          "role": "Leader, Main Vocalist",
+          "image": "mamamoo/solar.jpeg",
+          "description": "De stralende leader met een stem van goud. Solar's vocale kracht en positieve energie zijn inspirerend."
+        },
+        {
+          "name": "Moonbyul",
+          "nameKr": "문별",
+          "role": "Main Rapper, Lead Dancer, Sub Vocalist",
+          "image": "mamamoo/moonbyul.jpeg",
+          "description": "De coole rapper met een androgyne stijl. Moonbyul's flow en charisma maken haar tot een trendsetter."
+        },
+        {
+          "name": "Wheein",
+          "nameKr": "휘인",
+          "role": "Lead Vocalist, Lead Dancer",
+          "image": "mamamoo/wheein.jpeg",
+          "description": "De artistieke ziel met een unieke stem. Wheein's emotionele interpretatie raakt het hart."
+        },
+        {
+          "name": "Hwasa",
+          "nameKr": "화사",
+          "role": "Main Vocalist, Lead Rapper",
+          "image": "mamamoo/hwasa.jpeg",
+          "description": "De onbevreesde diva die barrières breekt. Hwasa's body positivity en talent maken haar iconisch."
+        }
+      ]
+    },
+    {
+      "id": "ikon",
+      "name": "iKON",
+      "nameKr": "아이콘",
+      "color": "#f59e0b",
+      "company": "YG ENTERTAINMENT",
+      "description": "iKON brengt authentieke hip-hop met catchy hooks en emotionele ballads. Hun muziek voelt persoonlijk en relatable, perfect voor fans van echte hip-hop met K-pop flair.",
+      "spotifyUrl": "https://open.spotify.com/artist/5DbdkBdrNGpfPBqdyu4bkU",
+      "image": "ikon/ikon-group.jpg",
+      "tags": ["hip-hop", "r&b", "trap", "party", "dance"],
+      "members": [
+        {
+          "name": "Jay",
+          "nameKr": "제이",
+          "role": "Lead Rapper, Lead Dancer",
+          "image": "ikon/jay.jpeg",
+          "description": "De energieke performer met een aanstekelijke lach. Jay's dans en rap skills zijn on point."
+        },
+        {
+          "name": "Song",
+          "nameKr": "송",
+          "role": "Lead Vocalist",
+          "image": "ikon/song.jpeg",
+          "description": "De emotionele vocalist met een stem die het hart raakt. Song's interpretatie is altijd oprecht."
+        },
+        {
+          "name": "Bobby",
+          "nameKr": "바비",
+          "role": "Main Rapper",
+          "image": "ikon/bobby.jpeg",
+          "description": "De Show Me The Money winnaar met een explosieve rap style. Bobby's energie is ongeëvenaard."
+        },
+        {
+          "name": "DK",
+          "nameKr": "동혁",
+          "role": "Main Vocalist",
+          "image": "ikon/DK.jpeg",
+          "description": "De vocale pilaar met een warme, emotionele stem. DK's ballads zijn altijd fan favorites."
+        },
+        {
+          "name": "Ju-ne",
+          "nameKr": "준회",
+          "role": "Lead Vocalist",
+          "image": "ikon/ju-ne.jpeg",
+          "description": "De R&B prins met een smooth stem. Ju-ne's vocalen zijn perfect voor late night vibes."
+        },
+        {
+          "name": "Chan",
+          "nameKr": "찬",
+          "role": "Sub Vocalist, Maknae",
+          "image": "ikon/chan.jpeg",
+          "description": "De hardwerkende maknae die altijd groeit. Chan's toewijding en charme maken hem geliefd."
+        }
+      ]
+    },
+    {
+      "id": "kard",
+      "name": "KARD",
+      "nameKr": "카드",
+      "color": "#ec4899",
+      "company": "DSP MEDIA",
+      "description": "KARD is een unieke co-ed groep met tropical house en EDM sound. Hun internationale vibe en dansbare nummers maken ze perfect voor fans van global pop en zomerse vibes.",
+      "spotifyUrl": "https://open.spotify.com/artist/2wXjBp7xYYRGFmS0rXRLhB",
+      "image": "kard/kard-group.jpg",
+      "tags": ["edm", "tropical", "dancehall", "reggaeton", "electropop", "afrobeats", "synth-pop"],
+      "members": [
+        {
+          "name": "J.Seph",
+          "nameKr": "제이셉",
+          "role": "Main Rapper, Vocalist",
+          "image": "kard/j.seph.jpeg",
+          "description": "De charismatische rapper met een friendly vibe. J.Seph's presence en flow zijn altijd solid."
+        },
+        {
+          "name": "BM",
+          "nameKr": "비엠",
+          "role": "Main Rapper, Sub Vocalist, Face of the Group",
+          "image": "kard/bm.jpeg",
+          "description": "De LA-geboren entertainer met een grote persoonlijkheid. BM's humor en talent maken hem onvergetelijk."
+        },
+        {
+          "name": "Somin",
+          "nameKr": "소민",
+          "role": "Main Vocalist, Lead Dancer",
+          "image": "kard/somin.jpeg",
+          "description": "De veelzijdige vocalist met zowel power als finesse. Somin's stage presence is magnetisch."
+        },
+        {
+          "name": "Jiwoo",
+          "nameKr": "지우",
+          "role": "Main Vocalist, Main Dancer",
+          "image": "kard/jiwoo.jpeg",
+          "description": "De energieke performer die elke choreografie naar een hoger niveau tilt. Jiwoo shinet altijd."
+        }
+      ]
+    },
+    {
+      "id": "day6",
+      "name": "DAY6",
+      "nameKr": "데이식스",
+      "color": "#6366f1",
+      "company": "JYP ENTERTAINMENT",
+      "description": "DAY6 is K-pop's meest geliefde band met emotionele rock en pop-rock nummers. Hun muziek raakt het hart met relatable lyrics en echte instrumenten, perfect voor fans van bands en emotionele muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/5TnQc2N1iKlFjYD7CPGvFc",
+      "image": "day6/day6-group.jpg",
+      "tags": ["rock", "alt-rock", "indie", "folk", "band", "emotional", "pop-rock"],
+      "members": [
+        {
+          "name": "Sungjin",
+          "nameKr": "성진",
+          "role": "Leader, Main Vocalist, Rhythm Guitarist",
+          "image": "day6/sungjin.jpeg",
+          "description": "De leider met een krachtige, emotionele stem. Sungjin's vocalen zijn het hart van DAY6's sound."
+        },
+        {
+          "name": "Young K",
+          "nameKr": "영케이",
+          "role": "Main Rapper, Lead Vocalist, Bassist",
+          "image": "day6/youngk.jpeg",
+          "description": "De creatieve kracht achter veel DAY6 hits. Young K's songwriting en baslijnen zijn iconisch."
+        },
+        {
+          "name": "Wonpil",
+          "nameKr": "원필",
+          "role": "Lead Vocalist, Keyboardist",
+          "image": "day6/wonpil.jpeg",
+          "description": "De emotionele stem met een hoog bereik. Wonpil's keyboard en vocalen creëren DAY6's unieke sound."
+        },
+        {
+          "name": "Dowoon",
+          "nameKr": "도운",
+          "role": "Drummer, Sub Vocalist",
+          "image": "day6/dowoon.jpeg",
+          "description": "De ritmische backbone van DAY6. Dowoon's drums en growing vocals tonen zijn continue groei."
+        }
+      ]
+    },
+    {
+      "id": "dreamcatcher",
+      "name": "DREAMCATCHER",
+      "nameKr": "드림캐쳐",
+      "color": "#7c3aed",
+      "company": "DREAMCATCHER COMPANY",
+      "description": "Dreamcatcher combineert rock en metal met K-pop in een unieke, donkere sound. Hun theatrale concepts en krachtige instrumentals zijn perfect voor fans van rock, metal en alternatieve muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/5V1qsQHdXNm4ZEZHWvFnqQ",
+      "image": "dreamcatcher/dreamcatcher-group.jpg",
+      "tags": ["rock", "metal", "metalcore", "nu-metal", "edm", "dark", "alt-rock", "hardcore"],
+      "members": [
+        {
+          "name": "JiU",
+          "nameKr": "지유",
+          "role": "Leader, Main Vocalist, Lead Dancer",
+          "image": "dreamcatcher/jiu.jpeg",
+          "description": "De liefhebbende leader met een engelachtige stem. JiU's contrast tussen cute en fierce is legendarisch."
+        },
+        {
+          "name": "SuA",
+          "nameKr": "수아",
+          "role": "Main Dancer, Lead Rapper, Sub Vocalist",
+          "image": "dreamcatcher/sua.jpeg",
+          "description": "De energieke performer met explosieve moves. SuA's charisma en humor maken haar een fan favorite."
+        },
+        {
+          "name": "Siyeon",
+          "nameKr": "시연",
+          "role": "Main Vocalist",
+          "image": "dreamcatcher/siyeon.jpeg",
+          "description": "De vocale powerhouse met een rock-ready stem. Siyeon's kracht en bereik zijn ongeëvenaard."
+        },
+        {
+          "name": "Handong",
+          "nameKr": "한동",
+          "role": "Sub Vocalist",
+          "image": "dreamcatcher/handong.jpeg",
+          "description": "De elegante Chinese member met een zachte, mooie stem. Handong brengt gratie naar de groep."
+        },
+        {
+          "name": "Yoohyeon",
+          "nameKr": "유현",
+          "role": "Lead Vocalist",
+          "image": "dreamcatcher/yoohyeon.jpeg",
+          "description": "De speelse vocalist met een veelzijdige stem. Yoohyeon's energie en vocals zijn altijd highlights."
+        },
+        {
+          "name": "Dami",
+          "nameKr": "다미",
+          "role": "Main Rapper, Sub Vocalist",
+          "image": "dreamcatcher/dami.jpeg",
+          "description": "De coole rapper met snelle, precise flows. Dami's rap skills en stijl zijn indrukwekkend."
+        },
+        {
+          "name": "Gahyeon",
+          "nameKr": "가현",
+          "role": "Lead Rapper, Sub Vocalist, Maknae",
+          "image": "dreamcatcher/gahyeon.jpeg",
+          "description": "De maknae met een groeien de vocale presence. Gahyeon's charme en talent maken haar geliefd."
+        }
+      ]
+    },
+    {
+      "id": "akmu",
+      "name": "AKMU",
+      "nameKr": "악동뮤지션",
+      "color": "#84cc16",
+      "company": "YG ENTERTAINMENT",
+      "description": "AKMU (Akdong Musician) is een broer-zus duo dat indie pop en folk maakt met artistieke, emotionele verhalen. Hun muziek is intelligent en hartverwarmend, perfect voor fans van singer-songwriters en poëtische lyrics.",
+      "spotifyUrl": "https://open.spotify.com/artist/6OwKE9Ez6ALxpXagxYEXjX",
+      "image": "akmu/akmu-group.jpg",
+      "tags": ["indie", "folk", "acoustic", "jazz", "art-pop", "minimalist", "ambient", "bossa-nova", "dream-pop"],
+      "members": [
+        {
+          "name": "Chanhyuk",
+          "nameKr": "찬혁",
+          "role": "Leader, Main Rapper, Vocalist, Producer",
+          "image": "akmu/chanhyuk.jpeg",
+          "description": "Het creatieve brein achter AKMU's unieke sound. Chanhyuk's songwriting is poëtisch en diepzinnig."
+        },
+        {
+          "name": "Suhyun",
+          "nameKr": "수현",
+          "role": "Main Vocalist",
+          "image": "akmu/suhyun.jpeg",
+          "description": "De stem van een generatie met een pure, emotionele delivery. Suhyun's vocals zijn tijdloos mooi."
+        }
+      ]
+    }
+  ]
+}

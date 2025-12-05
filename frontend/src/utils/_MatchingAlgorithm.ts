@@ -1,0 +1,199 @@
+/**
+ * K-pop Matching Algorithm
+ * 
+ * Maps western artists to K-pop groups based on genre/style similarities.
+ * Each western artist has tags that correspond to K-pop group tags.
+ * When a user swipes right on an artist, points are added to matching K-pop groups.
+ */
+
+// Genre/style tags that each western artist contributes to K-pop matching
+export const artistTagMapping: Record<string, string[]> = {
+  // Pop artists
+  'sabrina': ['pop', 'dance', 'r&b', 'catchy', 'upbeat'],
+  'dualipa': ['pop', 'dance', 'disco', 'retro', 'catchy'],
+  'troyesivan': ['pop', 'synth-pop', 'dance', 'electropop'],
+  
+  // R&B / Soul
+  'sza': ['r&b', 'neo-soul', 'vocal', 'emotional'],
+  'norahjones': ['jazz', 'soul', 'vocal', 'acoustic', 'ballad'],
+  
+  // Indie / Alternative / Dream Pop
+  'lanadelrey': ['indie', 'dream-pop', 'art-pop', 'emotional', 'ambient'],
+  'phoebe': ['indie', 'folk', 'rock', 'emotional', 'alt-rock'],
+  'aurora': ['art-pop', 'electropop', 'folk', 'indie', 'ambient'],
+  'laufey': ['jazz', 'bossa-nova', 'indie', 'acoustic', 'vocal'],
+  
+  // Hyperpop / Electropop
+  'charli': ['hyperpop', 'electropop', 'dance', 'experimental', 'synth-pop'],
+  'ashnikko': ['hyperpop', 'hip-hop', 'electropop', 'experimental'],
+  
+  // Hip Hop / Rap / Trap
+  'travisscott': ['hip-hop', 'trap', 'experimental', 'dark'],
+  'denzelcurry': ['hip-hop', 'trap', 'hardcore', 'experimental'],
+  
+  // Latin / World
+  'rosalia': ['reggaeton', 'experimental', 'pop', 'dancehall'],
+  'jbalvin': ['reggaeton', 'trap', 'dancehall', 'party'],
+  'burnaboy': ['afrobeats', 'dancehall', 'reggaeton', 'party'],
+  
+  // EDM / Electronic
+  'martingarrix': ['edm', 'progressive', 'electropop', 'anthemic'],
+  'diplo': ['edm', 'dancehall', 'tropical', 'experimental'],
+  'avicii': ['edm', 'progressive', 'anthemic', 'emotional'],
+  
+  // Orchestral / Cinematic
+  'hanszimmer': ['orchestral', 'epic', 'theatrical', 'anthemic'],
+  'maxrichter': ['minimalist', 'ambient', 'acoustic', 'emotional'],
+  
+  // Country / Folk / Americana
+  'lukecombs': ['folk', 'acoustic', 'emotional', 'ballad'],
+  
+  // Rock / Metal
+  'maneskin': ['rock', 'alt-rock', 'glam', 'band'],
+  'foofighters': ['rock', 'alt-rock', 'band', 'anthemic'],
+  'bmth': ['metalcore', 'metal', 'nu-metal', 'edm', 'hardcore'],
+  'system': ['nu-metal', 'metal', 'alt-rock', 'hardcore'],
+};
+
+// How many points each tag gives to each K-pop group
+export const tagToGroupScores: Record<string, Record<string, number>> = {
+  // Pop tags
+  'pop': { twice: 10, blackpink: 8, aespa: 6, nmixx: 5 },
+  'dance': { twice: 8, blackpink: 9, aespa: 8, kard: 7, nmixx: 7, ateez: 6 },
+  'catchy': { twice: 10, blackpink: 6 },
+  'upbeat': { twice: 10, kard: 6 },
+  'bright': { twice: 10 },
+  'disco': { twice: 8, mamamoo: 5 },
+  'retro': { twice: 6, mamamoo: 8 },
+  
+  // R&B / Soul
+  'r&b': { mamamoo: 10, ikon: 8, blackpink: 4 },
+  'neo-soul': { mamamoo: 10 },
+  'soul': { mamamoo: 10 },
+  'vocal': { mamamoo: 10, nmixx: 7, akmu: 6 },
+  'ballad': { mamamoo: 7, akmu: 8, day6: 6 },
+  
+  // Hip Hop / Rap
+  'hip-hop': { straykids: 10, ikon: 10, blackpink: 7 },
+  'trap': { straykids: 9, ikon: 8, blackpink: 8 },
+  'party': { ikon: 8, kard: 7, blackpink: 5 },
+  
+  // Indie / Alternative
+  'indie': { akmu: 10, day6: 7 },
+  'folk': { akmu: 10, day6: 6 },
+  'acoustic': { akmu: 10, day6: 5, mamamoo: 3 },
+  'dream-pop': { akmu: 8 },
+  'bossa-nova': { akmu: 8, mamamoo: 4 },
+  
+  // Electronic / Hyperpop
+  'hyperpop': { aespa: 10, nmixx: 10 },
+  'electropop': { aespa: 9, kard: 7, nmixx: 6 },
+  'synth-pop': { aespa: 7, kard: 8 },
+  'experimental': { aespa: 8, nmixx: 9, straykids: 8 },
+  'art-pop': { aespa: 7, nmixx: 8, akmu: 6 },
+  
+  // EDM
+  'edm': { ateez: 9, kard: 10, aespa: 7, straykids: 6, blackpink: 5, dreamcatcher: 5 },
+  'progressive': { ateez: 8, kard: 6 },
+  'tropical': { kard: 10 },
+  
+  // World / Latin
+  'dancehall': { kard: 10, blackpink: 4 },
+  'reggaeton': { kard: 9, blackpink: 5 },
+  'afrobeats': { kard: 8 },
+  
+  // Rock / Metal
+  'rock': { day6: 10, dreamcatcher: 9, straykids: 5 },
+  'alt-rock': { day6: 10, dreamcatcher: 8 },
+  'band': { day6: 10 },
+  'metal': { dreamcatcher: 10 },
+  'metalcore': { dreamcatcher: 10, straykids: 5 },
+  'nu-metal': { dreamcatcher: 9, straykids: 7 },
+  'hardcore': { dreamcatcher: 8, straykids: 8 },
+  'glam': { dreamcatcher: 5 },
+  'dark': { dreamcatcher: 7, straykids: 6 },
+  
+  // Orchestral / Theatrical
+  'orchestral': { ateez: 10 },
+  'epic': { ateez: 10 },
+  'theatrical': { ateez: 10 },
+  'anthemic': { ateez: 9, straykids: 5 },
+  
+  // Ambient / Minimalist
+  'ambient': { akmu: 8 },
+  'minimalist': { akmu: 9 },
+  'emotional': { day6: 8, akmu: 7, mamamoo: 6 },
+};
+
+export interface MatchResult {
+  groupId: string;
+  score: number;
+  percentage: number;
+}
+
+/**
+ * Calculate K-pop group matches based on liked western artists
+ */
+export function calculateMatches(likedArtistIds: string[]): MatchResult[] {
+  const scores: Record<string, number> = {
+    twice: 0,
+    blackpink: 0,
+    aespa: 0,
+    nmixx: 0,
+    straykids: 0,
+    ateez: 0,
+    mamamoo: 0,
+    ikon: 0,
+    kard: 0,
+    day6: 0,
+    dreamcatcher: 0,
+    akmu: 0,
+  };
+
+  // For each liked artist, add their tag scores to groups
+  for (const artistId of likedArtistIds) {
+    const tags = artistTagMapping[artistId];
+    if (!tags) continue;
+
+    for (const tag of tags) {
+      const groupScores = tagToGroupScores[tag];
+      if (!groupScores) continue;
+
+      for (const [groupId, points] of Object.entries(groupScores)) {
+        scores[groupId] += points;
+      }
+    }
+  }
+
+  // Convert to array and sort by score
+  const results = Object.entries(scores)
+    .map(([groupId, score]) => ({ groupId, score, percentage: 0 }))
+    .sort((a, b) => b.score - a.score);
+
+  // Calculate percentages based on top score
+  const maxScore = results[0]?.score || 1;
+  for (const result of results) {
+    result.percentage = Math.round((result.score / maxScore) * 100);
+  }
+
+  return results;
+}
+
+/**
+ * Get the top matched K-pop group
+ */
+export function getTopMatch(likedArtistIds: string[]): string | null {
+  if (likedArtistIds.length === 0) return null;
+  
+  const matches = calculateMatches(likedArtistIds);
+  return matches[0]?.groupId || null;
+}
+
+/**
+ * Get top N matches
+ */
+export function getTopMatches(likedArtistIds: string[], count: number = 3): MatchResult[] {
+  const matches = calculateMatches(likedArtistIds);
+  return matches.slice(0, count);
+}
+
