@@ -169,6 +169,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/config/fonts';
+
 .splash-screen {
   position: relative;
   width: 100%;
@@ -224,7 +226,7 @@ export default defineComponent({
 
   .tagline {
     margin-top: 8px;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 32px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.9);
@@ -269,7 +271,7 @@ export default defineComponent({
   padding-bottom: 24px;
 
   .artist-name-kr {
-    font-family: 'Outfit', sans-serif;
+    font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
     font-size: 36px;
     font-weight: 700;
     color: #fff;
@@ -279,9 +281,9 @@ export default defineComponent({
   }
 
   .artist-name-en {
-    font-family: 'Outfit', sans-serif;
+    font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
     color: #fff;
     margin: 4px 0 0 0;
     line-height: 1.2;
@@ -289,7 +291,7 @@ export default defineComponent({
   }
 
   .artist-details {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 12px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.75);
@@ -301,7 +303,7 @@ export default defineComponent({
   }
 
   .artist-company {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 11px;
     font-weight: 400;
     color: rgba(255, 255, 255, 0.5);

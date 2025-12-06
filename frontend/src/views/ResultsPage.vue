@@ -149,6 +149,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/config/fonts';
+
 .results-page {
   min-height: 100vh;
   background: #fff;
@@ -212,28 +214,28 @@ export default defineComponent({
 }
 
 .group-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 64px;
-  font-weight: 800;
+  font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
+  font-size: 80px;
+  font-weight: 700;
   color: #fff;
-  margin: 0 0 12px 0;
+  margin: 0 0 4px 0;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
 .group-members {
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Mulish', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
   margin: 0 0 6px 0;
   letter-spacing: 0.5px;
 }
 
 .group-company {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   margin: 0 0 24px 0;
@@ -241,21 +243,24 @@ export default defineComponent({
 }
 
 .group-description {
-  font-family: 'Outfit', sans-serif;
-  font-size: 17px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
-  margin: 0;
-  line-height: 1.7;
+  color: #fff;
+  margin: 0 auto;
+  line-height: 1.4;
   text-align: center;
+  max-width: 80%;
+  padding: 0 20px;
 }
 
 .spotify-btn {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 16px;
   text-decoration: none;
-  margin: 32px 0 48px;
+  margin: 32px auto 48px;
   text-align: left;
 }
 
@@ -290,10 +295,13 @@ export default defineComponent({
 
 .members-section {
   text-align: left;
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .members-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-size: 42px;
   font-weight: 800;
   color: #fff;
@@ -315,8 +323,8 @@ export default defineComponent({
 
 .member-image {
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   overflow: hidden;
 
@@ -334,33 +342,34 @@ export default defineComponent({
 }
 
 .member-name {
-  font-family: 'Outfit', sans-serif;
-  font-size: 24px;
-  font-weight: 700;
+  font-family: 'Mulish', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
   color: #fff;
   margin: 0 0 4px 0;
 }
 
 .member-name-kr {
-  font-size: 16px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
 }
 
 .member-role {
-  font-family: 'Outfit', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.5);
-  margin: 0 0 12px 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  margin: -8px 0 12px 0;
   letter-spacing: 0.3px;
 }
 
 .member-description {
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
+  color: #fff;
   margin: 0;
   line-height: 1.6;
 }
@@ -391,7 +400,7 @@ export default defineComponent({
   height: 100vh;
   
   p {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Mulish', sans-serif;
     font-size: 18px;
     color: #333;
   }

@@ -46,14 +46,14 @@
           <span class="action-btn__icon">✕</span>
         </button>
         <button class="action-btn action-btn--like" @click="swipeRight">
-          <span class="action-btn__icon">♥</span>
+          <img src="@/assets/images/like.png" alt="Like" class="action-btn__icon" />
         </button>
+        
+        <!-- Progress -->
+        <div class="progress">
+          <span class="progress__text">{{ currentIndex }}/{{ totalCards }}</span>
+        </div>
       </div>
-    </div>
-
-    <!-- Progress -->
-    <div class="progress">
-      <span class="progress__text">{{ currentIndex }}/{{ totalCards }}</span>
     </div>
   </div>
 </template>
@@ -288,6 +288,8 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/config/fonts';
+
 .swipe-game {
   position: relative;
   width: 100%;
@@ -317,6 +319,7 @@ export default defineComponent({
   flex: 1;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0 24px;
@@ -327,7 +330,11 @@ export default defineComponent({
   position: relative;
   width: 100%;
   max-width: 600px;
-  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
 }
 
 .card {
@@ -369,7 +376,7 @@ export default defineComponent({
   background-size: cover;
   background-position: center top;
   position: relative;
-  border-radius: 20px;
+  border-radius: 45px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
@@ -389,14 +396,14 @@ export default defineComponent({
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 24px;
+  padding: 24px 40px 36px 40px;
   color: #fff;
 }
 
 .card__name {
-  font-family: 'Outfit', sans-serif;
+  font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
   font-size: 42px;
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   margin: 0;
   line-height: 1.1;
@@ -404,18 +411,18 @@ export default defineComponent({
 }
 
 .card__genres {
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
+  font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
+  font-size: 20px;
   font-weight: 700;
-  color: #fbbf24;
-  margin: 10px 0 0 0;
+  color: #45ff78;
+  margin: 4px 0 0 0;
   letter-spacing: 0.3px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
 }
 
 .card__description {
-  font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   margin: 10px 0 0 0;
@@ -446,9 +453,9 @@ export default defineComponent({
   }
 
   &--nope {
-    left: -50px;
+    left: -30px;
     transform: translateY(-50%);
-    background: #6366f1;
+    background: #654EAC;
     box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4);
 
     .action-btn__icon {
@@ -459,27 +466,34 @@ export default defineComponent({
   }
 
   &--like {
-    right: -50px;
+    right: -30px;
     transform: translateY(-50%);
-    background: #8b5cf6;
+    background: #654EAC;
     box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
 
     .action-btn__icon {
-      color: #fff;
-      font-size: 44px;
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
     }
   }
 }
 
 .progress {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, calc(-50% + 430px));
   text-align: center;
-  padding: 12px 0 24px;
   z-index: 10;
+  width: 100%;
+  max-width: 600px;
+  padding-top: 50px;
 
   &__text {
-    font-family: 'Outfit', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
     color: #1a1a2e;
   }
 }

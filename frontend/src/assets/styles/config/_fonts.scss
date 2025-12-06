@@ -1,5 +1,49 @@
 // @import (Google font urls here) //
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap');
+
+// ITC Avant Garde Gothic Std Font Faces
+@include font-face(
+	'ITC Avant Garde Gothic Std',
+	'../../fonts/ITC Avant Garde Gothic Std Extra Light',
+	200,
+	normal,
+	woff
+);
+
+@include font-face(
+	'ITC Avant Garde Gothic Std',
+	'../../fonts/ITC Avant Garde Gothic Std Book',
+	400,
+	normal,
+	woff
+);
+
+@include font-face(
+	'ITC Avant Garde Gothic Std',
+	'../../fonts/ITC Avant Garde Gothic Std Medium',
+	500,
+	normal,
+	woff
+);
+
+@include font-face(
+	'ITC Avant Garde Gothic Std',
+	'../../fonts/ITC Avant Garde Gothic Std Bold',
+	700,
+	normal,
+	woff
+);
+
+// Fonts map
+$fonts: (
+	'avant-garde': (
+		'extra-light': 'ITC Avant Garde Gothic Std',
+		'book': 'ITC Avant Garde Gothic Std',
+		'medium': 'ITC Avant Garde Gothic Std',
+		'bold': 'ITC Avant Garde Gothic Std'
+	)
+);
 
 html, body, #app {
 	font-family: serif;
@@ -22,5 +66,6 @@ h2 {
 }
 
 p {
+	font-family: 'Mulish', sans-serif;
 	font-size: 16px;
 }
