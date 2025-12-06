@@ -24,7 +24,7 @@
           <!-- Spotify Button -->
           <a :href="group.spotifyUrl" target="_blank" class="spotify-btn">
             <div class="spotify-qr">
-              <div class="qr-placeholder"></div>
+              <img :src="getQrCode(group.qrCode)" :alt="group.qrCode" class="codeqr"/>
             </div>
             <div class="spotify-text">
               <span>Bezoek de</span>
@@ -98,6 +98,7 @@ interface KpopGroup {
 
 // Import all kpop group images
 const groupImages = import.meta.glob('@/assets/images/kpop-groups/**/*', { eager: true, as: 'url' });
+const qrImages = import.meta.glob('@/assets/images/qrcodes/**/*', { eager: true, as: 'url' });
 
 export default defineComponent({
   name: 'ResultsPage',
@@ -124,6 +125,15 @@ export default defineComponent({
       return '';
     };
 
+    const getQrCode = (imagePath: string) => {
+      for (const [key, url] of Object.entries(qrImages)) {
+        if (key.includes(imagePath)) {
+          return url;
+        }
+      }
+      return '';
+    };
+
     const getMemberImage = (imagePath: string) => {
       for (const [key, url] of Object.entries(groupImages)) {
         if (key.includes(imagePath)) {
@@ -141,6 +151,7 @@ export default defineComponent({
       group,
       memberNames,
       getGroupImage,
+      getQrCode,
       getMemberImage,
       goHome,
     };
@@ -202,7 +213,7 @@ export default defineComponent({
     bottom: -1px;
     left: 0;
     right: 0;
-    height: 150px;
+    height: 350px;
     background: linear-gradient(to bottom, transparent 0%, #000 100%);
   }
 }
@@ -211,6 +222,10 @@ export default defineComponent({
   background: #000;
   padding: 24px 24px 40px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .group-name {
@@ -218,10 +233,12 @@ export default defineComponent({
   font-size: 80px;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 4px 0;
+  margin: -50px 0 4px 0;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
+  position: relative;
+  z-index: 999;
 }
 
 .group-members {
@@ -231,6 +248,7 @@ export default defineComponent({
   color: #fff;
   margin: 0 0 6px 0;
   letter-spacing: 0.5px;
+  max-width: 90%;
 }
 
 .group-company {
@@ -250,7 +268,7 @@ export default defineComponent({
   margin: 0 auto;
   line-height: 1.4;
   text-align: center;
-  max-width: 80%;
+  max-width: 90%;
   padding: 0 20px;
 }
 
@@ -280,6 +298,13 @@ export default defineComponent({
       linear-gradient(-45deg, transparent 75%, #000 75%);
     background-size: 10px 10px;
     background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  }
+
+  .codeqr {
+    width: 200px;
+    height: 200px;
+    background: #fff;
+    border-radius: 8px;
   }
 }
 

@@ -9,6 +9,7 @@
       "description": "TWICE is de ultieme feel-good K-pop groep met aanstekelijke hooks en iconische choreografieën. Hun muziek combineert bubblegum pop met dance beats, perfect voor fans van catchy, vrolijke pop muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/7n2Ycct7Beij7Dj7meI4X0",
       "image": "twice/twice-group.jpg",
+      "qrCode": "qrcodes/twice-qr.png",
       "tags": ["pop", "dance", "bright", "catchy", "upbeat", "disco"],
       "members": [
         {
@@ -85,6 +86,7 @@
       "description": "BLACKPINK is het ultieme girl crush icoon met een mix van fierce hip-hop en addictieve pop. Hun stijl combineert luxe met attitude, perfect voor fans van krachtige performances en trendsettende mode.",
       "spotifyUrl": "https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF",
       "image": "blackpink/blackpink-group.jpg",
+      "qrCode": "qrcodes/blackpink-qr.png",
       "tags": ["pop", "hip-hop", "trap", "girl-crush", "dance", "edm", "reggaeton"],
       "members": [
         {
@@ -126,6 +128,7 @@
       "description": "aespa is K-pop's meest futuristische groep met een uniek AI-concept en baanbrekende hyperpop sound. Ze combineren cutting-edge productie met sci-fi storytelling, perfect voor fans van experimentele pop en gaming.",
       "spotifyUrl": "https://open.spotify.com/artist/6YVMFz59CuY7ngCxTxjpxE",
       "image": "aespa/aespa-group.jpg",
+      "qrCode": "qrcodes/aespa-qr.png",
       "tags": ["hyperpop", "electropop", "edm", "experimental", "synth-pop", "art-pop", "dance"],
       "members": [
         {
@@ -167,6 +170,7 @@
       "description": "NMIXX pioniert met hun 'MIXX POP' concept - songs die meerdere genres in één track combineren. Hun vocale kracht en experimentele sound maken ze perfect voor fans die van verrassingen houden.",
       "spotifyUrl": "https://open.spotify.com/artist/28ot3wh4oNmoFOdVajibBl",
       "image": "nmixx/nmixx-group.jpg",
+      "qrCode": "qrcodes/nmixx-qr.png",
       "tags": ["hyperpop", "experimental", "art-pop", "dance", "vocal", "electropop"],
       "members": [
         {
@@ -222,6 +226,7 @@
       "description": "Stray Kids produceert hun eigen muziek met 3RACHA, hun producing unit. Hun sound is een mix van hard-hitting hip-hop, EDM en experimentele genres, perfect voor fans die authentieke, zelf-gemaakte muziek waarderen.",
       "spotifyUrl": "https://open.spotify.com/artist/2dIgFjalVxs4ThymZ67YCE",
       "image": "straykids/straykids-group.jpeg",
+      "qrCode": "qrcodes/straykids-qr.png",
       "tags": ["hip-hop", "trap", "edm", "experimental", "rock", "nu-metal", "hardcore"],
       "members": [
         {
@@ -291,6 +296,7 @@
       "description": "ATEEZ levert epische performances met theatrale concepten en anthemische nummers. Hun energie en storytelling zijn cinematisch, perfect voor fans van grandiose shows en emotioneel geladen muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/68KmkJeZGfwe1TUj9Krmna",
       "image": "ateez/ateez-group.jpg",
+      "qrCode": "qrcodes/ateez-qr.png",
       "tags": ["edm", "theatrical", "epic", "orchestral", "dance", "anthemic", "progressive"],
       "members": [
         {
@@ -360,6 +366,7 @@
       "description": "MAMAMOO staat bekend om hun ongelooflijke live vocals en retro-geïnspireerde R&B sound. Hun zelfvertrouwen en vocale kracht maken ze perfect voor fans van echte zangeressen en soulvolle muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/0XATRDCYuuGhk0oE7C0o5G",
       "image": "mamamoo/mamamoo-group.jpg",
+      "qrCode": "qrcodes/mamamoo-qr.png",
       "tags": ["r&b", "soul", "jazz", "vocal", "retro", "neo-soul", "ballad"],
       "members": [
         {
@@ -401,6 +408,7 @@
       "description": "iKON brengt authentieke hip-hop met catchy hooks en emotionele ballads. Hun muziek voelt persoonlijk en relatable, perfect voor fans van echte hip-hop met K-pop flair.",
       "spotifyUrl": "https://open.spotify.com/artist/5DbdkBdrNGpfPBqdyu4bkU",
       "image": "ikon/ikon-group.jpg",
+      "qrCode": "qrcodes/ikon-qr.png",
       "tags": ["hip-hop", "r&b", "trap", "party", "dance"],
       "members": [
         {
@@ -456,6 +464,7 @@
       "description": "KARD is een unieke co-ed groep met tropical house en EDM sound. Hun internationale vibe en dansbare nummers maken ze perfect voor fans van global pop en zomerse vibes.",
       "spotifyUrl": "https://open.spotify.com/artist/2wXjBp7xYYRGFmS0rXRLhB",
       "image": "kard/kard-group.jpg",
+      "qrCode": "qrcodes/kard-qr.png",
       "tags": ["edm", "tropical", "dancehall", "reggaeton", "electropop", "afrobeats", "synth-pop"],
       "members": [
         {
@@ -497,6 +506,7 @@
       "description": "DAY6 is K-pop's meest geliefde band met emotionele rock en pop-rock nummers. Hun muziek raakt het hart met relatable lyrics en echte instrumenten, perfect voor fans van bands en emotionele muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/5TnQc2N1iKlFjYD7CPGvFc",
       "image": "day6/day6-group.jpg",
+      "qrCode": "qrcodes/day6-qr.png",
       "tags": ["rock", "alt-rock", "indie", "folk", "band", "emotional", "pop-rock"],
       "members": [
         {
@@ -538,6 +548,7 @@
       "description": "Dreamcatcher combineert rock en metal met K-pop in een unieke, donkere sound. Hun theatrale concepts en krachtige instrumentals zijn perfect voor fans van rock, metal en alternatieve muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/5V1qsQHdXNm4ZEZHWvFnqQ",
       "image": "dreamcatcher/dreamcatcher-group.jpg",
+      "qrCode": "qrcodes/dreamcatcher-qr.png",
       "tags": ["rock", "metal", "metalcore", "nu-metal", "edm", "dark", "alt-rock", "hardcore"],
       "members": [
         {
@@ -600,6 +611,7 @@
       "description": "AKMU (Akdong Musician) is een broer-zus duo dat indie pop en folk maakt met artistieke, emotionele verhalen. Hun muziek is intelligent en hartverwarmend, perfect voor fans van singer-songwriters en poëtische lyrics.",
       "spotifyUrl": "https://open.spotify.com/artist/6OwKE9Ez6ALxpXagxYEXjX",
       "image": "akmu/akmu-group.jpg",
+      "qrCode": "qrcodes/akmu-qr.png",
       "tags": ["indie", "folk", "acoustic", "jazz", "art-pop", "minimalist", "ambient", "bossa-nova", "dream-pop"],
       "members": [
         {
