@@ -92,6 +92,7 @@ interface KpopGroup {
   description: string;
   spotifyUrl: string;
   image: string;
+  qrCode: string;
   tags: string[];
   members: Member[];
 }
