@@ -178,7 +178,7 @@ export default defineComponent({
 
 .group-card {
   width: 100%;
-  border-radius: 24px;
+  border-radius: 45px;
   overflow: hidden;
   margin-bottom: 24px;
 }
@@ -378,7 +378,7 @@ export default defineComponent({
   width: 100%;
   background: #8b5cf6;
   border: none;
-  border-radius: 16px;
+  border-radius: 30px;
   padding: 20px;
   font-family: 'Outfit', sans-serif;
   font-size: 18px;
