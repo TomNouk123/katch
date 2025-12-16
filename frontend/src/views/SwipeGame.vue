@@ -62,8 +62,8 @@
 import { defineComponent, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import artistData from '@/assets/data/western-artists.json';
-import { getTopMatch } from '@/utils/_MatchingAlgorithm';
 import { PageName } from '@/utils/_Constants';
+import { useDataStore } from '@/store/_DataStore';
 
 interface Artist {
   id: string;
@@ -77,7 +77,7 @@ interface Artist {
 const imageModules = import.meta.glob('@/assets/images/western-artists/*', { eager: true, as: 'url' });
 
 // Number of artists per game
-const ARTISTS_PER_GAME = 20;
+const ARTISTS_PER_GAME = 25;
 
 // Fisher-Yates shuffle algorithm
 function shuffleArray<T>(array: T[]): T[] {
@@ -99,6 +99,10 @@ export default defineComponent({
   name: 'SwipeGame',
   setup() {
     const router = useRouter();
+    const store = useDataStore();
+    
+    // Clear previous liked artists when starting a new game
+    store.clearLikedArtists();
     
     // Get 20 random artists from the pool of 26
     const artists = ref<Artist[]>(getRandomArtists(artistData.artists as Artist[], ARTISTS_PER_GAME));
@@ -169,11 +173,11 @@ export default defineComponent({
       return {};
     };
 
-    const goToResults = () => {
-      const topMatch = getTopMatch(likedArtists.value);
-      // Default to 'twice' if no likes or no match found
-      const matchedGroup = topMatch || 'twice';
-      router.push({ name: PageName.RESULTS, params: { groupId: matchedGroup } });
+    const goToCalculating = () => {
+      // Store liked artists in the store
+      store.setLikedArtists(likedArtists.value);
+      // Navigate to calculating page
+      router.push({ name: PageName.CALCULATING });
     };
 
     const removeCard = (direction: 'left' | 'right') => {
@@ -192,9 +196,9 @@ export default defineComponent({
 
       // Check if game is complete
       if (artists.value.length === 0) {
-        // Small delay before showing results
+        // Small delay before showing calculating screen
         setTimeout(() => {
-          goToResults();
+          goToCalculating();
         }, 500);
       }
     };

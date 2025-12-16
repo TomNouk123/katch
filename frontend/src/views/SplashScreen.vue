@@ -68,6 +68,9 @@ import ateezImg from '@/assets/images/splash/ateez.jpg';
 import btsImg from '@/assets/images/splash/bts.jpg';
 import lesserafimImg from '@/assets/images/splash/lesserafim.jpg';
 import newjeansImg from '@/assets/images/splash/newjeans.jpg';
+import enhypenImg from '@/assets/images/splash/enhypen.jpg';
+import illitImg from '@/assets/images/splash/illit.jpg';
+import straykidsImg from '@/assets/images/splash/straykids.jpeg';
 
 interface Artist {
   id: string;
@@ -125,6 +128,30 @@ export default defineComponent({
         details: 'KARINA, GISELLE, WINTER, NINGNING',
         company: 'SM ENTERTAINMENT',
         image: aespaImg,
+      },
+      {
+        id: 'enhypen',
+        nameKr: '엔하이픈',
+        nameEn: 'ENHYPEN',
+        details: 'HEESEUNG, JAY, JAKE, SUNGHOON, SUNOO, JUNGWON, NI-KI',
+        company: 'BELIFT LAB',
+        image: enhypenImg,
+      },
+      {
+        id: 'illit',
+        nameKr: '아일릿',
+        nameEn: 'ILLIT',
+        details: 'YUNAH, MINJU, MOKA, WONHEE, IROHA',
+        company: 'BELIFT LAB',
+        image: illitImg,
+      },
+      {
+        id: 'straykids',
+        nameKr: '스트레이 키즈',
+        nameEn: 'Stray Kids',
+        details: 'BANG CHAN, LEE KNOW, CHANGBIN, HYUNJIN, HAN, FELIX, SEUNGMIN, I.N',
+        company: 'JYP ENTERTAINMENT',
+        image: straykidsImg,
       },
     ];
 

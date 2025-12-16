@@ -25,7 +25,7 @@
       "id": "sza",
       "name": "SZA",
       "genres": "R&B, NEO-SOUL, POP",
-      "description": "SZA is een Amerikaanse R&B-zangeres die persoonlijke en emotionele thema’s verwerkt in haar muziek. Ze werd enorm populair met Kill Bill en Good Days.",
+      "description": "SZA is een Amerikaanse R&B-zangeres die persoonlijke en emotionele thema's verwerkt in haar muziek. Ze werd enorm populair met Kill Bill en Good Days.",
       "image": "sza.jpg"
     },
     {
@@ -158,7 +158,7 @@
       "id": "maneskin",
       "name": "Måneskin",
       "genres": "ROCK, GLAM ROCK, ALT ROCK",
-      "description": "Måneskin is een Italiaanse rockband die wereldwijd doorbrak na hun winst op het Eurovisie Songfestival. Hun bekendste nummers zijn ZITTI E BUONI en Beggin’.",
+      "description": "Måneskin is een Italiaanse rockband die wereldwijd doorbrak na hun winst op het Eurovisie Songfestival. Hun bekendste nummers zijn ZITTI E BUONI en Beggin'.",
       "image": "maneskin.jpg"
     },
     {
@@ -181,6 +181,153 @@
       "genres": "NU METAL, ALT METAL, HARD ROCK",
       "description": "System Of A Down is een Amerikaanse metalband die bekendstaat om hun politieke teksten en unieke sound. Hun bekendste nummers zijn Chop Suey! en Toxicity.",
       "image": "system.jpg"
+    },
+    {
+      "id": "arcticmonkeys",
+      "name": "Arctic Monkeys",
+      "genres": "INDIE ROCK, ALT ROCK, POST-PUNK",
+      "description": "Arctic Monkeys is een Britse rockband die bekendstaat om hun scherpe teksten en energieke gitaarriffs. Ze werden beroemd met I Bet You Look Good on the Dancefloor en Do I Wanna Know?",
+      "image": "arcticmonkeys.jpg"
+    },
+    {
+      "id": "beatles",
+      "name": "The Beatles",
+      "genres": "ROCK, POP, PSYCHEDELIC",
+      "description": "The Beatles is de meest invloedrijke band aller tijden. De Britse groep veranderde de popmuziek voor altijd met klassiekers als Hey Jude, Let It Be en Yesterday.",
+      "image": "beatles.jpg"
+    },
+    {
+      "id": "bensonboone",
+      "name": "Benson Boone",
+      "genres": "POP, INDIE POP, SINGER-SONGWRITER",
+      "description": "Benson Boone is een Amerikaanse zanger die doorbrak via American Idol. Hij werd wereldwijd bekend met zijn emotionele hit Beautiful Things.",
+      "image": "bensonboone.png"
+    },
+    {
+      "id": "coldplay",
+      "name": "Coldplay",
+      "genres": "ALT ROCK, POP ROCK, ANTHEMIC",
+      "description": "Coldplay is een Britse rockband bekend om hun meeslepende melodieën en emotionele teksten. Grote hits zijn Yellow, Fix You en Viva la Vida.",
+      "image": "coldplay.jpg"
+    },
+    {
+      "id": "drake",
+      "name": "Drake",
+      "genres": "HIP HOP, R&B, POP RAP",
+      "description": "Drake is een Canadese rapper en zanger die een van de bestverkopende artiesten ter wereld is. Hij scoorde mega-hits met Hotline Bling, God's Plan en One Dance.",
+      "image": "drake.jpg"
+    },
+    {
+      "id": "edsheeran",
+      "name": "Ed Sheeran",
+      "genres": "POP, FOLK POP, ACOUSTIC",
+      "description": "Ed Sheeran is een Britse singer-songwriter die wereldwijd succes heeft met zijn akoestische pop. Bekende nummers zijn Shape of You, Perfect en Thinking Out Loud.",
+      "image": "edsheeran.jpg"
+    },
+    {
+      "id": "gorillaz",
+      "name": "Gorillaz",
+      "genres": "ALT ROCK, ELECTRONIC, HIP HOP",
+      "description": "Gorillaz is een virtuele Britse band opgericht door Damon Albarn. Ze combineren rock, hiphop en electronica in hits als Feel Good Inc. en Clint Eastwood.",
+      "image": "gorillaz.jpg"
+    },
+    {
+      "id": "greenday",
+      "name": "Green Day",
+      "genres": "PUNK ROCK, POP PUNK, ALT ROCK",
+      "description": "Green Day is een Amerikaanse punkrockband die de jaren 90 definieerde met hun energieke sound. Bekende nummers zijn Basket Case, American Idiot en Boulevard of Broken Dreams.",
+      "image": "greenday.jpg"
+    },
+    {
+      "id": "grimes",
+      "name": "Grimes",
+      "genres": "ART POP, ELECTROPOP, EXPERIMENTAL",
+      "description": "Grimes is een Canadese muzikante die experimentele elektronische pop maakt. Ze werd bekend met nummers als Oblivion en Genesis.",
+      "image": "grimes.png"
+    },
+    {
+      "id": "kehlani",
+      "name": "Kehlani",
+      "genres": "R&B, POP, NEO-SOUL",
+      "description": "Kehlani is een Amerikaanse R&B-zangeres met een zachte, emotionele stem. Ze scoorde hits met Gangsta en Good Thing.",
+      "image": "kehlani.jpg"
+    },
+    {
+      "id": "kendricklamar",
+      "name": "Kendrick Lamar",
+      "genres": "HIP HOP, CONSCIOUS RAP, JAZZ RAP",
+      "description": "Kendrick Lamar is een Amerikaanse rapper die wordt gezien als een van de grootste artiesten van zijn generatie. Hij won een Pulitzer Prize en is bekend van HUMBLE. en Alright.",
+      "image": "kendricklamar.jpg"
+    },
+    {
+      "id": "linkinpark",
+      "name": "Linkin Park",
+      "genres": "NU METAL, ALT ROCK, RAP ROCK",
+      "description": "Linkin Park is een Amerikaanse rockband die rock en hiphop combineerde. Ze werden legendarisch met nummers als In the End, Numb en Crawling.",
+      "image": "linkinpark.jpg"
+    },
+    {
+      "id": "oliviadean",
+      "name": "Olivia Dean",
+      "genres": "R&B, SOUL, POP",
+      "description": "Olivia Dean is een Britse zangeres met een warme soul- en R&B-sound. Ze brak door met nummers als Dive en Messy.",
+      "image": "oliviadean.jpeg"
+    },
+    {
+      "id": "roxydekker",
+      "name": "Roxy Dekker",
+      "genres": "POP, DUTCH POP, DANCE",
+      "description": "Roxy Dekker is een Nederlandse zangeres die bekend werd via sociale media. Ze scoorde hits met Wakker in m'n Bed en Goud.",
+      "image": "roxydekker.jpg"
+    },
+    {
+      "id": "slipknot",
+      "name": "Slipknot",
+      "genres": "NU METAL, HEAVY METAL, HARDCORE",
+      "description": "Slipknot is een Amerikaanse metalband bekend om hun maskers en intense optredens. Bekende nummers zijn Duality, Psychosocial en Wait and Bleed.",
+      "image": "slipknot.jpg"
+    },
+    {
+      "id": "suzanfreek",
+      "name": "Suzan & Freek",
+      "genres": "DUTCH POP, FOLK POP, ACOUSTIC",
+      "description": "Suzan & Freek is een Nederlands singer-songwriter duo dat bekendstaat om hun warme, akoestische pop. Ze scoorden hits met Als Het Avond Is en Blauwe Dag.",
+      "image": "suzanfreek.jpg"
+    },
+    {
+      "id": "tameimpala",
+      "name": "Tame Impala",
+      "genres": "PSYCHEDELIC POP, INDIE, SYNTH-POP",
+      "description": "Tame Impala is het muziekproject van Kevin Parker, bekend om dromerige psychedelische pop. Grote hits zijn The Less I Know the Better en Let It Happen.",
+      "image": "tameimpala.jpg"
+    },
+    {
+      "id": "tatemcrae",
+      "name": "Tate McRae",
+      "genres": "POP, DANCE POP, EMO POP",
+      "description": "Tate McRae is een Canadese zangeres en danseres die doorbrak met emotionele popsongs. Ze werd bekend met you broke me first en greedy.",
+      "image": "tatemcrae.jpg"
+    },
+    {
+      "id": "taylorswift",
+      "name": "Taylor Swift",
+      "genres": "POP, COUNTRY POP, INDIE FOLK",
+      "description": "Taylor Swift is een van de grootste popsterren ter wereld. Ze begon in country en groeide uit tot een pop-icoon met hits als Shake It Off, Blank Space en Anti-Hero.",
+      "image": "taylorswift.jpg"
+    },
+    {
+      "id": "the1975",
+      "name": "The 1975",
+      "genres": "INDIE POP, ALT ROCK, SYNTH-POP",
+      "description": "The 1975 is een Britse band die indie rock combineert met pop en elektronische invloeden. Ze zijn bekend van Somebody Else en Chocolate.",
+      "image": "the1975.jpg"
+    },
+    {
+      "id": "theweeknd",
+      "name": "The Weeknd",
+      "genres": "R&B, POP, SYNTH-POP",
+      "description": "The Weeknd is een Canadese zanger die R&B en pop combineert met een donkere, cinematische stijl. Hij scoorde mega-hits met Blinding Lights, Starboy en Save Your Tears.",
+      "image": "theweekend.jpg"
     }
   ]
 }

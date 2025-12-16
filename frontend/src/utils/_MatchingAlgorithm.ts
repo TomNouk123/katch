@@ -12,24 +12,38 @@ export const artistTagMapping: Record<string, string[]> = {
   'sabrina': ['pop', 'dance', 'r&b', 'catchy', 'upbeat'],
   'dualipa': ['pop', 'dance', 'disco', 'retro', 'catchy'],
   'troyesivan': ['pop', 'synth-pop', 'dance', 'electropop'],
+  'taylorswift': ['pop', 'catchy', 'emotional', 'anthemic', 'folk'],
+  'edsheeran': ['pop', 'acoustic', 'folk', 'emotional', 'ballad'],
+  'bensonboone': ['pop', 'indie', 'emotional', 'acoustic'],
+  'tatemcrae': ['pop', 'dance', 'emotional', 'catchy'],
+  'roxydekker': ['pop', 'dance', 'catchy', 'upbeat'],
   
   // R&B / Soul
   'sza': ['r&b', 'neo-soul', 'vocal', 'emotional'],
   'norahjones': ['jazz', 'soul', 'vocal', 'acoustic', 'ballad'],
+  'theweeknd': ['r&b', 'synth-pop', 'dark', 'pop', 'emotional'],
+  'kehlani': ['r&b', 'neo-soul', 'pop', 'vocal', 'emotional'],
+  'oliviadean': ['r&b', 'soul', 'pop', 'vocal'],
+  'drake': ['hip-hop', 'r&b', 'pop', 'trap', 'emotional'],
   
   // Indie / Alternative / Dream Pop
   'lanadelrey': ['indie', 'dream-pop', 'art-pop', 'emotional', 'ambient'],
   'phoebe': ['indie', 'folk', 'rock', 'emotional', 'alt-rock'],
   'aurora': ['art-pop', 'electropop', 'folk', 'indie', 'ambient'],
   'laufey': ['jazz', 'bossa-nova', 'indie', 'acoustic', 'vocal'],
+  'arcticmonkeys': ['indie', 'alt-rock', 'rock', 'band'],
+  'the1975': ['indie', 'synth-pop', 'alt-rock', 'pop'],
+  'tameimpala': ['indie', 'synth-pop', 'art-pop', 'experimental'],
   
   // Hyperpop / Electropop
   'charli': ['hyperpop', 'electropop', 'dance', 'experimental', 'synth-pop'],
   'ashnikko': ['hyperpop', 'hip-hop', 'electropop', 'experimental'],
+  'grimes': ['art-pop', 'electropop', 'experimental', 'synth-pop'],
   
   // Hip Hop / Rap / Trap
   'travisscott': ['hip-hop', 'trap', 'experimental', 'dark'],
   'denzelcurry': ['hip-hop', 'trap', 'hardcore', 'experimental'],
+  'kendricklamar': ['hip-hop', 'trap', 'experimental', 'vocal'],
   
   // Latin / World
   'rosalia': ['reggaeton', 'experimental', 'pop', 'dancehall'],
@@ -47,12 +61,19 @@ export const artistTagMapping: Record<string, string[]> = {
   
   // Country / Folk / Americana
   'lukecombs': ['folk', 'acoustic', 'emotional', 'ballad'],
+  'suzanfreek': ['folk', 'acoustic', 'pop', 'emotional', 'ballad'],
   
   // Rock / Metal
   'maneskin': ['rock', 'alt-rock', 'glam', 'band'],
   'foofighters': ['rock', 'alt-rock', 'band', 'anthemic'],
   'bmth': ['metalcore', 'metal', 'nu-metal', 'edm', 'hardcore'],
   'system': ['nu-metal', 'metal', 'alt-rock', 'hardcore'],
+  'linkinpark': ['nu-metal', 'alt-rock', 'rock', 'emotional', 'band'],
+  'greenday': ['rock', 'alt-rock', 'band', 'anthemic'],
+  'slipknot': ['metal', 'nu-metal', 'hardcore', 'dark'],
+  'coldplay': ['alt-rock', 'pop', 'anthemic', 'emotional', 'band'],
+  'beatles': ['rock', 'pop', 'band', 'catchy'],
+  'gorillaz': ['alt-rock', 'hip-hop', 'electropop', 'experimental', 'band'],
 };
 
 // How many points each tag gives to each K-pop group

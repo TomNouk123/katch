@@ -2,8 +2,17 @@ import { defineStore } from 'pinia';
 
 export const useDataStore = defineStore('data', {
   state: () => {
-    return {};
+    return {
+      likedArtists: [] as string[],
+    };
   },
-  actions: {},
+  actions: {
+    setLikedArtists(artistIds: string[]) {
+      this.likedArtists = artistIds;
+    },
+    clearLikedArtists() {
+      this.likedArtists = [];
+    },
+  },
   getters: {},
 });
