@@ -297,13 +297,12 @@ export default defineComponent({
       const genre2 = sortedTags[1] ? (genreMap[sortedTags[1]] || sortedTags[1]) : 'dance';
 
       // Randomized text templates
-      const textTemplates = [
-        `Veel liefde voor ${genre1}. \nVerrassend veel interesse in ${genre2}. Dat zegt meer over je smaak dan je denkt.\n\nResultaat bijna klaar.`,
-        `Je keuzes schreeuwen ${genre1},\nmaar fluisteren ook ${genre2}.\n\nWe oordelen niet.\nWe matchen alleen.`,
-        `Patronen gedetecteerd: ${genre1} + ${genre2}. Kans op een verrassende match: hoog.\n\nResultaat wordt voorbereid…`,
-        `Op basis van je keuzes lijkt ${genre1} duidelijk favoriet, met ${genre2} als sterke tweede.\n\nWe zoeken nu de beste match voor jou.`,
-        `Je swipes laten zien dat ${genre1} je safe space is,\nmaar ${genre2} stiekem je guilty pleasure.\n\nWe maken het af.`,
-      ];
+        const textTemplates = [
+          `Je swipes laten een duidelijk patroon zien. ${genre1} komt vaker terug dan toeval zou toestaan.\n${genre2} duikt op als onverwachte wildcard.\nOnze algoritmes doen nu alsof dit heel ingewikkeld is.\nResultaat volgt zo.`,
+          `We nemen je keuzes serieus. Misschien iets té serieus.\nTot nu toe zeggen ze dit:\nje voelt je comfortabel bij ${genre1},\nmaar ${genre2} maakt je nieuwsgierig genoeg om te blijven swipen.\nWe zetten alles netjes op een rijtje.`,
+          `We zijn diep gedoken in je swipes en kwamen twee dingen tegen die je niet meer kunt ontkennen:\n${genre1} en ${genre2}.\n\nWat dat precies betekent?\nDat gaan we zo voor je onthullen.`,
+          `We hebben al je swipes bekeken, herbekeken en misschien één keer te kritisch geanalyseerd.\nWat meteen opvalt: ${genre1} was duidelijk jouw veilige keuze.\nMaar elke keer als ${genre2} voorbij kwam, twijfelde je nét iets langer.\nDat vinden we interessant.\nWe leggen de laatste verbanden nu.`,
+        ];
 
       // Pick a random template
       const randomIndex = Math.floor(Math.random() * textTemplates.length);
@@ -524,7 +523,7 @@ export default defineComponent({
 }
 
 .text-container {
-  width: 100%;
+  width: 90%;
   min-height: 200px;
   display: flex;
   align-items: center;
@@ -536,7 +535,7 @@ export default defineComponent({
   font-size: 26px;
   font-weight: 400;
   color: #fff;
-  line-height: 1.2;
+  line-height: 1.4;
   text-align: center;
   white-space: pre-line;
   margin: 0;
@@ -568,25 +567,25 @@ export default defineComponent({
   flex-direction: column;
   gap: 24px;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .match-card {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
   background: #fff;
-  border-radius: 20px;
-  padding: 16px 20px;
+  border-radius: 30px;
+  padding: 20px 24px;
   position: relative;
   overflow: hidden;
 }
 
 .match-image {
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
+  width: 120px;
+  height: 120px;
+  border-radius: 14px;
   overflow: hidden;
   
   img {
@@ -613,7 +612,7 @@ export default defineComponent({
 
 .match-name {
   font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 700;
   color: #333;
   margin: 0;
@@ -623,10 +622,10 @@ export default defineComponent({
 
 .match-genres {
   font-family: 'Mulish', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  color: #8b5cf6;
-  margin: 8px 0 0 0;
+  font-size: 20px;
+  font-weight: 900;
+  color: #654EAC;
+  margin: -2px 0 0 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -642,7 +641,7 @@ export default defineComponent({
 
 .match-bar-fill {
   height: 100%;
-  background: #8b5cf6;
+  background: #654EAC;
   border-radius: 0 3px 3px 0;
   transition: width 0.8s ease-out;
 }

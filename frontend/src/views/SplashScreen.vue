@@ -305,6 +305,7 @@ export default defineComponent({
 
 .artist-info {
   padding-bottom: 24px;
+  min-height: 140px; // Fixed height to prevent button shifting
 
   .artist-name-kr {
     font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
@@ -334,8 +335,8 @@ export default defineComponent({
     margin: 14px 0 0 0;
     line-height: 1.5;
     letter-spacing: 0.3px;
-    max-width: 400px;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
   }
 
   .artist-company {

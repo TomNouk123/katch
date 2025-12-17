@@ -10,7 +10,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/7n2Ycct7Beij7Dj7meI4X0",
       "image": "twice/twice-group.jpg",
       "qrCode": "qrcodes/twice-qr.png",
-      "tags": ["pop", "dance", "bright", "catchy", "upbeat", "disco"],
+      "tags": ["pop", "dance", "synth-pop"],
       "members": [
         {
           "name": "Nayeon",
@@ -87,7 +87,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF",
       "image": "blackpink/blackpink-group.jpg",
       "qrCode": "qrcodes/blackpink-qr.png",
-      "tags": ["pop", "hip-hop", "trap", "girl-crush", "dance", "edm", "reggaeton"],
+      "tags": ["pop", "trap", "edm"],
       "members": [
         {
           "name": "Jisoo",
@@ -129,7 +129,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/6YVMFz59CuY7ngCxTxjpxE",
       "image": "aespa/aespa-group.jpg",
       "qrCode": "qrcodes/aespa-qr.png",
-      "tags": ["hyperpop", "electropop", "edm", "experimental", "synth-pop", "art-pop", "dance"],
+      "tags": ["hyperpop", "edm", "dance"],
       "members": [
         {
           "name": "Karina",
@@ -162,62 +162,6 @@
       ]
     },
     {
-      "id": "nmixx",
-      "name": "NMIXX",
-      "nameKr": "엔믹스",
-      "color": "#06b6d4",
-      "company": "JYP ENTERTAINMENT",
-      "description": "NMIXX pioniert met hun 'MIXX POP' concept - songs die meerdere genres in één track combineren. Hun vocale kracht en experimentele sound maken ze perfect voor fans die van verrassingen houden.",
-      "spotifyUrl": "https://open.spotify.com/artist/28ot3wh4oNmoFOdVajibBl",
-      "image": "nmixx/nmixx-group.jpg",
-      "qrCode": "qrcodes/nmixx-qr.png",
-      "tags": ["hyperpop", "experimental", "art-pop", "dance", "vocal", "electropop"],
-      "members": [
-        {
-          "name": "Lily",
-          "nameKr": "Lily Jin Morrow",
-          "role": "Main Vocalist",
-          "image": "nmixx/lily.jpeg",
-          "description": "Een vocale krachtpatser met een bereik dat zijn gelijke niet kent. Lily's riffs en runs zijn adembenemend."
-        },
-        {
-          "name": "Haewon",
-          "nameKr": "Oh Hae-won",
-          "role": "Leader, Lead Vocalist",
-          "image": "nmixx/haewon.jpeg",
-          "description": "De betrouwbare leader met stabiele vocals en natuurlijk leiderschap. Haewon houdt de groep samen."
-        },
-        {
-          "name": "Sullyoon",
-          "nameKr": "Seol Yoon A",
-          "role": "Lead Vocalist, Visual",
-          "image": "nmixx/sullyoon.jpeg",
-          "description": "De betoverende visual wiens schoonheid viral ging. Sullyoon combineert stunning looks met solide vocalen."
-        },
-        {
-          "name": "Bae",
-          "nameKr": "Bae Jin-sol",
-          "role": "Lead Rapper, Sub Vocalist",
-          "image": "nmixx/bae.jpeg",
-          "description": "De veelzijdige entertainer met rap skills en een bubbly persoonlijkheid die elke show verlicht."
-        },
-        {
-          "name": "Jiwoo",
-          "nameKr": "Kim Ji-woo",
-          "role": "Main Dancer, Sub Vocalist, Sub Rapper",
-          "image": "nmixx/jiwoo.jpeg",
-          "description": "Een explosieve performer met energie voor tien. Jiwoo's dans en expressie zijn altijd on point."
-        },
-        {
-          "name": "Kyujin",
-          "nameKr": "Jang Kyu-jin",
-          "role": "Main Dancer, Lead Rapper, Sub Vocalist, Maknae",
-          "image": "nmixx/kyujin.jpeg",
-          "description": "De powerhouse maknae met een intensiteit die niet past bij haar leeftijd. Kyujin's talent is grenzeloos."
-        }
-      ]
-    },
-    {
       "id": "straykids",
       "name": "STRAY KIDS",
       "nameKr": "스트레이 키즈",
@@ -227,7 +171,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/2dIgFjalVxs4ThymZ67YCE",
       "image": "straykids/straykids-group.jpeg",
       "qrCode": "qrcodes/straykids-qr.png",
-      "tags": ["hip-hop", "trap", "edm", "experimental", "rock", "nu-metal", "hardcore"],
+      "tags": ["hip-hop", "trap", "edm"],
       "members": [
         {
           "name": "Bang Chan",
@@ -297,7 +241,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/68KmkJeZGfwe1TUj9Krmna",
       "image": "ateez/ateez-group.jpg",
       "qrCode": "qrcodes/ateez-qr.png",
-      "tags": ["edm", "theatrical", "epic", "orchestral", "dance", "anthemic", "progressive"],
+      "tags": ["edm", "techno", "trap"],
       "members": [
         {
           "name": "Hongjoong",
@@ -367,7 +311,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/0XATRDCYuuGhk0oE7C0o5G",
       "image": "mamamoo/mamamoo-group.jpg",
       "qrCode": "qrcodes/mamamoo-qr.png",
-      "tags": ["r&b", "soul", "jazz", "vocal", "retro", "neo-soul", "ballad"],
+      "tags": ["r&b", "jazz", "funk"],
       "members": [
         {
           "name": "Solar",
@@ -409,7 +353,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/5DbdkBdrNGpfPBqdyu4bkU",
       "image": "ikon/ikon-group.jpg",
       "qrCode": "qrcodes/ikon-qr.png",
-      "tags": ["hip-hop", "r&b", "trap", "party", "dance"],
+      "tags": ["hip-hop", "pop-rap"],
       "members": [
         {
           "name": "Jay",
@@ -465,7 +409,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/2wXjBp7xYYRGFmS0rXRLhB",
       "image": "kard/kard-group.jpg",
       "qrCode": "qrcodes/kard-qr.png",
-      "tags": ["edm", "tropical", "dancehall", "reggaeton", "electropop", "afrobeats", "synth-pop"],
+      "tags": ["dancehall", "reggaeton", "latin"],
       "members": [
         {
           "name": "J.Seph",
@@ -507,7 +451,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/5TnQc2N1iKlFjYD7CPGvFc",
       "image": "day6/day6-group.jpg",
       "qrCode": "qrcodes/day6-qr.png",
-      "tags": ["rock", "alt-rock", "indie", "folk", "band", "emotional", "pop-rock"],
+      "tags": ["alternative-rock", "acoustic", "pop-rock"],
       "members": [
         {
           "name": "Sungjin",
@@ -549,7 +493,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/5V1qsQHdXNm4ZEZHWvFnqQ",
       "image": "dreamcatcher/dreamcatcher-group.jpg",
       "qrCode": "qrcodes/dreamcatcher-qr.png",
-      "tags": ["rock", "metal", "metalcore", "nu-metal", "edm", "dark", "alt-rock", "hardcore"],
+      "tags": ["alternative-metal", "rock"],
       "members": [
         {
           "name": "JiU",
@@ -612,7 +556,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/6OwKE9Ez6ALxpXagxYEXjX",
       "image": "akmu/akmu-group.jpg",
       "qrCode": "qrcodes/akmu-qr.png",
-      "tags": ["indie", "folk", "acoustic", "jazz", "art-pop", "minimalist", "ambient", "bossa-nova", "dream-pop"],
+      "tags": ["folk-pop", "indie-pop", "acoustic"],
       "members": [
         {
           "name": "Chanhyuk",
@@ -640,7 +584,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/3Nrfpe0tUJi4K4DXYWgMUX",
       "image": "bts/bts-group.jpg",
       "qrCode": "qrcodes/bts-qr.png",
-      "tags": ["hip-hop", "pop", "r&b", "emotional", "anthemic", "dance"],
+      "tags": ["pop", "hip-hop", "edm"],
       "members": [
         {
           "name": "RM",
@@ -694,69 +638,6 @@
       ]
     },
     {
-      "id": "enhypen",
-      "name": "ENHYPEN",
-      "nameKr": "엔하이픈",
-      "color": "#1e40af",
-      "company": "BELIFT LAB",
-      "description": "ENHYPEN combineert elegant dark concepts met krachtige choreografieën. Hun mysterieuze vampier-achtige esthetiek en synchrone dans maken ze perfect voor fans van theatrale, donkere concepten.",
-      "spotifyUrl": "https://open.spotify.com/artist/5t5FqBwTcgKTaLbEFqbuBR",
-      "image": "enhypen/enhypen-group.jpeg",
-      "qrCode": "qrcodes/enhypen-qr.png",
-      "tags": ["pop", "dance", "dark", "theatrical", "synth-pop"],
-      "members": [
-        {
-          "name": "Heeseung",
-          "nameKr": "Lee Hee-seung",
-          "role": "Main Vocalist, Lead Dancer",
-          "image": "enhypen/heeseung.jpeg",
-          "description": "De veelzijdige ace met perfecte techniek. Heeseung excelleert in zowel zang als dans."
-        },
-        {
-          "name": "Jay",
-          "nameKr": "Park Jong-seong",
-          "role": "Sub Vocalist, Sub Rapper",
-          "image": "enhypen/jay.jpeg",
-          "description": "De charismatische performer met sterke stage presence. Jay's passie en drive zijn inspirerend."
-        },
-        {
-          "name": "Jake",
-          "nameKr": "Sim Jae-yun",
-          "role": "Sub Vocalist, Sub Rapper",
-          "image": "enhypen/jake.jpeg",
-          "description": "De Australische charmer met een warme persoonlijkheid. Jake's glimlach wint harten wereldwijd."
-        },
-        {
-          "name": "Sunghoon",
-          "nameKr": "Park Sung-hoon",
-          "role": "Lead Dancer, Sub Vocalist, Visual",
-          "image": "enhypen/sunghoon.jpeg",
-          "description": "De voormalige kunstschaatser met elegante bewegingen. Sunghoon's gratie vertaalt perfect naar K-pop."
-        },
-        {
-          "name": "Sunoo",
-          "nameKr": "Kim Sun-oo",
-          "role": "Lead Vocalist",
-          "image": "enhypen/sunoo.jpeg",
-          "description": "De sunshine met een zoete stem. Sunoo's expressieve gezicht en energie verlichten elke stage."
-        },
-        {
-          "name": "Jungwon",
-          "nameKr": "Yang Jung-won",
-          "role": "Leader, Lead Vocalist, Lead Dancer",
-          "image": "enhypen/jungwon.jpeg",
-          "description": "De jonge leader met wijsheid boven zijn leeftijd. Jungwon's leiderschap en talent zijn indrukwekkend."
-        },
-        {
-          "name": "Ni-ki",
-          "nameKr": "Nishimura Riki",
-          "role": "Main Dancer, Sub Vocalist, Maknae",
-          "image": "enhypen/ni-ki.jpeg",
-          "description": "Het dansprodigy uit Japan. Ni-ki's bewegingen zijn al legendarisch ondanks zijn jonge leeftijd."
-        }
-      ]
-    },
-    {
       "id": "lesserafim",
       "name": "LE SSERAFIM",
       "nameKr": "르세라핌",
@@ -766,7 +647,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/4SpbR6yFEvexJuaBpgAU5p",
       "image": "lesserafim/lesserafim-group.jpg",
       "qrCode": "qrcodes/lesserafim-qr.png",
-      "tags": ["pop", "dance", "electropop", "hip-hop", "catchy"],
+      "tags": ["pop", "dance", "hyperpop"],
       "members": [
         {
           "name": "Sakura",
@@ -806,27 +687,6 @@
       ]
     },
     {
-      "id": "iu",
-      "name": "IU",
-      "nameKr": "아이유",
-      "color": "#f472b6",
-      "company": "EDAM ENTERTAINMENT",
-      "description": "IU is de 'Nation's Little Sister' en een van de meest succesvolle solo artiesten in Korea. Haar muziek varieert van ballads tot pop en jazz, perfect voor fans van veelzijdige, emotionele muziek.",
-      "spotifyUrl": "https://open.spotify.com/artist/3HqSLMAZ3g3d5poNaI7GOU",
-      "image": "iu/iu-group.jpg",
-      "qrCode": "qrcodes/iu-qr.png",
-      "tags": ["pop", "ballad", "jazz", "acoustic", "emotional", "indie", "folk"],
-      "members": [
-        {
-          "name": "IU",
-          "nameKr": "Lee Ji-eun",
-          "role": "Solo Artist, Singer-Songwriter, Actress",
-          "image": "iu/iu.jpg",
-          "description": "De complete artiest die zingt, schrijft en acteert. IU's talent en authenticiteit maken haar een nationale schat."
-        }
-      ]
-    },
-    {
       "id": "kissoflife",
       "name": "KISS OF LIFE",
       "nameKr": "키스오브라이프",
@@ -836,7 +696,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/6gBKsToHlVyaIKXc3OWw40",
       "image": "kissoflife/kissoflife-group.jpg",
       "qrCode": "qrcodes/kissoflife-qr.png",
-      "tags": ["r&b", "soul", "retro", "vocal", "pop", "dance"],
+      "tags": ["r&b", "hip-hop", "pop"],
       "members": [
         {
           "name": "Julie",
@@ -878,7 +738,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/4TnGh5PKbSjpYqpIdlW5nz",
       "image": "monstax/monstax-group.jpeg",
       "qrCode": "qrcodes/monstax-qr.png",
-      "tags": ["edm", "hip-hop", "dance", "trap", "anthemic"],
+      "tags": ["hip-hop", "edm", "trap"],
       "members": [
         {
           "name": "Shownu",
@@ -934,7 +794,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/7f4ignuCJhLXfZ9qKjXk80",
       "image": "nct127/nct127-group.jpg",
       "qrCode": "qrcodes/nct127-qr.png",
-      "tags": ["hip-hop", "experimental", "edm", "synth-pop", "dance", "trap"],
+      "tags": ["hip-hop", "electronic", "experimental"],
       "members": [
         {
           "name": "Taeyong",
@@ -1004,7 +864,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/3PoJZGq4z2bGBzMGLJ0nRh",
       "image": "qwer/qwer-group.jpeg",
       "qrCode": "qrcodes/qwer-qr.png",
-      "tags": ["rock", "band", "alt-rock", "indie", "pop", "catchy"],
+      "tags": ["pop-rock-alt", "alternative-rock", "indie-rock"],
       "members": [
         {
           "name": "Chodan",
@@ -1046,7 +906,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/1z4g3DjTBBZKhvAroFlhOM",
       "image": "redvelvet/redvelvet-group.jpg",
       "qrCode": "qrcodes/redvelvet-qr.png",
-      "tags": ["pop", "r&b", "electropop", "experimental", "vocal", "dance"],
+      "tags": ["r&b", "folk", "pop"],
       "members": [
         {
           "name": "Irene",
@@ -1095,7 +955,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/7nqOGRxlXj7N2JYbgNEjYH",
       "image": "seventeen/seventeen-group.jpg",
       "qrCode": "qrcodes/seventeen-qr.png",
-      "tags": ["pop", "dance", "hip-hop", "anthemic", "vocal", "emotional"],
+      "tags": ["funk-pop", "edm", "hip-hop"],
       "members": [
         {
           "name": "S.Coups",
@@ -1193,7 +1053,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/2hRQKC0gfZPNh28C6oJr1M",
       "image": "shinee/shinee-group.jpg",
       "qrCode": "qrcodes/shinee-qr.png",
-      "tags": ["pop", "dance", "r&b", "electropop", "synth-pop", "experimental"],
+      "tags": ["funk", "dance", "r&b"],
       "members": [
         {
           "name": "Onew",
@@ -1235,7 +1095,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/4ZLN9zv7gRv5W4R5Z8m7Cf",
       "image": "therose/therose-group.jpg",
       "qrCode": "qrcodes/therose-qr.png",
-      "tags": ["rock", "band", "emotional", "ballad", "indie", "acoustic"],
+      "tags": ["indie-rock", "soft-rock", "acoustic"],
       "members": [
         {
           "name": "Woosung",
@@ -1275,9 +1135,9 @@
       "company": "JYP ENTERTAINMENT",
       "description": "Xdinary Heroes is een rock band onder JYP die pop-rock en alternative combineert. Hun energieke live performances en catchy rock anthems zijn perfect voor fans van modern rock en bands.",
       "spotifyUrl": "https://open.spotify.com/artist/4kVsRPOsAB57J31yT8d8p0",
-      "image": "xdinaryheroes/xdinaryheroes-group.png",
+      "image": "xdinaryheroes/xdinaryheroes-group.jpg",
       "qrCode": "qrcodes/xdinaryheroes-qr.png",
-      "tags": ["rock", "band", "alt-rock", "pop", "anthemic"],
+      "tags": ["alternative-rock", "punk-rock", "pop-rock"],
       "members": [
         {
           "name": "Gunil",
@@ -1333,7 +1193,7 @@
       "spotifyUrl": "https://open.spotify.com/artist/4wjU6wS7FDblxBn01XA6KY",
       "image": "youngposse/youngposse-group.jpg",
       "qrCode": "qrcodes/youngposse-qr.png",
-      "tags": ["hip-hop", "trap", "dance", "party", "catchy"],
+      "tags": ["old-school-hip-hop", "hip-hop", "trap"],
       "members": [
         {
           "name": "Jeon Yeonjung",

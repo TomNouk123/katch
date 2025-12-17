@@ -77,7 +77,7 @@ interface Artist {
 const imageModules = import.meta.glob('@/assets/images/western-artists/*', { eager: true, as: 'url' });
 
 // Number of artists per game
-const ARTISTS_PER_GAME = 25;
+const ARTISTS_PER_GAME = 30;
 
 // Fisher-Yates shuffle algorithm
 function shuffleArray<T>(array: T[]): T[] {
