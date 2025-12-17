@@ -79,11 +79,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed, ref, watch, onMounted, onUnmounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDataStore } from '@/store/_DataStore';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
 import { PageName } from '@/utils/_Constants';
+
+// Import Blackpink song
+import blackpinkJump from '@/assets/music/blackpink.mp3';
 
 interface Member {
   name: string;
@@ -123,7 +126,59 @@ export default defineComponent({
     const touchEndX = ref(0);
     const minSwipeDistance = 50;
     
+    // Audio for Blackpink
+    const audioRef = ref<HTMLAudioElement | null>(null);
+    
     const currentGroupId = computed(() => route.params.groupId as string);
+    
+    // Check if current group is Blackpink
+    const isBlackpink = computed(() => currentGroupId.value === 'blackpink');
+    
+    // Function to play Blackpink song
+    const playBlackpinkSong = () => {
+      if (audioRef.value) {
+        audioRef.value.currentTime = 30; // Start from 30 seconds
+        audioRef.value.play().catch(err => {
+          console.log('Audio playback failed:', err);
+        });
+      }
+    };
+    
+    // Function to stop and reset the song
+    const stopSong = () => {
+      if (audioRef.value) {
+        audioRef.value.pause();
+        audioRef.value.currentTime = 30;
+      }
+    };
+    
+    // Watch for changes in the current group
+    watch(isBlackpink, (newVal) => {
+      if (newVal) {
+        playBlackpinkSong();
+      } else {
+        stopSong();
+      }
+    }, { immediate: true });
+    
+    onMounted(() => {
+      // Create audio element
+      audioRef.value = new Audio(blackpinkJump);
+      audioRef.value.volume = 0.7;
+      
+      // If already on Blackpink page, start playing
+      if (isBlackpink.value) {
+        playBlackpinkSong();
+      }
+    });
+    
+    onUnmounted(() => {
+      // Clean up audio when leaving the page
+      if (audioRef.value) {
+        audioRef.value.pause();
+        audioRef.value = null;
+      }
+    });
     
     const topMatchIds = computed(() => store.topMatchIds);
     

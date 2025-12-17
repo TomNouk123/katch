@@ -1,5 +1,11 @@
 /// <reference types="vite/client" />
 
+// Audio file declarations
+declare module '*.mp3' {
+  const src: string;
+  export default src;
+}
+
 interface ImportMetaEnv {
   readonly VITE_GTM_ID: string,
   readonly VITE_IS_MULTILINGUAL: string,
