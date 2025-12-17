@@ -85,8 +85,17 @@ import { useDataStore } from '@/store/_DataStore';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
 import { PageName } from '@/utils/_Constants';
 
-// Import Blackpink song
-import blackpinkJump from '@/assets/music/blackpink.mp3';
+// Import group songs
+import blackpinkSong from '@/assets/music/blackpink.mp3';
+import twiceSong from '@/assets/music/twice.mp3';
+import lesserafimSong from '@/assets/music/lesserafim.mp3';
+
+// Music configuration for groups
+const groupMusicConfig: Record<string, { src: string; startTime: number }> = {
+  blackpink: { src: blackpinkSong, startTime: 30 },
+  twice: { src: twiceSong, startTime: 35 },
+  lesserafim: { src: lesserafimSong, startTime: 60 },
+};
 
 interface Member {
   name: string;
@@ -126,49 +135,58 @@ export default defineComponent({
     const touchEndX = ref(0);
     const minSwipeDistance = 50;
     
-    // Audio for Blackpink
+    // Audio management
     const audioRef = ref<HTMLAudioElement | null>(null);
+    const currentMusicGroup = ref<string | null>(null);
     
     const currentGroupId = computed(() => route.params.groupId as string);
     
-    // Check if current group is Blackpink
-    const isBlackpink = computed(() => currentGroupId.value === 'blackpink');
+    // Check if current group has music
+    const groupHasMusic = computed(() => currentGroupId.value in groupMusicConfig);
     
-    // Function to play Blackpink song
-    const playBlackpinkSong = () => {
+    // Function to play group's song
+    const playGroupSong = (groupId: string) => {
+      const config = groupMusicConfig[groupId];
+      if (!config) return;
+      
+      // If switching to a different song, create new audio element
+      if (currentMusicGroup.value !== groupId) {
+        if (audioRef.value) {
+          audioRef.value.pause();
+        }
+        audioRef.value = new Audio(config.src);
+        audioRef.value.volume = 0.7;
+        currentMusicGroup.value = groupId;
+      }
+      
       if (audioRef.value) {
-        audioRef.value.currentTime = 30; // Start from 30 seconds
+        audioRef.value.currentTime = config.startTime;
         audioRef.value.play().catch(err => {
           console.log('Audio playback failed:', err);
         });
       }
     };
     
-    // Function to stop and reset the song
+    // Function to stop the song
     const stopSong = () => {
       if (audioRef.value) {
         audioRef.value.pause();
-        audioRef.value.currentTime = 30;
       }
     };
     
     // Watch for changes in the current group
-    watch(isBlackpink, (newVal) => {
-      if (newVal) {
-        playBlackpinkSong();
+    watch(currentGroupId, (newGroupId) => {
+      if (newGroupId && newGroupId in groupMusicConfig) {
+        playGroupSong(newGroupId);
       } else {
         stopSong();
       }
     }, { immediate: true });
     
     onMounted(() => {
-      // Create audio element
-      audioRef.value = new Audio(blackpinkJump);
-      audioRef.value.volume = 0.7;
-      
-      // If already on Blackpink page, start playing
-      if (isBlackpink.value) {
-        playBlackpinkSong();
+      // If already on a page with music, start playing
+      if (groupHasMusic.value) {
+        playGroupSong(currentGroupId.value);
       }
     });
     
