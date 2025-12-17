@@ -4,6 +4,7 @@ export const useDataStore = defineStore('data', {
   state: () => {
     return {
       likedArtists: [] as string[],
+      topMatchIds: [] as string[],
     };
   },
   actions: {
@@ -12,6 +13,12 @@ export const useDataStore = defineStore('data', {
     },
     clearLikedArtists() {
       this.likedArtists = [];
+    },
+    setTopMatchIds(groupIds: string[]) {
+      this.topMatchIds = groupIds;
+    },
+    clearTopMatchIds() {
+      this.topMatchIds = [];
     },
   },
   getters: {},

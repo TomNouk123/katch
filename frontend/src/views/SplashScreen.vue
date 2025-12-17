@@ -63,14 +63,15 @@ import { useRouter } from 'vue-router';
 import { PageName } from '@/utils/_Constants';
 
 // Import images
-import aespaImg from '@/assets/images/splash/aespa.jpeg';
-import ateezImg from '@/assets/images/splash/ateez.jpg';
+import aespaImg from '@/assets/images/splash/aespa.jpg';
 import btsImg from '@/assets/images/splash/bts.jpg';
 import lesserafimImg from '@/assets/images/splash/lesserafim.jpg';
 import newjeansImg from '@/assets/images/splash/newjeans.jpg';
 import enhypenImg from '@/assets/images/splash/enhypen.jpg';
 import illitImg from '@/assets/images/splash/illit.jpg';
-import straykidsImg from '@/assets/images/splash/straykids.jpeg';
+import itzyImg from '@/assets/images/splash/itzy.jpg';
+import straykidsImg from '@/assets/images/splash/straykids.jpg';
+import txtImg from '@/assets/images/splash/txt.jpg';
 
 interface Artist {
   id: string;
@@ -90,12 +91,12 @@ export default defineComponent({
 
     const artists: Artist[] = [
       {
-        id: 'ateez',
-        nameKr: '에이티즈',
-        nameEn: 'ATEEZ',
-        details: 'HONGJOONG, SEONGHWA, YUNHO, YEOSANG, SAN, MINGI, WOOYOUNG, JONGHO',
-        company: 'KQ ENTERTAINMENT',
-        image: ateezImg,
+        id: 'itzy',
+        nameKr: '있지',
+        nameEn: 'ITZY',
+        details: 'YEJI, LIA, RYUJIN, CHAERYEONG, YUNA',
+        company: 'JYP ENTERTAINMENT',
+        image: itzyImg,
       },
       {
         id: 'lesserafim',
@@ -152,6 +153,14 @@ export default defineComponent({
         details: 'BANG CHAN, LEE KNOW, CHANGBIN, HYUNJIN, HAN, FELIX, SEUNGMIN, I.N',
         company: 'JYP ENTERTAINMENT',
         image: straykidsImg,
+      },
+      {
+        id: 'txt',
+        nameKr: '투모로우바이투게더',
+        nameEn: 'TXT',
+        details: 'SOOBIN, YEONJUN, BEOMGYU, TAEHYUN, HUENINGKAI',
+        company: 'BIGHIT MUSIC',
+        image: txtImg,
       },
     ];
 

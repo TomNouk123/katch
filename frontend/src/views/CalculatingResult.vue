@@ -28,14 +28,75 @@
 
     <!-- Content -->
     <div class="content">
-      <h1 class="heading">Analyseren...</h1>
+      <!-- Fixed heading at top -->
+      <h1 class="heading" :class="{ 'ranking-mode': showRanking }">
+        {{ showRanking ? 'Jouw K-pop matches!' : 'Analyseren...' }}
+      </h1>
       
-      <div class="text-container">
-        <p class="thinking-text">{{ displayedText }}<span class="cursor" :class="{ 'blink': isTyping }">|</span></p>
+      <!-- Main content area -->
+      <div class="main-area">
+        <!-- Text container - hidden when ranking shows -->
+        <div class="text-container" v-if="!showRanking">
+          <p class="thinking-text">{{ displayedText }}<span class="cursor" :class="{ 'blink': isTyping }">|</span></p>
+        </div>
+
+        <!-- Ranking appears after text completes -->
+        <div class="matches-list" v-if="showRanking">
+        <!-- Match 1 (Top match) -->
+        <transition name="slide-in-1">
+          <div v-if="showMatch1" class="match-card match-1">
+            <div class="match-image">
+              <img :src="getGroupImage(topMatches[0]?.image)" :alt="topMatches[0]?.name" />
+            </div>
+            <div class="match-info">
+              <span class="match-percentage">{{ matchPercentages[0] }}%</span>
+              <h2 class="match-name">{{ topMatches[0]?.name }}</h2>
+              <p class="match-genres">{{ getTopGenres(topMatches[0]?.tags) }}</p>
+            </div>
+            <div class="match-bar">
+              <div class="match-bar-fill" :style="{ width: matchPercentages[0] + '%' }"></div>
+            </div>
+          </div>
+        </transition>
+
+        <!-- Match 2 -->
+        <transition name="slide-in-2">
+          <div v-if="showMatch2" class="match-card match-2">
+            <div class="match-image">
+              <img :src="getGroupImage(topMatches[1]?.image)" :alt="topMatches[1]?.name" />
+            </div>
+            <div class="match-info">
+              <span class="match-percentage">{{ matchPercentages[1] }}%</span>
+              <h2 class="match-name">{{ topMatches[1]?.name }}</h2>
+              <p class="match-genres">{{ getTopGenres(topMatches[1]?.tags) }}</p>
+            </div>
+            <div class="match-bar">
+              <div class="match-bar-fill" :style="{ width: matchPercentages[1] + '%' }"></div>
+            </div>
+          </div>
+        </transition>
+
+        <!-- Match 3 -->
+        <transition name="slide-in-3">
+          <div v-if="showMatch3" class="match-card match-3">
+            <div class="match-image">
+              <img :src="getGroupImage(topMatches[2]?.image)" :alt="topMatches[2]?.name" />
+            </div>
+            <div class="match-info">
+              <span class="match-percentage">{{ matchPercentages[2] }}%</span>
+              <h2 class="match-name">{{ topMatches[2]?.name }}</h2>
+              <p class="match-genres">{{ getTopGenres(topMatches[2]?.tags) }}</p>
+            </div>
+            <div class="match-bar">
+              <div class="match-bar-fill" :style="{ width: matchPercentages[2] + '%' }"></div>
+            </div>
+          </div>
+        </transition>
+        </div>
       </div>
 
-      <!-- Button appears after text completes -->
-      <transition name="fade-up">
+      <!-- Button appears after ranking is shown -->
+      <transition name="fade">
         <button 
           v-if="showButton" 
           class="continue-btn"
@@ -50,17 +111,17 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { useRouter } from 'vue-router';
 import { useDataStore } from '@/store/_DataStore';
-import { getTopMatch } from '@/utils/_MatchingAlgorithm';
 import { PageName } from '@/utils/_Constants';
-import artistData from '@/assets/data/western-artists.json';
-import { artistTagMapping } from '@/utils/_MatchingAlgorithm';
+import { artistTagMapping, getTopMatches as getTopMatchResults } from '@/utils/_MatchingAlgorithm';
+import kpopGroupsData from '@/assets/data/kpop-groups.json';
 
-interface Artist {
+interface KpopGroup {
   id: string;
   name: string;
-  genres: string;
+  image: string;
+  tags: string[];
 }
 
 interface FloatingHeart {
@@ -98,22 +159,61 @@ const generateHearts = (): FloatingHeart[] => {
   return hearts;
 };
 
+// Import all kpop group images
+const groupImages = import.meta.glob('@/assets/images/kpop-groups/**/*', { eager: true, as: 'url' });
+
 export default defineComponent({
   name: 'CalculatingResult',
   setup() {
     const router = useRouter();
     const hearts = generateHearts();
-    const route = useRoute();
     const store = useDataStore();
     
     const displayedText = ref('');
     const isTyping = ref(true);
+    const showRanking = ref(false);
+    const showMatch1 = ref(false);
+    const showMatch2 = ref(false);
+    const showMatch3 = ref(false);
     const showButton = ref(false);
     
-    // Get liked artists from store or route params
+    // Get liked artists from store
     const likedArtistIds = computed(() => {
       return (store.likedArtists as string[]) || [];
     });
+
+    // Get top 3 matches
+    const matchResults = computed(() => {
+      return getTopMatchResults(likedArtistIds.value, 3);
+    });
+    
+    // Get actual group data for top matches
+    const topMatches = computed(() => {
+      return matchResults.value.map(result => {
+        return kpopGroupsData.groups.find(g => g.id === result.groupId) as KpopGroup | undefined;
+      }).filter(Boolean) as KpopGroup[];
+    });
+    
+    // Calculate percentages relative to top match
+    const matchPercentages = computed(() => {
+      if (matchResults.value.length === 0) return [0, 0, 0];
+      return matchResults.value.map(r => r.percentage);
+    });
+
+    const getGroupImage = (imagePath: string | undefined) => {
+      if (!imagePath) return '';
+      for (const [key, url] of Object.entries(groupImages)) {
+        if (key.includes(imagePath)) {
+          return url;
+        }
+      }
+      return '';
+    };
+    
+    const getTopGenres = (tags: string[] | undefined) => {
+      if (!tags) return '';
+      return tags.slice(0, 3).map(tag => tag.toUpperCase()).join(', ');
+    };
 
     // Generate personalized thinking text based on liked artists
     const generateThinkingText = (): string => {
@@ -235,12 +335,25 @@ export default defineComponent({
             setTimeout(type, speed);
           }
         } else {
-          // Typing complete
+          // Typing complete - wait a few seconds before showing ranking
           isTyping.value = false;
-          // Show button after a short delay
           setTimeout(() => {
-            showButton.value = true;
-          }, 500);
+            showRanking.value = true;
+            // Show matches one by one
+            setTimeout(() => {
+              showMatch1.value = true;
+            }, 300);
+            setTimeout(() => {
+              showMatch2.value = true;
+            }, 900);
+            setTimeout(() => {
+              showMatch3.value = true;
+            }, 1500);
+            // Show button after all matches are visible
+            setTimeout(() => {
+              showButton.value = true;
+            }, 2200);
+          }, 3000);
         }
       };
 
@@ -248,9 +361,12 @@ export default defineComponent({
     };
 
     const goToResults = () => {
-      const topMatch = getTopMatch(likedArtistIds.value);
-      const matchedGroup = topMatch || 'twice';
-      router.push({ name: PageName.RESULTS, params: { groupId: matchedGroup } });
+      // Store top 3 group IDs for the results page
+      const topGroupIds = topMatches.value.map(g => g.id);
+      store.setTopMatchIds(topGroupIds);
+      
+      // Navigate to the first (top) match
+      router.push({ name: PageName.RESULTS, params: { groupId: topGroupIds[0] } });
     };
 
     onMounted(() => {
@@ -264,9 +380,17 @@ export default defineComponent({
     return {
       displayedText,
       isTyping,
+      showRanking,
+      showMatch1,
+      showMatch2,
+      showMatch3,
       showButton,
       goToResults,
       hearts,
+      topMatches,
+      matchPercentages,
+      getGroupImage,
+      getTopGenres,
     };
   },
 });
@@ -278,15 +402,16 @@ export default defineComponent({
 .calculating-result {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .background-hearts {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 0;
   overflow: hidden;
@@ -371,17 +496,35 @@ export default defineComponent({
 }
 
 .heading {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Outfit', sans-serif;
   font-size: 60px;
   font-weight: 700;
   color: #fff;
-  margin: 0 0 20px 0;
+  margin: 0;
   letter-spacing: 1px;
+  transition: font-size 0.5s ease, font-style 0.5s ease;
+  white-space: nowrap;
+  
+  &.ranking-mode {
+    font-size: 48px;
+    font-style: italic;
+  }
+}
+
+.main-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .text-container {
   width: 100%;
-  margin-bottom: 60px;
   min-height: 200px;
   display: flex;
   align-items: center;
@@ -419,6 +562,91 @@ export default defineComponent({
   }
 }
 
+// Ranking styles
+.matches-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.match-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 16px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-image {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  overflow: hidden;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.match-info {
+  flex: 1;
+  text-align: left;
+  min-width: 0;
+}
+
+.match-percentage {
+  font-family: 'Mulish', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #333;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.match-name {
+  font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #333;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.match-genres {
+  font-family: 'Mulish', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #8b5cf6;
+  margin: 8px 0 0 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.match-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: rgba(139, 92, 246, 0.2);
+}
+
+.match-bar-fill {
+  height: 100%;
+  background: #8b5cf6;
+  border-radius: 0 3px 3px 0;
+  transition: width 0.8s ease-out;
+}
+
 .continue-btn {
   position: absolute;
   bottom: 80px;
@@ -441,19 +669,39 @@ export default defineComponent({
     background: #fff;
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
   }
-
-  &:active {
-    transform: translateX(-50%);
-  }
 }
 
-// Transitions
-.fade-up-enter-active {
+// Slide-in animations for each match
+.slide-in-1-enter-active {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide-in-1-enter-from {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.slide-in-2-enter-active {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide-in-2-enter-from {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.slide-in-3-enter-active {
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.slide-in-3-enter-from {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+// Fade transition for button
+.fade-enter-active {
   transition: opacity 0.5s ease-out;
 }
 
-.fade-up-enter-from {
+.fade-enter-from {
   opacity: 0;
 }
 </style>
-

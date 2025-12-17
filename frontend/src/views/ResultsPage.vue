@@ -1,9 +1,18 @@
 <template>
-  <div class="results-page">
+  <div class="results-page" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
     <div class="results-content" v-if="group">
-      <!-- Header -->
+      <!-- Header with dots -->
       <header class="header">
-        <h1 class="header__title">Jouw K-pop match!</h1>
+        <div class="page-dots" v-if="hasMultipleMatches">
+          <span 
+            v-for="(groupId, index) in topMatchIds" 
+            :key="groupId" 
+            class="dot"
+            :class="{ active: currentGroupId === groupId }"
+            @click="navigateToGroup(groupId)"
+          ></span>
+        </div>
+        <h1 class="header__title" v-else>Jouw K-pop match!</h1>
       </header>
 
       <!-- Group Card with Image + Black Info Section -->
@@ -70,8 +79,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
+import { useDataStore } from '@/store/_DataStore';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
 import { PageName } from '@/utils/_Constants';
 
@@ -106,15 +116,30 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
+    const store = useDataStore();
+    
+    // Touch handling for swipe
+    const touchStartX = ref(0);
+    const touchEndX = ref(0);
+    const minSwipeDistance = 50;
+    
+    const currentGroupId = computed(() => route.params.groupId as string);
+    
+    const topMatchIds = computed(() => store.topMatchIds);
+    
+    const hasMultipleMatches = computed(() => topMatchIds.value.length > 1);
 
     const group = computed<KpopGroup | undefined>(() => {
-      const groupId = route.params.groupId as string;
-      return kpopGroupsData.groups.find(g => g.id === groupId) as KpopGroup | undefined;
+      return kpopGroupsData.groups.find(g => g.id === currentGroupId.value) as KpopGroup | undefined;
     });
 
     const memberNames = computed(() => {
       if (!group.value) return '';
       return group.value.members.map(m => m.name.toUpperCase()).join(', ');
+    });
+    
+    const currentIndex = computed(() => {
+      return topMatchIds.value.indexOf(currentGroupId.value);
     });
 
     const getGroupImage = (imagePath: string) => {
@@ -145,16 +170,58 @@ export default defineComponent({
     };
 
     const goHome = () => {
+      store.clearTopMatchIds();
       router.push({ name: PageName.HOME });
+    };
+    
+    const navigateToGroup = (groupId: string) => {
+      router.replace({ name: PageName.RESULTS, params: { groupId } });
+    };
+    
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartX.value = e.touches[0].clientX;
+    };
+    
+    const onTouchMove = (e: TouchEvent) => {
+      touchEndX.value = e.touches[0].clientX;
+    };
+    
+    const onTouchEnd = () => {
+      if (!hasMultipleMatches.value) return;
+      
+      const distance = touchStartX.value - touchEndX.value;
+      
+      if (Math.abs(distance) < minSwipeDistance) return;
+      
+      if (distance > 0) {
+        // Swipe left - go to next
+        const nextIndex = currentIndex.value + 1;
+        if (nextIndex < topMatchIds.value.length) {
+          navigateToGroup(topMatchIds.value[nextIndex]);
+        }
+      } else {
+        // Swipe right - go to previous
+        const prevIndex = currentIndex.value - 1;
+        if (prevIndex >= 0) {
+          navigateToGroup(topMatchIds.value[prevIndex]);
+        }
+      }
     };
 
     return {
       group,
       memberNames,
+      currentGroupId,
+      topMatchIds,
+      hasMultipleMatches,
       getGroupImage,
       getQrCode,
       getMemberImage,
       goHome,
+      navigateToGroup,
+      onTouchStart,
+      onTouchMove,
+      onTouchEnd,
     };
   },
 });
@@ -185,6 +252,31 @@ export default defineComponent({
     font-style: italic;
     color: #8b5cf6;
     margin: 0;
+  }
+}
+
+.page-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #d4d4d8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &.active {
+    background: #8b5cf6;
+    transform: scale(1.2);
+  }
+  
+  &:hover:not(.active) {
+    background: #a78bfa;
   }
 }
 

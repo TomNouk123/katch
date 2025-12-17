@@ -79,42 +79,42 @@ export const artistTagMapping: Record<string, string[]> = {
 // How many points each tag gives to each K-pop group
 export const tagToGroupScores: Record<string, Record<string, number>> = {
   // Pop tags
-  'pop': { twice: 10, blackpink: 8, aespa: 6, nmixx: 5 },
-  'dance': { twice: 8, blackpink: 9, aespa: 8, kard: 7, nmixx: 7, ateez: 6 },
-  'catchy': { twice: 10, blackpink: 6 },
-  'upbeat': { twice: 10, kard: 6 },
+  'pop': { twice: 10, blackpink: 8, aespa: 6, nmixx: 5, lesserafim: 8, bts: 7, redvelvet: 8, enhypen: 6, seventeen: 7, iu: 9, kissoflife: 6 },
+  'dance': { twice: 8, blackpink: 9, aespa: 8, kard: 7, nmixx: 7, ateez: 6, lesserafim: 9, enhypen: 8, seventeen: 9, monstax: 8, nct127: 8, redvelvet: 7 },
+  'catchy': { twice: 10, blackpink: 6, lesserafim: 7, qwer: 7, youngposse: 6 },
+  'upbeat': { twice: 10, kard: 6, lesserafim: 5 },
   'bright': { twice: 10 },
   'disco': { twice: 8, mamamoo: 5 },
-  'retro': { twice: 6, mamamoo: 8 },
+  'retro': { twice: 6, mamamoo: 8, kissoflife: 9, shinee: 6 },
   
   // R&B / Soul
-  'r&b': { mamamoo: 10, ikon: 8, blackpink: 4 },
-  'neo-soul': { mamamoo: 10 },
-  'soul': { mamamoo: 10 },
-  'vocal': { mamamoo: 10, nmixx: 7, akmu: 6 },
-  'ballad': { mamamoo: 7, akmu: 8, day6: 6 },
+  'r&b': { mamamoo: 10, ikon: 8, blackpink: 4, kissoflife: 10, bts: 6, redvelvet: 8, shinee: 7 },
+  'neo-soul': { mamamoo: 10, kissoflife: 7 },
+  'soul': { mamamoo: 10, kissoflife: 9 },
+  'vocal': { mamamoo: 10, nmixx: 7, akmu: 6, iu: 9, kissoflife: 8, redvelvet: 7, seventeen: 6 },
+  'ballad': { mamamoo: 7, akmu: 8, day6: 6, iu: 10, therose: 8, bts: 5 },
   
   // Hip Hop / Rap
-  'hip-hop': { straykids: 10, ikon: 10, blackpink: 7 },
-  'trap': { straykids: 9, ikon: 8, blackpink: 8 },
-  'party': { ikon: 8, kard: 7, blackpink: 5 },
+  'hip-hop': { straykids: 10, ikon: 10, blackpink: 7, bts: 9, nct127: 8, seventeen: 6, youngposse: 10, monstax: 7 },
+  'trap': { straykids: 9, ikon: 8, blackpink: 8, nct127: 7, monstax: 7, youngposse: 8 },
+  'party': { ikon: 8, kard: 7, blackpink: 5, youngposse: 8 },
   
   // Indie / Alternative
-  'indie': { akmu: 10, day6: 7 },
-  'folk': { akmu: 10, day6: 6 },
-  'acoustic': { akmu: 10, day6: 5, mamamoo: 3 },
+  'indie': { akmu: 10, day6: 7, iu: 7, qwer: 6, therose: 6 },
+  'folk': { akmu: 10, day6: 6, iu: 8 },
+  'acoustic': { akmu: 10, day6: 5, mamamoo: 3, iu: 9, therose: 7 },
   'dream-pop': { akmu: 8 },
   'bossa-nova': { akmu: 8, mamamoo: 4 },
   
   // Electronic / Hyperpop
   'hyperpop': { aespa: 10, nmixx: 10 },
-  'electropop': { aespa: 9, kard: 7, nmixx: 6 },
-  'synth-pop': { aespa: 7, kard: 8 },
-  'experimental': { aespa: 8, nmixx: 9, straykids: 8 },
+  'electropop': { aespa: 9, kard: 7, nmixx: 6, lesserafim: 6, redvelvet: 6, shinee: 7, nct127: 6 },
+  'synth-pop': { aespa: 7, kard: 8, enhypen: 6, shinee: 8, nct127: 7 },
+  'experimental': { aespa: 8, nmixx: 9, straykids: 8, nct127: 10, redvelvet: 7, shinee: 6 },
   'art-pop': { aespa: 7, nmixx: 8, akmu: 6 },
   
   // EDM
-  'edm': { ateez: 9, kard: 10, aespa: 7, straykids: 6, blackpink: 5, dreamcatcher: 5 },
+  'edm': { ateez: 9, kard: 10, aespa: 7, straykids: 6, blackpink: 5, dreamcatcher: 5, monstax: 9, nct127: 7 },
   'progressive': { ateez: 8, kard: 6 },
   'tropical': { kard: 10 },
   
@@ -124,26 +124,29 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'afrobeats': { kard: 8 },
   
   // Rock / Metal
-  'rock': { day6: 10, dreamcatcher: 9, straykids: 5 },
-  'alt-rock': { day6: 10, dreamcatcher: 8 },
-  'band': { day6: 10 },
+  'rock': { day6: 10, dreamcatcher: 9, straykids: 5, qwer: 10, xdinaryheroes: 10, therose: 9 },
+  'alt-rock': { day6: 10, dreamcatcher: 8, qwer: 8, xdinaryheroes: 8, therose: 7 },
+  'band': { day6: 10, qwer: 10, xdinaryheroes: 10, therose: 10 },
   'metal': { dreamcatcher: 10 },
   'metalcore': { dreamcatcher: 10, straykids: 5 },
   'nu-metal': { dreamcatcher: 9, straykids: 7 },
   'hardcore': { dreamcatcher: 8, straykids: 8 },
   'glam': { dreamcatcher: 5 },
-  'dark': { dreamcatcher: 7, straykids: 6 },
+  'dark': { dreamcatcher: 7, straykids: 6, enhypen: 8 },
   
   // Orchestral / Theatrical
   'orchestral': { ateez: 10 },
   'epic': { ateez: 10 },
-  'theatrical': { ateez: 10 },
-  'anthemic': { ateez: 9, straykids: 5 },
+  'theatrical': { ateez: 10, enhypen: 7 },
+  'anthemic': { ateez: 9, straykids: 5, bts: 8, seventeen: 7, xdinaryheroes: 6, monstax: 6 },
   
   // Ambient / Minimalist
   'ambient': { akmu: 8 },
   'minimalist': { akmu: 9 },
-  'emotional': { day6: 8, akmu: 7, mamamoo: 6 },
+  'emotional': { day6: 8, akmu: 7, mamamoo: 6, bts: 9, iu: 10, therose: 9, seventeen: 6 },
+  
+  // Jazz
+  'jazz': { mamamoo: 8, akmu: 7, iu: 6 },
 };
 
 export interface MatchResult {
@@ -169,6 +172,20 @@ export function calculateMatches(likedArtistIds: string[]): MatchResult[] {
     day6: 0,
     dreamcatcher: 0,
     akmu: 0,
+    bts: 0,
+    enhypen: 0,
+    lesserafim: 0,
+    iu: 0,
+    kissoflife: 0,
+    monstax: 0,
+    nct127: 0,
+    qwer: 0,
+    redvelvet: 0,
+    seventeen: 0,
+    shinee: 0,
+    therose: 0,
+    xdinaryheroes: 0,
+    youngposse: 0,
   };
 
   // For each liked artist, add their tag scores to groups
@@ -217,4 +234,3 @@ export function getTopMatches(likedArtistIds: string[], count: number = 3): Matc
   const matches = calculateMatches(likedArtistIds);
   return matches.slice(0, count);
 }
-

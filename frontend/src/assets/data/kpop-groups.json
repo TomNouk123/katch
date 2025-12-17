@@ -629,6 +629,748 @@
           "description": "De stem van een generatie met een pure, emotionele delivery. Suhyun's vocals zijn tijdloos mooi."
         }
       ]
+    },
+    {
+      "id": "bts",
+      "name": "BTS",
+      "nameKr": "방탄소년단",
+      "color": "#9333ea",
+      "company": "BIGHIT MUSIC",
+      "description": "BTS is de grootste boyband ter wereld die K-pop naar mainstream succes bracht. Hun muziek combineert hip-hop, pop en R&B met betekenisvolle teksten over mentale gezondheid en zelfliefde.",
+      "spotifyUrl": "https://open.spotify.com/artist/3Nrfpe0tUJi4K4DXYWgMUX",
+      "image": "bts/bts-group.jpg",
+      "qrCode": "qrcodes/bts-qr.png",
+      "tags": ["hip-hop", "pop", "r&b", "emotional", "anthemic", "dance"],
+      "members": [
+        {
+          "name": "RM",
+          "nameKr": "Kim Nam-joon",
+          "role": "Leader, Main Rapper",
+          "image": "bts/rm.jpg",
+          "description": "De intellectuele leader met een IQ van 148. RM's lyrische genialiteit en leiderschap definiëren BTS."
+        },
+        {
+          "name": "Jin",
+          "nameKr": "Kim Seok-jin",
+          "role": "Sub Vocalist, Visual",
+          "image": "bts/jin.jpg",
+          "description": "De charmante vocalist met wereldwijde schoonheid. Jin's humor en vocalen maken hem iconisch."
+        },
+        {
+          "name": "Suga",
+          "nameKr": "Min Yoon-gi",
+          "role": "Lead Rapper, Producer",
+          "image": "bts/suga.jpg",
+          "description": "De geniale producer en rapper. Suga's eerlijke teksten over mentale gezondheid raken miljoenen."
+        },
+        {
+          "name": "J-Hope",
+          "nameKr": "Jung Ho-seok",
+          "role": "Main Dancer, Sub Rapper, Sub Vocalist",
+          "image": "bts/jhope.jpg",
+          "description": "De sunshine van BTS met ongelooflijke dansskills. J-Hope's energie en positiviteit zijn aanstekelijk."
+        },
+        {
+          "name": "Jimin",
+          "nameKr": "Park Ji-min",
+          "role": "Lead Vocalist, Main Dancer",
+          "image": "bts/jimin.jpg",
+          "description": "De betoverende performer met een unieke stem. Jimin's expressie en dans zijn adembenemend."
+        },
+        {
+          "name": "V",
+          "nameKr": "Kim Tae-hyung",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "bts/v.jpg",
+          "description": "De artistieke ziel met een diepe, unieke stem. V's charme en creativiteit zijn grenzeloos."
+        },
+        {
+          "name": "Jungkook",
+          "nameKr": "Jeon Jung-kook",
+          "role": "Main Vocalist, Lead Dancer, Sub Rapper, Center, Maknae",
+          "image": "bts/jungkook.jpg",
+          "description": "De 'Golden Maknae' die alles kan. Jungkook's veelzijdigheid en talent zijn legendarisch."
+        }
+      ]
+    },
+    {
+      "id": "enhypen",
+      "name": "ENHYPEN",
+      "nameKr": "엔하이픈",
+      "color": "#1e40af",
+      "company": "BELIFT LAB",
+      "description": "ENHYPEN combineert elegant dark concepts met krachtige choreografieën. Hun mysterieuze vampier-achtige esthetiek en synchrone dans maken ze perfect voor fans van theatrale, donkere concepten.",
+      "spotifyUrl": "https://open.spotify.com/artist/5t5FqBwTcgKTaLbEFqbuBR",
+      "image": "enhypen/enhypen-group.jpeg",
+      "qrCode": "qrcodes/enhypen-qr.png",
+      "tags": ["pop", "dance", "dark", "theatrical", "synth-pop"],
+      "members": [
+        {
+          "name": "Heeseung",
+          "nameKr": "Lee Hee-seung",
+          "role": "Main Vocalist, Lead Dancer",
+          "image": "enhypen/heeseung.jpeg",
+          "description": "De veelzijdige ace met perfecte techniek. Heeseung excelleert in zowel zang als dans."
+        },
+        {
+          "name": "Jay",
+          "nameKr": "Park Jong-seong",
+          "role": "Sub Vocalist, Sub Rapper",
+          "image": "enhypen/jay.jpeg",
+          "description": "De charismatische performer met sterke stage presence. Jay's passie en drive zijn inspirerend."
+        },
+        {
+          "name": "Jake",
+          "nameKr": "Sim Jae-yun",
+          "role": "Sub Vocalist, Sub Rapper",
+          "image": "enhypen/jake.jpeg",
+          "description": "De Australische charmer met een warme persoonlijkheid. Jake's glimlach wint harten wereldwijd."
+        },
+        {
+          "name": "Sunghoon",
+          "nameKr": "Park Sung-hoon",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "enhypen/sunghoon.jpeg",
+          "description": "De voormalige kunstschaatser met elegante bewegingen. Sunghoon's gratie vertaalt perfect naar K-pop."
+        },
+        {
+          "name": "Sunoo",
+          "nameKr": "Kim Sun-oo",
+          "role": "Lead Vocalist",
+          "image": "enhypen/sunoo.jpeg",
+          "description": "De sunshine met een zoete stem. Sunoo's expressieve gezicht en energie verlichten elke stage."
+        },
+        {
+          "name": "Jungwon",
+          "nameKr": "Yang Jung-won",
+          "role": "Leader, Lead Vocalist, Lead Dancer",
+          "image": "enhypen/jungwon.jpeg",
+          "description": "De jonge leader met wijsheid boven zijn leeftijd. Jungwon's leiderschap en talent zijn indrukwekkend."
+        },
+        {
+          "name": "Ni-ki",
+          "nameKr": "Nishimura Riki",
+          "role": "Main Dancer, Sub Vocalist, Maknae",
+          "image": "enhypen/ni-ki.jpeg",
+          "description": "Het dansprodigy uit Japan. Ni-ki's bewegingen zijn al legendarisch ondanks zijn jonge leeftijd."
+        }
+      ]
+    },
+    {
+      "id": "lesserafim",
+      "name": "LE SSERAFIM",
+      "nameKr": "르세라핌",
+      "color": "#0ea5e9",
+      "company": "SOURCE MUSIC",
+      "description": "LE SSERAFIM combineert girl crush attitude met unieke choreografieën. Hun sound is een frisse mix van pop en electronic, perfect voor fans van zelfverzekerde, trendsettende girl groups.",
+      "spotifyUrl": "https://open.spotify.com/artist/4SpbR6yFEvexJuaBpgAU5p",
+      "image": "lesserafim/lesserafim-group.jpg",
+      "qrCode": "qrcodes/lesserafim-qr.png",
+      "tags": ["pop", "dance", "electropop", "hip-hop", "catchy"],
+      "members": [
+        {
+          "name": "Sakura",
+          "nameKr": "Miyawaki Sakura",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "lesserafim/sakura.jpeg",
+          "description": "De Japanse veteraan van IZ*ONE. Sakura's ervaring en gratie maken haar een pilaar van de groep."
+        },
+        {
+          "name": "Chaewon",
+          "nameKr": "Kim Chae-won",
+          "role": "Leader, Main Vocalist, Lead Dancer",
+          "image": "lesserafim/chaewon.jpeg",
+          "description": "De talentvolle leader met stabiele vocalen. Chaewon's veelzijdigheid en leiderschap zijn bewonderenswaardig."
+        },
+        {
+          "name": "Yunjin",
+          "nameKr": "Huh Yun-jin",
+          "role": "Lead Vocalist, Lead Rapper",
+          "image": "lesserafim/yunjin.jpeg",
+          "description": "De krachtige vocalist met een unieke stem. Yunjin's zelfvertrouwen en vocalen zijn onmisbaar."
+        },
+        {
+          "name": "Kazuha",
+          "nameKr": "Nakamura Kazuha",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "lesserafim/kazuha.jpeg",
+          "description": "De voormalige ballerina met elegante bewegingen. Kazuha brengt artistieke gratie naar elke performance."
+        },
+        {
+          "name": "Eunchae",
+          "nameKr": "Hong Eun-chae",
+          "role": "Sub Vocalist, Maknae",
+          "image": "lesserafim/eunchae.jpeg",
+          "description": "De energieke maknae met aanstekelijke energie. Eunchae's jeugdige charme maakt haar geliefd."
+        }
+      ]
+    },
+    {
+      "id": "iu",
+      "name": "IU",
+      "nameKr": "아이유",
+      "color": "#f472b6",
+      "company": "EDAM ENTERTAINMENT",
+      "description": "IU is de 'Nation's Little Sister' en een van de meest succesvolle solo artiesten in Korea. Haar muziek varieert van ballads tot pop en jazz, perfect voor fans van veelzijdige, emotionele muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/3HqSLMAZ3g3d5poNaI7GOU",
+      "image": "iu/iu-group.jpg",
+      "qrCode": "qrcodes/iu-qr.png",
+      "tags": ["pop", "ballad", "jazz", "acoustic", "emotional", "indie", "folk"],
+      "members": [
+        {
+          "name": "IU",
+          "nameKr": "Lee Ji-eun",
+          "role": "Solo Artist, Singer-Songwriter, Actress",
+          "image": "iu/iu.jpg",
+          "description": "De complete artiest die zingt, schrijft en acteert. IU's talent en authenticiteit maken haar een nationale schat."
+        }
+      ]
+    },
+    {
+      "id": "kissoflife",
+      "name": "KISS OF LIFE",
+      "nameKr": "키스오브라이프",
+      "color": "#f97316",
+      "company": "S2 ENTERTAINMENT",
+      "description": "KISS OF LIFE brengt retro R&B en soul naar K-pop met een frisse, moderne twist. Hun vintage geïnspireerde sound maakt ze perfect voor fans van Y2K vibes en klassieke vocalen.",
+      "spotifyUrl": "https://open.spotify.com/artist/6gBKsToHlVyaIKXc3OWw40",
+      "image": "kissoflife/kissoflife-group.jpg",
+      "qrCode": "qrcodes/kissoflife-qr.png",
+      "tags": ["r&b", "soul", "retro", "vocal", "pop", "dance"],
+      "members": [
+        {
+          "name": "Julie",
+          "nameKr": "Julie Han",
+          "role": "Leader, Main Vocalist",
+          "image": "kissoflife/julie.jpg",
+          "description": "De Amerikaanse leider met soulvolle vocalen. Julie's sterke stem definieert KISS OF LIFE's sound."
+        },
+        {
+          "name": "Natty",
+          "nameKr": "Natty Suputhipong",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "kissoflife/natty.jpg",
+          "description": "De Thaise dansexpert met jaren ervaring. Natty's moves en charisma zijn onweerstaanbaar."
+        },
+        {
+          "name": "Belle",
+          "nameKr": "Belle Guive Languilit",
+          "role": "Lead Vocalist, Lead Rapper",
+          "image": "kissoflife/belle.jpg",
+          "description": "De veelzijdige performer uit de Filipijnen. Belle kan zowel zingen als rappen met gemak."
+        },
+        {
+          "name": "Haneul",
+          "nameKr": "Han Na-eul",
+          "role": "Main Rapper, Sub Vocalist, Maknae",
+          "image": "kissoflife/haneul.jpg",
+          "description": "De krachtige rapper met een unieke flow. Haneul's rap skills geven KISS OF LIFE extra edge."
+        }
+      ]
+    },
+    {
+      "id": "monstax",
+      "name": "MONSTA X",
+      "nameKr": "몬스타엑스",
+      "color": "#dc2626",
+      "company": "STARSHIP ENTERTAINMENT",
+      "description": "MONSTA X staat bekend om hun krachtige performances en intense EDM-infused hip-hop. Hun masculine energie en synchrone choreografieën zijn perfect voor fans van powerful, energieke muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/4TnGh5PKbSjpYqpIdlW5nz",
+      "image": "monstax/monstax-group.jpeg",
+      "qrCode": "qrcodes/monstax-qr.png",
+      "tags": ["edm", "hip-hop", "dance", "trap", "anthemic"],
+      "members": [
+        {
+          "name": "Shownu",
+          "nameKr": "Son Hyun-woo",
+          "role": "Leader, Main Dancer, Lead Vocalist",
+          "image": "monstax/shownu.jpeg",
+          "description": "De sterke, stille leader met indrukwekkende dans en vocals. Shownu's kracht is legendarisch."
+        },
+        {
+          "name": "Minhyuk",
+          "nameKr": "Lee Min-hyuk",
+          "role": "Lead Vocalist, Visual",
+          "image": "monstax/minhyuk.jpeg",
+          "description": "De sunshine van MONSTA X met een stralende persoonlijkheid. Minhyuk's energie is aanstekelijk."
+        },
+        {
+          "name": "Kihyun",
+          "nameKr": "Yoo Ki-hyun",
+          "role": "Main Vocalist",
+          "image": "monstax/kihyun.jpeg",
+          "description": "De vocale leider met een krachtige, emotionele stem. Kihyun's techniek is onberispelijk."
+        },
+        {
+          "name": "Hyungwon",
+          "nameKr": "Chae Hyung-won",
+          "role": "Lead Dancer, Sub Vocalist, Visual",
+          "image": "monstax/hyungwon.jpeg",
+          "description": "Het model met elegante bewegingen. Hyungwon's looks en dans maken hem een fan favorite."
+        },
+        {
+          "name": "Joohoney",
+          "nameKr": "Lee Joo-heon",
+          "role": "Main Rapper, Sub Vocalist",
+          "image": "monstax/joohoney.jpeg",
+          "description": "De krachtige rapper met een unieke stem. Joohoney's flows zijn altijd on point."
+        },
+        {
+          "name": "I.M",
+          "nameKr": "Im Chang-kyun",
+          "role": "Lead Rapper, Sub Vocalist, Maknae",
+          "image": "monstax/im.jpeg",
+          "description": "De coole rapper met een diepe stem. I.M's Engelse skills en charisma maken hem uniek."
+        }
+      ]
+    },
+    {
+      "id": "nct127",
+      "name": "NCT 127",
+      "nameKr": "엔시티 127",
+      "color": "#16a34a",
+      "company": "SM ENTERTAINMENT",
+      "description": "NCT 127 is de Seoul-based unit van NCT met een experimentele, genre-bendende sound. Hun complexe choreografieën en unieke concepten zijn perfect voor fans van innovatieve K-pop.",
+      "spotifyUrl": "https://open.spotify.com/artist/7f4ignuCJhLXfZ9qKjXk80",
+      "image": "nct127/nct127-group.jpg",
+      "qrCode": "qrcodes/nct127-qr.png",
+      "tags": ["hip-hop", "experimental", "edm", "synth-pop", "dance", "trap"],
+      "members": [
+        {
+          "name": "Taeyong",
+          "nameKr": "Lee Tae-yong",
+          "role": "Leader, Main Rapper, Main Dancer, Sub Vocalist, Center",
+          "image": "nct127/taeyong.jpg",
+          "description": "De artistieke leider met ongekende creativiteit. Taeyong's rap en dans zijn baanbrekend."
+        },
+        {
+          "name": "Johnny",
+          "nameKr": "Seo Young-ho",
+          "role": "Sub Vocalist",
+          "image": "nct127/johnny.jpg",
+          "description": "De lange Amerikaan met een warm hart. Johnny's humor en charme maken hem geliefd."
+        },
+        {
+          "name": "Yuta",
+          "nameKr": "Nakamoto Yuta",
+          "role": "Lead Dancer, Sub Vocalist",
+          "image": "nct127/yuta.jpg",
+          "description": "De Japanse performer met intense energie. Yuta's passie en stage presence zijn magnetisch."
+        },
+        {
+          "name": "Doyoung",
+          "nameKr": "Kim Dong-young",
+          "role": "Main Vocalist",
+          "image": "nct127/doyoung.jpg",
+          "description": "De vocale pilaar met perfecte techniek. Doyoung's stem is stabiel en emotioneel."
+        },
+        {
+          "name": "Jaehyun",
+          "nameKr": "Jung Jae-hyun",
+          "role": "Lead Vocalist, Lead Dancer, Visual",
+          "image": "nct127/jaehyun.jpg",
+          "description": "De perfecte all-rounder met looks en talent. Jaehyun's charme is onweerstaanbaar."
+        },
+        {
+          "name": "Jungwoo",
+          "nameKr": "Kim Jung-woo",
+          "role": "Lead Vocalist",
+          "image": "nct127/jungwoo.jpg",
+          "description": "De unieke performer met een speelse persoonlijkheid. Jungwoo's stem en charme zijn aanstekelijk."
+        },
+        {
+          "name": "Mark",
+          "nameKr": "Mark Lee",
+          "role": "Main Rapper, Sub Vocalist",
+          "image": "nct127/mark.jpg",
+          "description": "Het hardwerkende genie dat in meerdere NCT units zit. Mark's veelzijdigheid is ongeëvenaard."
+        },
+        {
+          "name": "Haechan",
+          "nameKr": "Lee Dong-hyuck",
+          "role": "Main Vocalist, Lead Dancer",
+          "image": "nct127/haechan.jpg",
+          "description": "De sunshine met een krachtige stem. Haechan's vocalen en persoonlijkheid zijn altijd highlights."
+        }
+      ]
+    },
+    {
+      "id": "qwer",
+      "name": "QWER",
+      "nameKr": "큐더",
+      "color": "#a855f7",
+      "company": "NEAL ENTERTAINMENT",
+      "description": "QWER is een girl band die zelf instrumenten bespeelt en J-rock en K-pop combineert. Hun energieke live performances en catchy rock sound zijn perfect voor fans van bands en alternatieve muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/3PoJZGq4z2bGBzMGLJ0nRh",
+      "image": "qwer/qwer-group.jpeg",
+      "qrCode": "qrcodes/qwer-qr.png",
+      "tags": ["rock", "band", "alt-rock", "indie", "pop", "catchy"],
+      "members": [
+        {
+          "name": "Chodan",
+          "nameKr": "Kim Cho-dan",
+          "role": "Leader, Main Vocalist, Guitarist",
+          "image": "qwer/chodan.jpeg",
+          "description": "De charismatische frontvrouw en gitariste. Chodan's stem en energie leiden QWER's performances."
+        },
+        {
+          "name": "Siyeon",
+          "nameKr": "Lee Si-yeon",
+          "role": "Lead Vocalist, Bassist",
+          "image": "qwer/siyeon.jpeg",
+          "description": "De bassist met stabiele vocalen. Siyeon's groove en stem zijn essentieel voor QWER's sound."
+        },
+        {
+          "name": "Hina",
+          "nameKr": "Kim Hyun-ah",
+          "role": "Sub Vocalist, Keyboardist",
+          "image": "qwer/hina.jpeg",
+          "description": "De keyboard queen die de melodieën creëert. Hina's muzikaliteit verrijkt elke song."
+        },
+        {
+          "name": "Magenta",
+          "nameKr": "Shin Jang-mi",
+          "role": "Drummer, Sub Vocalist, Maknae",
+          "image": "qwer/magenta.jpeg",
+          "description": "De energieke drummer die het ritme bepaalt. Magenta's kracht en precisie drijven de band."
+        }
+      ]
+    },
+    {
+      "id": "redvelvet",
+      "name": "RED VELVET",
+      "nameKr": "레드벨벳",
+      "color": "#be185d",
+      "company": "SM ENTERTAINMENT",
+      "description": "Red Velvet balanceert twee concepten: krachtige 'Red' pop en experimentele 'Velvet' R&B. Hun veelzijdigheid en vocale harmonieën zijn perfect voor fans van zowel catchy pop als sophisticated R&B.",
+      "spotifyUrl": "https://open.spotify.com/artist/1z4g3DjTBBZKhvAroFlhOM",
+      "image": "redvelvet/redvelvet-group.jpg",
+      "qrCode": "qrcodes/redvelvet-qr.png",
+      "tags": ["pop", "r&b", "electropop", "experimental", "vocal", "dance"],
+      "members": [
+        {
+          "name": "Irene",
+          "nameKr": "Bae Joo-hyun",
+          "role": "Leader, Lead Rapper, Lead Dancer, Sub Vocalist, Visual, Center",
+          "image": "redvelvet/irene.jpg",
+          "description": "De elegante leider en ultieme visual. Irene's schoonheid en charisma zijn legendarisch."
+        },
+        {
+          "name": "Seulgi",
+          "nameKr": "Kang Seul-gi",
+          "role": "Main Dancer, Lead Vocalist",
+          "image": "redvelvet/seulgi.jpg",
+          "description": "De all-rounder die excelleert in zang en dans. Seulgi's veelzijdigheid is ongeëvenaard."
+        },
+        {
+          "name": "Wendy",
+          "nameKr": "Son Seung-wan",
+          "role": "Main Vocalist",
+          "image": "redvelvet/wendy.jpg",
+          "description": "De vocale powerhouse met een engelachtige stem. Wendy's techniek en emotie zijn fenomenaal."
+        },
+        {
+          "name": "Joy",
+          "nameKr": "Park Soo-young",
+          "role": "Lead Rapper, Sub Vocalist",
+          "image": "redvelvet/joy.jpg",
+          "description": "De stralende entertainer met een warm karakter. Joy's acteertalent en charme maken haar geliefd."
+        },
+        {
+          "name": "Yeri",
+          "nameKr": "Kim Ye-rim",
+          "role": "Sub Vocalist, Sub Rapper, Maknae",
+          "image": "redvelvet/yeri.jpg",
+          "description": "De artistieke maknae met een unieke stijl. Yeri's creativiteit en persoonlijkheid zijn verfrissend."
+        }
+      ]
+    },
+    {
+      "id": "seventeen",
+      "name": "SEVENTEEN",
+      "nameKr": "세븐틴",
+      "color": "#f43f5e",
+      "company": "PLEDIS ENTERTAINMENT",
+      "description": "SEVENTEEN is een 'self-producing' groep met 13 leden verdeeld in vocal, hip-hop en performance units. Hun perfecte synchronisatie en creatieve input zijn perfect voor fans van veelzijdige, getalenteerde groepen.",
+      "spotifyUrl": "https://open.spotify.com/artist/7nqOGRxlXj7N2JYbgNEjYH",
+      "image": "seventeen/seventeen-group.jpg",
+      "qrCode": "qrcodes/seventeen-qr.png",
+      "tags": ["pop", "dance", "hip-hop", "anthemic", "vocal", "emotional"],
+      "members": [
+        {
+          "name": "S.Coups",
+          "nameKr": "Choi Seung-cheol",
+          "role": "Leader, Hip-Hop Unit Leader, Main Rapper",
+          "image": "seventeen/scoups.jpeg",
+          "description": "De liefdevolle leider van SEVENTEEN. S.Coups' rap skills en zorgzaamheid maken hem het hart van de groep."
+        },
+        {
+          "name": "Jeonghan",
+          "nameKr": "Yoon Jeong-han",
+          "role": "Sub Vocalist, Visual",
+          "image": "seventeen/jeonghan.jpeg",
+          "description": "De engelachtige visual met een ondeugende persoonlijkheid. Jeonghan's charme is onweerstaanbaar."
+        },
+        {
+          "name": "Joshua",
+          "nameKr": "Hong Ji-soo",
+          "role": "Sub Vocalist",
+          "image": "seventeen/joshua.jpeg",
+          "description": "De gentleman uit LA met een zachte stem. Joshua's gitaarskills en vriendelijkheid zijn geliefd."
+        },
+        {
+          "name": "Jun",
+          "nameKr": "Wen Jun-hui",
+          "role": "Performance Unit, Lead Dancer, Sub Vocalist",
+          "image": "seventeen/jun.jpeg",
+          "description": "De Chinese performer met elegante bewegingen. Jun's martial arts achtergrond maakt zijn dans uniek."
+        },
+        {
+          "name": "Wonwoo",
+          "nameKr": "Jeon Won-woo",
+          "role": "Hip-Hop Unit, Lead Rapper",
+          "image": "seventeen/wonwoo.jpeg",
+          "description": "De mysterieuze rapper met een diepe stem. Wonwoo's intellectuele aura en rap zijn aansprekend."
+        },
+        {
+          "name": "Woozi",
+          "nameKr": "Lee Ji-hoon",
+          "role": "Vocal Unit Leader, Main Vocalist, Producer",
+          "image": "seventeen/woozi.jpeg",
+          "description": "Het muzikale genie achter SEVENTEEN's sound. Woozi's composities en vocalen zijn meesterwerken."
+        },
+        {
+          "name": "DK",
+          "nameKr": "Lee Seok-min",
+          "role": "Vocal Unit, Main Vocalist",
+          "image": "seventeen/dk.jpeg",
+          "description": "De vocale powerhouse met een stralende stem. DK's energie en vocalen vullen elk stadium."
+        },
+        {
+          "name": "Mingyu",
+          "nameKr": "Kim Min-gyu",
+          "role": "Hip-Hop Unit, Lead Rapper, Sub Vocalist, Visual",
+          "image": "seventeen/mingyu.jpeg",
+          "description": "De all-rounder met model looks. Mingyu's talenten variëren van rap tot koken."
+        },
+        {
+          "name": "The8",
+          "nameKr": "Xu Ming-hao",
+          "role": "Performance Unit, Lead Dancer, Sub Vocalist, Sub Rapper",
+          "image": "seventeen/the8.jpeg",
+          "description": "De artistieke danser met een unieke stijl. The8's B-boy en contemporary skills zijn indrukwekkend."
+        },
+        {
+          "name": "Seungkwan",
+          "nameKr": "Boo Seung-kwan",
+          "role": "Vocal Unit, Lead Vocalist",
+          "image": "seventeen/seungkwan.jpeg",
+          "description": "De entertainment koning met krachtige vocalen. Seungkwan's humor en stem zijn beide legendarisch."
+        },
+        {
+          "name": "Vernon",
+          "nameKr": "Chwe Han-sol",
+          "role": "Hip-Hop Unit, Main Rapper, Sub Vocalist",
+          "image": "seventeen/vernon.jpeg",
+          "description": "De half-Amerikaanse rapper met een coole vibe. Vernon's flows en stijl zijn authentiek hip-hop."
+        },
+        {
+          "name": "Dino",
+          "nameKr": "Lee Chan",
+          "role": "Performance Unit Leader, Main Dancer, Sub Vocalist, Sub Rapper, Maknae",
+          "image": "seventeen/dino.jpeg",
+          "description": "De gepassioneerde maknae die dans ademt. Dino's Michael Jackson-inspiratie shinet in elke move."
+        }
+      ]
+    },
+    {
+      "id": "shinee",
+      "name": "SHINee",
+      "nameKr": "샤이니",
+      "color": "#0891b2",
+      "company": "SM ENTERTAINMENT",
+      "description": "SHINee is een legendarische groep die K-pop hielp definiëren met hun baanbrekende concepten en perfecte performances. Hun invloed op mode en muziek maakt ze perfect voor fans van innovatieve K-pop.",
+      "spotifyUrl": "https://open.spotify.com/artist/2hRQKC0gfZPNh28C6oJr1M",
+      "image": "shinee/shinee-group.jpg",
+      "qrCode": "qrcodes/shinee-qr.png",
+      "tags": ["pop", "dance", "r&b", "electropop", "synth-pop", "experimental"],
+      "members": [
+        {
+          "name": "Onew",
+          "nameKr": "Lee Jin-ki",
+          "role": "Leader, Main Vocalist",
+          "image": "shinee/onew.jpg",
+          "description": "De zachte leider met een unieke, warme stem. Onew's 'tofu' vocalen zijn direct herkenbaar."
+        },
+        {
+          "name": "Key",
+          "nameKr": "Kim Ki-bum",
+          "role": "Lead Rapper, Lead Dancer, Sub Vocalist, Visual",
+          "image": "shinee/key.jpg",
+          "description": "De mode-icoon met eindeloze veelzijdigheid. Key's stijl en talent maken hem een trendsetter."
+        },
+        {
+          "name": "Minho",
+          "nameKr": "Choi Min-ho",
+          "role": "Main Rapper, Sub Vocalist, Visual",
+          "image": "shinee/minho.jpg",
+          "description": "De atletische rapper met intense charisma. Minho's passie voor sport en muziek zijn both legendary."
+        },
+        {
+          "name": "Taemin",
+          "nameKr": "Lee Tae-min",
+          "role": "Main Dancer, Lead Vocalist, Maknae",
+          "image": "shinee/taemin.jpg",
+          "description": "De 'Ace of K-pop' wiens dans en zang legendarisch zijn. Taemin's solo werk definieert excellentie."
+        }
+      ]
+    },
+    {
+      "id": "therose",
+      "name": "THE ROSE",
+      "nameKr": "더 로즈",
+      "color": "#be123c",
+      "company": "TRANSPARENT ARTS",
+      "description": "The Rose is een band die emotionele ballads en rock combineert met authentieke instrumenten. Hun gevoelige teksten en live performances zijn perfect voor fans van echte bands en emotionele muziek.",
+      "spotifyUrl": "https://open.spotify.com/artist/4ZLN9zv7gRv5W4R5Z8m7Cf",
+      "image": "therose/therose-group.jpg",
+      "qrCode": "qrcodes/therose-qr.png",
+      "tags": ["rock", "band", "emotional", "ballad", "indie", "acoustic"],
+      "members": [
+        {
+          "name": "Woosung",
+          "nameKr": "Kim Woo-sung",
+          "role": "Leader, Main Vocalist, Lead Guitarist",
+          "image": "therose/woosung.jpg",
+          "description": "De charismatische frontman met een unieke stem. Woosung's emotie en gitaarskills zijn meeslepend."
+        },
+        {
+          "name": "Dojoon",
+          "nameKr": "Park Do-joon",
+          "role": "Keyboardist, Lead Vocalist",
+          "image": "therose/dojoon.jpg",
+          "description": "De keyboard virtuoos met krachtige vocalen. Dojoon's muzikaliteit verrijkt elke song."
+        },
+        {
+          "name": "Hajoon",
+          "nameKr": "Lee Ha-joon",
+          "role": "Drummer, Sub Vocalist",
+          "image": "therose/hajoon.jpg",
+          "description": "De energieke drummer die het ritme bepaalt. Hajoon's passie en precisie drijven de band."
+        },
+        {
+          "name": "Taegyeom",
+          "nameKr": "Park Tae-gyeom",
+          "role": "Bassist, Sub Vocalist",
+          "image": "therose/taegyeom.jpg",
+          "description": "De bassist die de groove creëert. Taegyeom's groove is de ruggengraat van The Rose's sound."
+        }
+      ]
+    },
+    {
+      "id": "xdinaryheroes",
+      "name": "XDINARY HEROES",
+      "nameKr": "엑스디너리 히어로즈",
+      "color": "#4338ca",
+      "company": "JYP ENTERTAINMENT",
+      "description": "Xdinary Heroes is een rock band onder JYP die pop-rock en alternative combineert. Hun energieke live performances en catchy rock anthems zijn perfect voor fans van modern rock en bands.",
+      "spotifyUrl": "https://open.spotify.com/artist/4kVsRPOsAB57J31yT8d8p0",
+      "image": "xdinaryheroes/xdinaryheroes-group.png",
+      "qrCode": "qrcodes/xdinaryheroes-qr.png",
+      "tags": ["rock", "band", "alt-rock", "pop", "anthemic"],
+      "members": [
+        {
+          "name": "Gunil",
+          "nameKr": "Go Gun-il",
+          "role": "Leader, Drummer",
+          "image": "xdinaryheroes/gunil.jpeg",
+          "description": "De ervaren leider en drummer. Gunil's ritme en leiderschap vormen de basis van de band."
+        },
+        {
+          "name": "Jungsu",
+          "nameKr": "Jung-su",
+          "role": "Bassist, Lead Vocalist",
+          "image": "xdinaryheroes/jungsu.jpeg",
+          "description": "De bassist met krachtige vocalen. Jungsu's stem en groove zijn essentieel voor de sound."
+        },
+        {
+          "name": "Gaon",
+          "nameKr": "Ga-on",
+          "role": "Main Vocalist, Guitarist",
+          "image": "xdinaryheroes/gaon.jpeg",
+          "description": "De hoofdzanger met een krachtige stem. Gaon's vocalen en gitaar drijven de melodieën."
+        },
+        {
+          "name": "O.de",
+          "nameKr": "O-de",
+          "role": "Keyboardist, Sub Vocalist",
+          "image": "xdinaryheroes/o.de.jpeg",
+          "description": "De keyboard virtuoos met unieke sounds. O.de's synthesizers geven de band hun moderne edge."
+        },
+        {
+          "name": "Jun Han",
+          "nameKr": "Jun-han",
+          "role": "Main Guitarist, Lead Vocalist",
+          "image": "xdinaryheroes/junhan.jpeg",
+          "description": "De lead gitarist met shredding skills. Jun Han's solo's en vocalen zijn altijd highlights."
+        },
+        {
+          "name": "Jooyeon",
+          "nameKr": "Joo-yeon",
+          "role": "Guitarist, Sub Vocalist, Maknae",
+          "image": "xdinaryheroes/jooyeon.jpeg",
+          "description": "De jonge gitarist met veel potentieel. Jooyeon's skills groeien met elke performance."
+        }
+      ]
+    },
+    {
+      "id": "youngposse",
+      "name": "YOUNG POSSE",
+      "nameKr": "영파씨",
+      "color": "#65a30d",
+      "company": "DSP MEDIA",
+      "description": "YOUNG POSSE is een girl group met een unieke hip-hop en street style. Hun zelfverzekerde attitude en krachtige rap maken ze perfect voor fans van girl crush en hip-hop concepten.",
+      "spotifyUrl": "https://open.spotify.com/artist/4wjU6wS7FDblxBn01XA6KY",
+      "image": "youngposse/youngposse-group.jpg",
+      "qrCode": "qrcodes/youngposse-qr.png",
+      "tags": ["hip-hop", "trap", "dance", "party", "catchy"],
+      "members": [
+        {
+          "name": "Jeon Yeonjung",
+          "nameKr": "Jeon Yeon-jung",
+          "role": "Leader, Main Rapper",
+          "image": "youngposse/yeonjung.jpeg",
+          "description": "De krachtige leider en rapper. Yeonjung's flow en presence definiëren YOUNG POSSE's vibe."
+        },
+        {
+          "name": "Sunhye",
+          "nameKr": "Sun-hye",
+          "role": "Main Vocalist, Lead Dancer",
+          "image": "youngposse/sunhye.jpeg",
+          "description": "De veelzijdige vocalist en danser. Sunhye's vocalen en moves zijn altijd on point."
+        },
+        {
+          "name": "Jiana",
+          "nameKr": "Ji-ana",
+          "role": "Lead Vocalist, Sub Rapper",
+          "image": "youngposse/jiana.jpeg",
+          "description": "De charme van de groep met sterke vocalen. Jiana's presence en zang zijn aansprekend."
+        },
+        {
+          "name": "Doeun",
+          "nameKr": "Do-eun",
+          "role": "Main Dancer, Sub Vocalist",
+          "image": "youngposse/doeun.jpeg",
+          "description": "De energieke danser met grote expressie. Doeun's moves en energie verlichten elke stage."
+        },
+        {
+          "name": "Jieun",
+          "nameKr": "Ji-eun",
+          "role": "Lead Rapper, Sub Vocalist, Maknae",
+          "image": "youngposse/jieun.jpeg",
+          "description": "De maknae met sterke rap skills. Jieun's flow en attitude maken haar een future star."
+        }
+      ]
     }
   ]
 }
