@@ -25,6 +25,11 @@
         
         <!-- Black Info Section -->
         <div class="group-info">
+          <!-- Now Playing -->
+          <div v-if="currentSongInfo" class="now-playing">
+            <span class="now-playing__label">NOW PLAYING</span>
+            <span class="now-playing__song">{{ currentSongInfo.songTitle }} - {{ currentSongInfo.artist }}</span>
+          </div>
           <h2 class="group-name">{{ group.name }}</h2>
           <p class="group-members">{{ memberNames }}</p>
           <p class="group-company">COMPANY: {{ group.company }}</p>
@@ -91,10 +96,10 @@ import twiceSong from '@/assets/music/twice.mp3';
 import lesserafimSong from '@/assets/music/lesserafim.mp3';
 
 // Music configuration for groups
-const groupMusicConfig: Record<string, { src: string; startTime: number }> = {
-  blackpink: { src: blackpinkSong, startTime: 30 },
-  twice: { src: twiceSong, startTime: 35 },
-  lesserafim: { src: lesserafimSong, startTime: 60 },
+const groupMusicConfig: Record<string, { src: string; startTime: number; songTitle: string; artist: string }> = {
+  blackpink: { src: blackpinkSong, startTime: 30, songTitle: 'Jump', artist: 'BLACKPINK' },
+  twice: { src: twiceSong, startTime: 35, songTitle: 'The Feels', artist: 'TWICE' },
+  lesserafim: { src: lesserafimSong, startTime: 60, songTitle: 'Perfect Night', artist: 'LE SSERAFIM' },
 };
 
 interface Member {
@@ -141,37 +146,35 @@ export default defineComponent({
     
     const currentGroupId = computed(() => route.params.groupId as string);
     
-    // Check if current group has music
-    const groupHasMusic = computed(() => currentGroupId.value in groupMusicConfig);
-    
     // Function to play group's song
     const playGroupSong = (groupId: string) => {
       const config = groupMusicConfig[groupId];
       if (!config) return;
       
-      // If switching to a different song, create new audio element
-      if (currentMusicGroup.value !== groupId) {
-        if (audioRef.value) {
-          audioRef.value.pause();
-        }
-        audioRef.value = new Audio(config.src);
-        audioRef.value.volume = 0.7;
-        currentMusicGroup.value = groupId;
+      // Always stop current audio first
+      if (audioRef.value) {
+        audioRef.value.pause();
+        audioRef.value = null;
       }
       
-      if (audioRef.value) {
-        audioRef.value.currentTime = config.startTime;
-        audioRef.value.play().catch(err => {
-          console.log('Audio playback failed:', err);
-        });
-      }
+      // Create new audio element for this group
+      audioRef.value = new Audio(config.src);
+      audioRef.value.volume = 0.7;
+      audioRef.value.currentTime = config.startTime;
+      currentMusicGroup.value = groupId;
+      
+      audioRef.value.play().catch(err => {
+        console.log('Audio playback failed:', err);
+      });
     };
     
     // Function to stop the song
     const stopSong = () => {
       if (audioRef.value) {
         audioRef.value.pause();
+        audioRef.value = null;
       }
+      currentMusicGroup.value = null;
     };
     
     // Watch for changes in the current group
@@ -181,21 +184,19 @@ export default defineComponent({
       } else {
         stopSong();
       }
-    }, { immediate: true });
+    });
     
     onMounted(() => {
-      // If already on a page with music, start playing
-      if (groupHasMusic.value) {
-        playGroupSong(currentGroupId.value);
+      // Start playing if current group has music
+      const groupId = currentGroupId.value;
+      if (groupId && groupId in groupMusicConfig) {
+        playGroupSong(groupId);
       }
     });
     
     onUnmounted(() => {
       // Clean up audio when leaving the page
-      if (audioRef.value) {
-        audioRef.value.pause();
-        audioRef.value = null;
-      }
+      stopSong();
     });
     
     const topMatchIds = computed(() => store.topMatchIds);
@@ -213,6 +214,15 @@ export default defineComponent({
     
     const currentIndex = computed(() => {
       return topMatchIds.value.indexOf(currentGroupId.value);
+    });
+    
+    // Get current song info for "Now Playing" display
+    const currentSongInfo = computed(() => {
+      const groupId = currentGroupId.value;
+      if (groupId && groupId in groupMusicConfig) {
+        return groupMusicConfig[groupId];
+      }
+      return null;
     });
 
     const getGroupImage = (imagePath: string) => {
@@ -287,6 +297,7 @@ export default defineComponent({
       currentGroupId,
       topMatchIds,
       hasMultipleMatches,
+      currentSongInfo,
       getGroupImage,
       getQrCode,
       getMemberImage,
@@ -394,12 +405,39 @@ export default defineComponent({
   align-items: center;
 }
 
+.now-playing {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1000;
+  
+  &__label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #8b5cf6;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: -4px;
+  }
+  
+  &__song {
+    font-family: 'Mulish', sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+  }
+}
+
 .group-name {
   font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
   font-size: 80px;
   font-weight: 700;
   color: #fff;
-  margin: -50px 0 4px 0;
+  margin: 0 0 4px 0;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: 2px;
