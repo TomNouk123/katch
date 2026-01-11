@@ -117,11 +117,18 @@ import { PageName } from '@/utils/_Constants';
 import { artistTagMapping, getTopMatches as getTopMatchResults } from '@/utils/_MatchingAlgorithm';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
 
+interface Song {
+  title: string;
+  duration: string;
+}
+
 interface KpopGroup {
   id: string;
   name: string;
   image: string;
   tags: string[];
+  fandomName?: string;
+  songs?: Song[];
 }
 
 interface FloatingHeart {
@@ -338,6 +345,8 @@ export default defineComponent({
           isTyping.value = false;
           setTimeout(() => {
             showRanking.value = true;
+            // Save results to backend for NFC receipt
+            saveResultsToBackend();
             // Show matches one by one
             setTimeout(() => {
               showMatch1.value = true;
@@ -357,6 +366,31 @@ export default defineComponent({
       };
 
       type();
+    };
+
+    // Save results to backend for NFC receipt
+    const saveResultsToBackend = async () => {
+      try {
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+        const matches = topMatches.value.map((group, index) => ({
+          id: group.id,
+          name: group.name,
+          percentage: matchPercentages.value[index],
+          fandomName: group.fandomName || null,
+          genres: group.tags?.slice(0, 3) || [],
+          songs: group.songs || [],
+        }));
+        
+        await fetch(`${apiUrl}/api/result`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ matches, timestamp: new Date().toISOString() }),
+        });
+        
+        console.log('Results saved to backend for NFC receipt');
+      } catch (error) {
+        console.error('Failed to save results to backend:', error);
+      }
     };
 
     const goToResults = () => {

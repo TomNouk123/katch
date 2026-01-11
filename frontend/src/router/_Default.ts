@@ -4,6 +4,7 @@ import SplashScreen from '../views/SplashScreen.vue';
 import SwipeGame from '../views/SwipeGame.vue';
 import CalculatingResult from '../views/CalculatingResult.vue';
 import ResultsPage from '../views/ResultsPage.vue';
+import ReceiptPage from '../views/ReceiptPage.vue';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/results/:groupId',
     name: PageName.RESULTS,
     component: ResultsPage,
+  },
+  {
+    path: '/receipt',
+    name: PageName.RECEIPT,
+    component: ReceiptPage,
   },
 ];
 

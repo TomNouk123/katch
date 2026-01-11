@@ -3,4 +3,5 @@ export enum PageName {
   SWIPE_GAME = 'SwipeGame',
   CALCULATING = 'Calculating',
   RESULTS = 'Results',
+  RECEIPT = 'Receipt',
 }

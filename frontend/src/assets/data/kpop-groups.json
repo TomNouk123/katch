@@ -6,11 +6,17 @@
       "nameKr": "트와이스",
       "color": "#ff5fa2",
       "company": "JYP ENTERTAINMENT",
+      "fandomName": "ONCE",
       "description": "TWICE is de ultieme feel-good K-pop groep met aanstekelijke hooks en iconische choreografieën. Hun muziek combineert bubblegum pop met dance beats, perfect voor fans van catchy, vrolijke pop muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/7n2Ycct7Beij7Dj7meI4X0",
       "image": "twice/twice-group.jpg",
       "qrCode": "qrcodes/twice-qr.png",
       "tags": ["pop", "dance", "synth-pop"],
+      "songs": [
+        { "title": "The Feels", "duration": "3:32" },
+        { "title": "What is Love?", "duration": "3:28" },
+        { "title": "Fancy", "duration": "3:33" }
+      ],
       "members": [
         {
           "name": "Nayeon",
@@ -83,11 +89,17 @@
       "nameKr": "블랙핑크",
       "color": "#ff007f",
       "company": "YG ENTERTAINMENT",
+      "fandomName": "Blink",
       "description": "BLACKPINK is het ultieme girl crush icoon met een mix van fierce hip-hop en addictieve pop. Hun stijl combineert luxe met attitude, perfect voor fans van krachtige performances en trendsettende mode.",
       "spotifyUrl": "https://open.spotify.com/artist/41MozSoPIsD1dJM0CLPjZF",
       "image": "blackpink/blackpink-group.jpg",
       "qrCode": "qrcodes/blackpink-qr.png",
       "tags": ["pop", "trap", "edm"],
+      "songs": [
+        { "title": "How You Like That", "duration": "3:02" },
+        { "title": "Kill This Love", "duration": "3:10" },
+        { "title": "Pink Venom", "duration": "3:06" }
+      ],
       "members": [
         {
           "name": "Jisoo",
@@ -125,11 +137,17 @@
       "nameKr": "에스파",
       "color": "#8b5cf6",
       "company": "SM ENTERTAINMENT",
+      "fandomName": "MY",
       "description": "aespa is K-pop's meest futuristische groep met een uniek AI-concept en baanbrekende hyperpop sound. Ze combineren cutting-edge productie met sci-fi storytelling, perfect voor fans van experimentele pop en gaming.",
       "spotifyUrl": "https://open.spotify.com/artist/6YVMFz59CuY7ngCxTxjpxE",
       "image": "aespa/aespa-group.jpg",
       "qrCode": "qrcodes/aespa-qr.png",
       "tags": ["hyperpop", "edm", "dance"],
+      "songs": [
+        { "title": "Drama", "duration": "3:32" },
+        { "title": "Supernova", "duration": "2:58" },
+        { "title": "Whiplash", "duration": "3:02" }
+      ],
       "members": [
         {
           "name": "Karina",
@@ -167,11 +185,17 @@
       "nameKr": "스트레이 키즈",
       "color": "#ef4444",
       "company": "JYP ENTERTAINMENT",
+      "fandomName": "STAY",
       "description": "Stray Kids produceert hun eigen muziek met 3RACHA, hun producing unit. Hun sound is een mix van hard-hitting hip-hop, EDM en experimentele genres, perfect voor fans die authentieke, zelf-gemaakte muziek waarderen.",
       "spotifyUrl": "https://open.spotify.com/artist/2dIgFjalVxs4ThymZ67YCE",
       "image": "straykids/straykids-group.jpeg",
       "qrCode": "qrcodes/straykids-qr.png",
       "tags": ["hip-hop", "trap", "edm"],
+      "songs": [
+        { "title": "God's Menu", "duration": "3:21" },
+        { "title": "LALALALA", "duration": "3:07" },
+        { "title": "Back Door", "duration": "3:07" }
+      ],
       "members": [
         {
           "name": "Bang Chan",
@@ -237,11 +261,17 @@
       "nameKr": "에이티즈",
       "color": "#1e3a5f",
       "company": "KQ ENTERTAINMENT",
+      "fandomName": "ATINY",
       "description": "ATEEZ levert epische performances met theatrale concepten en anthemische nummers. Hun energie en storytelling zijn cinematisch, perfect voor fans van grandiose shows en emotioneel geladen muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/68KmkJeZGfwe1TUj9Krmna",
       "image": "ateez/ateez-group.jpg",
       "qrCode": "qrcodes/ateez-qr.png",
       "tags": ["edm", "techno", "trap"],
+      "songs": [
+        { "title": "Guerrilla", "duration": "3:14" },
+        { "title": "BOUNCY", "duration": "2:58" },
+        { "title": "Wonderland", "duration": "3:22" }
+      ],
       "members": [
         {
           "name": "Hongjoong",
@@ -307,11 +337,17 @@
       "nameKr": "마마무",
       "color": "#10b981",
       "company": "RBW ENTERTAINMENT",
+      "fandomName": "MooMoo",
       "description": "MAMAMOO staat bekend om hun ongelooflijke live vocals en retro-geïnspireerde R&B sound. Hun zelfvertrouwen en vocale kracht maken ze perfect voor fans van echte zangeressen en soulvolle muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/0XATRDCYuuGhk0oE7C0o5G",
       "image": "mamamoo/mamamoo-group.jpg",
       "qrCode": "qrcodes/mamamoo-qr.png",
       "tags": ["r&b", "jazz", "funk"],
+      "songs": [
+        { "title": "HIP", "duration": "3:20" },
+        { "title": "gogobebe", "duration": "3:34" },
+        { "title": "Dingga", "duration": "3:06" }
+      ],
       "members": [
         {
           "name": "Solar",
@@ -349,11 +385,17 @@
       "nameKr": "아이콘",
       "color": "#f59e0b",
       "company": "YG ENTERTAINMENT",
+      "fandomName": "iKONIC",
       "description": "iKON brengt authentieke hip-hop met catchy hooks en emotionele ballads. Hun muziek voelt persoonlijk en relatable, perfect voor fans van echte hip-hop met K-pop flair.",
       "spotifyUrl": "https://open.spotify.com/artist/5DbdkBdrNGpfPBqdyu4bkU",
       "image": "ikon/ikon-group.jpg",
       "qrCode": "qrcodes/ikon-qr.png",
       "tags": ["hip-hop", "pop-rap"],
+      "songs": [
+        { "title": "Love Scenario", "duration": "3:33" },
+        { "title": "Killing Me", "duration": "3:13" },
+        { "title": "Rhythm Ta", "duration": "3:22" }
+      ],
       "members": [
         {
           "name": "Jay",
@@ -405,11 +447,17 @@
       "nameKr": "카드",
       "color": "#ec4899",
       "company": "DSP MEDIA",
+      "fandomName": "Hidden KARD",
       "description": "KARD is een unieke co-ed groep met tropical house en EDM sound. Hun internationale vibe en dansbare nummers maken ze perfect voor fans van global pop en zomerse vibes.",
       "spotifyUrl": "https://open.spotify.com/artist/2wXjBp7xYYRGFmS0rXRLhB",
       "image": "kard/kard-group.jpg",
       "qrCode": "qrcodes/kard-qr.png",
       "tags": ["dancehall", "reggaeton", "latin"],
+      "songs": [
+        { "title": "Ring The Alarm", "duration": "3:04" },
+        { "title": "Hola Hola", "duration": "3:19" },
+        { "title": "Don't Recall", "duration": "3:34" }
+      ],
       "members": [
         {
           "name": "J.Seph",
@@ -447,11 +495,17 @@
       "nameKr": "데이식스",
       "color": "#6366f1",
       "company": "JYP ENTERTAINMENT",
+      "fandomName": "My Day",
       "description": "DAY6 is K-pop's meest geliefde band met emotionele rock en pop-rock nummers. Hun muziek raakt het hart met relatable lyrics en echte instrumenten, perfect voor fans van bands en emotionele muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/5TnQc2N1iKlFjYD7CPGvFc",
       "image": "day6/day6-group.jpg",
       "qrCode": "qrcodes/day6-qr.png",
       "tags": ["alternative-rock", "acoustic", "pop-rock"],
+      "songs": [
+        { "title": "You Were Beautiful", "duration": "4:41" },
+        { "title": "Time of Our Life", "duration": "3:23" },
+        { "title": "Sweet Chaos", "duration": "3:25" }
+      ],
       "members": [
         {
           "name": "Sungjin",
@@ -489,11 +543,17 @@
       "nameKr": "드림캐쳐",
       "color": "#7c3aed",
       "company": "DREAMCATCHER COMPANY",
+      "fandomName": "InSomnia",
       "description": "Dreamcatcher combineert rock en metal met K-pop in een unieke, donkere sound. Hun theatrale concepts en krachtige instrumentals zijn perfect voor fans van rock, metal en alternatieve muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/5V1qsQHdXNm4ZEZHWvFnqQ",
       "image": "dreamcatcher/dreamcatcher-group.jpg",
       "qrCode": "qrcodes/dreamcatcher-qr.png",
       "tags": ["alternative-metal", "rock"],
+      "songs": [
+        { "title": "MAISON", "duration": "3:19" },
+        { "title": "BEcause", "duration": "3:34" },
+        { "title": "Deja Vu", "duration": "3:34" }
+      ],
       "members": [
         {
           "name": "JiU",
@@ -550,6 +610,12 @@
       "id": "akmu",
       "name": "AKMU",
       "nameKr": "악동뮤지션",
+      "fandomName": "AKMU Fans",
+      "songs": [
+        { "title": "Love Lee", "duration": "3:18" },
+        { "title": "How Can I Love the Heartbreak", "duration": "4:07" },
+        { "title": "Dinosaur", "duration": "3:29" }
+      ],
       "color": "#84cc16",
       "company": "YG ENTERTAINMENT",
       "description": "AKMU (Akdong Musician) is een broer-zus duo dat indie pop en folk maakt met artistieke, emotionele verhalen. Hun muziek is intelligent en hartverwarmend, perfect voor fans van singer-songwriters en poëtische lyrics.",
@@ -580,11 +646,17 @@
       "nameKr": "방탄소년단",
       "color": "#9333ea",
       "company": "BIGHIT MUSIC",
+      "fandomName": "ARMY",
       "description": "BTS is de grootste boyband ter wereld die K-pop naar mainstream succes bracht. Hun muziek combineert hip-hop, pop en R&B met betekenisvolle teksten over mentale gezondheid en zelfliefde.",
       "spotifyUrl": "https://open.spotify.com/artist/3Nrfpe0tUJi4K4DXYWgMUX",
       "image": "bts/bts-group.jpg",
       "qrCode": "qrcodes/bts-qr.png",
       "tags": ["pop", "hip-hop", "edm"],
+      "songs": [
+        { "title": "Dynamite", "duration": "3:19" },
+        { "title": "Butter", "duration": "2:44" },
+        { "title": "Boy With Luv", "duration": "3:49" }
+      ],
       "members": [
         {
           "name": "RM",
@@ -643,11 +715,17 @@
       "nameKr": "르세라핌",
       "color": "#0ea5e9",
       "company": "SOURCE MUSIC",
+      "fandomName": "FEARNOT",
       "description": "LE SSERAFIM combineert girl crush attitude met unieke choreografieën. Hun sound is een frisse mix van pop en electronic, perfect voor fans van zelfverzekerde, trendsettende girl groups.",
       "spotifyUrl": "https://open.spotify.com/artist/4SpbR6yFEvexJuaBpgAU5p",
       "image": "lesserafim/lesserafim-group.jpg",
       "qrCode": "qrcodes/lesserafim-qr.png",
       "tags": ["pop", "dance", "hyperpop"],
+      "songs": [
+        { "title": "Antifragile", "duration": "3:01" },
+        { "title": "Perfect Night", "duration": "2:38" },
+        { "title": "Crazy", "duration": "2:44" }
+      ],
       "members": [
         {
           "name": "Sakura",
@@ -692,11 +770,17 @@
       "nameKr": "키스오브라이프",
       "color": "#f97316",
       "company": "S2 ENTERTAINMENT",
+      "fandomName": "KISSER",
       "description": "KISS OF LIFE brengt retro R&B en soul naar K-pop met een frisse, moderne twist. Hun vintage geïnspireerde sound maakt ze perfect voor fans van Y2K vibes en klassieke vocalen.",
       "spotifyUrl": "https://open.spotify.com/artist/6gBKsToHlVyaIKXc3OWw40",
       "image": "kissoflife/kissoflife-group.jpg",
       "qrCode": "qrcodes/kissoflife-qr.png",
       "tags": ["r&b", "hip-hop", "pop"],
+      "songs": [
+        { "title": "Midas Touch", "duration": "3:02" },
+        { "title": "Shhh", "duration": "3:17" },
+        { "title": "Bad News", "duration": "2:56" }
+      ],
       "members": [
         {
           "name": "Julie",
@@ -734,11 +818,17 @@
       "nameKr": "몬스타엑스",
       "color": "#dc2626",
       "company": "STARSHIP ENTERTAINMENT",
+      "fandomName": "Monbebe",
       "description": "MONSTA X staat bekend om hun krachtige performances en intense EDM-infused hip-hop. Hun masculine energie en synchrone choreografieën zijn perfect voor fans van powerful, energieke muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/4TnGh5PKbSjpYqpIdlW5nz",
       "image": "monstax/monstax-group.jpeg",
       "qrCode": "qrcodes/monstax-qr.png",
       "tags": ["hip-hop", "edm", "trap"],
+      "songs": [
+        { "title": "Love Killa", "duration": "3:13" },
+        { "title": "Shoot Out", "duration": "3:09" },
+        { "title": "Beautiful", "duration": "3:17" }
+      ],
       "members": [
         {
           "name": "Shownu",
@@ -790,11 +880,17 @@
       "nameKr": "엔시티 127",
       "color": "#16a34a",
       "company": "SM ENTERTAINMENT",
+      "fandomName": "NCTzen",
       "description": "NCT 127 is de Seoul-based unit van NCT met een experimentele, genre-bendende sound. Hun complexe choreografieën en unieke concepten zijn perfect voor fans van innovatieve K-pop.",
       "spotifyUrl": "https://open.spotify.com/artist/7f4ignuCJhLXfZ9qKjXk80",
       "image": "nct127/nct127-group.jpg",
       "qrCode": "qrcodes/nct127-qr.png",
       "tags": ["hip-hop", "electronic", "experimental"],
+      "songs": [
+        { "title": "Kick It", "duration": "3:37" },
+        { "title": "Sticker", "duration": "3:24" },
+        { "title": "Cherry Bomb", "duration": "3:56" }
+      ],
       "members": [
         {
           "name": "Taeyong",
@@ -860,11 +956,17 @@
       "nameKr": "큐더",
       "color": "#a855f7",
       "company": "NEAL ENTERTAINMENT",
+      "fandomName": "QWERROR",
       "description": "QWER is een girl band die zelf instrumenten bespeelt en J-rock en K-pop combineert. Hun energieke live performances en catchy rock sound zijn perfect voor fans van bands en alternatieve muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/3PoJZGq4z2bGBzMGLJ0nRh",
       "image": "qwer/qwer-group.jpeg",
       "qrCode": "qrcodes/qwer-qr.png",
       "tags": ["pop-rock-alt", "alternative-rock", "indie-rock"],
+      "songs": [
+        { "title": "T.B.H", "duration": "3:22" },
+        { "title": "Maniac", "duration": "3:11" },
+        { "title": "Discord", "duration": "3:05" }
+      ],
       "members": [
         {
           "name": "Chodan",
@@ -902,11 +1004,17 @@
       "nameKr": "레드벨벳",
       "color": "#be185d",
       "company": "SM ENTERTAINMENT",
+      "fandomName": "ReVeluv",
       "description": "Red Velvet balanceert twee concepten: krachtige 'Red' pop en experimentele 'Velvet' R&B. Hun veelzijdigheid en vocale harmonieën zijn perfect voor fans van zowel catchy pop als sophisticated R&B.",
       "spotifyUrl": "https://open.spotify.com/artist/1z4g3DjTBBZKhvAroFlhOM",
       "image": "redvelvet/redvelvet-group.jpg",
       "qrCode": "qrcodes/redvelvet-qr.png",
       "tags": ["r&b", "folk", "pop"],
+      "songs": [
+        { "title": "Psycho", "duration": "3:32" },
+        { "title": "Bad Boy", "duration": "3:28" },
+        { "title": "Feel My Rhythm", "duration": "3:16" }
+      ],
       "members": [
         {
           "name": "Irene",
@@ -951,11 +1059,17 @@
       "nameKr": "세븐틴",
       "color": "#f43f5e",
       "company": "PLEDIS ENTERTAINMENT",
+      "fandomName": "CARAT",
       "description": "SEVENTEEN is een 'self-producing' groep met 13 leden verdeeld in vocal, hip-hop en performance units. Hun perfecte synchronisatie en creatieve input zijn perfect voor fans van veelzijdige, getalenteerde groepen.",
       "spotifyUrl": "https://open.spotify.com/artist/7nqOGRxlXj7N2JYbgNEjYH",
       "image": "seventeen/seventeen-group.jpg",
       "qrCode": "qrcodes/seventeen-qr.png",
       "tags": ["funk-pop", "edm", "hip-hop"],
+      "songs": [
+        { "title": "Super", "duration": "2:48" },
+        { "title": "VERY NICE", "duration": "3:29" },
+        { "title": "Don't Wanna Cry", "duration": "3:42" }
+      ],
       "members": [
         {
           "name": "S.Coups",
@@ -1049,11 +1163,17 @@
       "nameKr": "샤이니",
       "color": "#0891b2",
       "company": "SM ENTERTAINMENT",
+      "fandomName": "Shawol",
       "description": "SHINee is een legendarische groep die K-pop hielp definiëren met hun baanbrekende concepten en perfecte performances. Hun invloed op mode en muziek maakt ze perfect voor fans van innovatieve K-pop.",
       "spotifyUrl": "https://open.spotify.com/artist/2hRQKC0gfZPNh28C6oJr1M",
       "image": "shinee/shinee-group.jpg",
       "qrCode": "qrcodes/shinee-qr.png",
       "tags": ["funk", "dance", "r&b"],
+      "songs": [
+        { "title": "Replay", "duration": "4:01" },
+        { "title": "Sherlock", "duration": "3:47" },
+        { "title": "View", "duration": "3:27" }
+      ],
       "members": [
         {
           "name": "Onew",
@@ -1091,11 +1211,17 @@
       "nameKr": "더 로즈",
       "color": "#be123c",
       "company": "TRANSPARENT ARTS",
+      "fandomName": "Black Rose",
       "description": "The Rose is een band die emotionele ballads en rock combineert met authentieke instrumenten. Hun gevoelige teksten en live performances zijn perfect voor fans van echte bands en emotionele muziek.",
       "spotifyUrl": "https://open.spotify.com/artist/4ZLN9zv7gRv5W4R5Z8m7Cf",
       "image": "therose/therose-group.jpg",
       "qrCode": "qrcodes/therose-qr.png",
       "tags": ["indie-rock", "soft-rock", "acoustic"],
+      "songs": [
+        { "title": "Sorry", "duration": "4:02" },
+        { "title": "She's In The Rain", "duration": "4:06" },
+        { "title": "Baby", "duration": "4:09" }
+      ],
       "members": [
         {
           "name": "Woosung",
@@ -1133,11 +1259,17 @@
       "nameKr": "엑스디너리 히어로즈",
       "color": "#4338ca",
       "company": "JYP ENTERTAINMENT",
+      "fandomName": "Villains",
       "description": "Xdinary Heroes is een rock band onder JYP die pop-rock en alternative combineert. Hun energieke live performances en catchy rock anthems zijn perfect voor fans van modern rock en bands.",
       "spotifyUrl": "https://open.spotify.com/artist/4kVsRPOsAB57J31yT8d8p0",
       "image": "xdinaryheroes/xdinaryheroes-group.jpg",
       "qrCode": "qrcodes/xdinaryheroes-qr.png",
       "tags": ["alternative-rock", "punk-rock", "pop-rock"],
+      "songs": [
+        { "title": "Little Things", "duration": "3:17" },
+        { "title": "Test Me", "duration": "3:42" },
+        { "title": "Freakin' Bad", "duration": "3:09" }
+      ],
       "members": [
         {
           "name": "Gunil",
@@ -1189,11 +1321,17 @@
       "nameKr": "영파씨",
       "color": "#65a30d",
       "company": "DSP MEDIA",
+      "fandomName": "YOUNGSTER",
       "description": "YOUNG POSSE is een girl group met een unieke hip-hop en street style. Hun zelfverzekerde attitude en krachtige rap maken ze perfect voor fans van girl crush en hip-hop concepten.",
       "spotifyUrl": "https://open.spotify.com/artist/4wjU6wS7FDblxBn01XA6KY",
       "image": "youngposse/youngposse-group.jpg",
       "qrCode": "qrcodes/youngposse-qr.png",
       "tags": ["old-school-hip-hop", "hip-hop", "trap"],
+      "songs": [
+        { "title": "XXL", "duration": "2:52" },
+        { "title": "MACARONI CHEESE", "duration": "2:47" },
+        { "title": "Scars", "duration": "3:10" }
+      ],
       "members": [
         {
           "name": "Jeon Yeonjung",
