@@ -6,7 +6,15 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:8080',
+    'http://localhost:5173',
+    'https://katch-topaz.vercel.app',
+    // Add more origins as needed
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Store the latest result in memory (in production, use a database)

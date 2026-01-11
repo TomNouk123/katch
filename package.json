@@ -1,0 +1,14 @@
+{
+  "name": "katch-app",
+  "version": "1.0.0",
+  "description": "Katch K-pop matching app",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "install:backend": "cd backend && npm install",
+    "postinstall": "cd backend && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
+
