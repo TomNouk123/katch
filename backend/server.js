@@ -7,12 +7,22 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: [
-    'http://localhost:8080',
-    'http://localhost:5173',
-    'https://katch-topaz.vercel.app',
-    // Add more origins as needed
-  ],
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    
+    // Allow localhost
+    if (origin.includes('localhost')) return callback(null, true);
+    
+    // Allow all Vercel deployments (including preview URLs)
+    if (origin.includes('vercel.app')) return callback(null, true);
+    
+    // Allow Railway
+    if (origin.includes('railway.app')) return callback(null, true);
+    
+    // Block other origins
+    callback(new Error('Not allowed by CORS'));
+  },
   credentials: true
 }));
 app.use(express.json());
