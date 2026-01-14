@@ -44,7 +44,7 @@
         <div class="matches-list" v-if="showRanking">
         <!-- Match 1 (Top match) -->
         <transition name="slide-in-1">
-          <div v-if="showMatch1" class="match-card match-1">
+          <div v-if="showMatch1" class="match-card match-1" @click="goToGroup(0)">
             <div class="match-image">
               <img :src="getGroupImage(topMatches[0]?.image)" :alt="topMatches[0]?.name" />
             </div>
@@ -61,7 +61,7 @@
 
         <!-- Match 2 -->
         <transition name="slide-in-2">
-          <div v-if="showMatch2" class="match-card match-2">
+          <div v-if="showMatch2" class="match-card match-2" @click="goToGroup(1)">
             <div class="match-image">
               <img :src="getGroupImage(topMatches[1]?.image)" :alt="topMatches[1]?.name" />
             </div>
@@ -78,7 +78,7 @@
 
         <!-- Match 3 -->
         <transition name="slide-in-3">
-          <div v-if="showMatch3" class="match-card match-3">
+          <div v-if="showMatch3" class="match-card match-3" @click="goToGroup(2)">
             <div class="match-image">
               <img :src="getGroupImage(topMatches[2]?.image)" :alt="topMatches[2]?.name" />
             </div>
@@ -402,6 +402,15 @@ export default defineComponent({
       router.push({ name: PageName.RESULTS, params: { groupId: topGroupIds[0] } });
     };
 
+    const goToGroup = (index: number) => {
+      // Store top 3 group IDs for the results page
+      const topGroupIds = topMatches.value.map(g => g.id);
+      store.setTopMatchIds(topGroupIds);
+      
+      // Navigate to the clicked group
+      router.push({ name: PageName.RESULTS, params: { groupId: topGroupIds[index] } });
+    };
+
     onMounted(() => {
       const thinkingText = generateThinkingText();
       // Small delay before starting to type
@@ -419,6 +428,7 @@ export default defineComponent({
       showMatch3,
       showButton,
       goToResults,
+      goToGroup,
       hearts,
       topMatches,
       matchPercentages,
@@ -613,6 +623,13 @@ export default defineComponent({
   padding: 20px 24px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .match-image {

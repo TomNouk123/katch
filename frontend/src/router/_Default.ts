@@ -1,6 +1,7 @@
 import { PageName } from '@/utils/_Constants';
 import { createRouter, createWebHistory } from 'vue-router';
 import SplashScreen from '../views/SplashScreen.vue';
+import IntroPage from '../views/IntroPage.vue';
 import SwipeGame from '../views/SwipeGame.vue';
 import CalculatingResult from '../views/CalculatingResult.vue';
 import ResultsPage from '../views/ResultsPage.vue';
@@ -11,6 +12,11 @@ const routes = [
     path: '/',
     name: PageName.HOME,
     component: SplashScreen,
+  },
+  {
+    path: '/intro',
+    name: PageName.INTRO,
+    component: IntroPage,
   },
   {
     path: '/game',

@@ -76,7 +76,7 @@ export const artistTagMapping: Record<string, string[]> = {
 // Based on spreadsheet: Genre 1 = 10 points, Genre 2 = 6 points, Genre 3 = 3 points
 export const tagToGroupScores: Record<string, Record<string, number>> = {
   // Hyperpop / Electropop
-  'hyperpop': { aespa: 10, lesserafim: 3 },
+  'hyperpop': { lesserafim: 3 },
   
   // Folk / Acoustic / Indie
   'folk-pop': { akmu: 10 },
@@ -84,7 +84,7 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'acoustic': { akmu: 3, therose: 3 },
   
   // EDM / Electronic
-  'edm': { ateez: 10, blackpink: 3, aespa: 6, seventeen: 6, straykids: 3 },
+  'edm': { ateez: 10, blackpink: 3, straykids: 3 },
   'techno': { ateez: 6 },
   'electronic': { nct127: 6 },
   'experimental': { nct127: 3 },
@@ -106,26 +106,20 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'pop-rock': { day6: 3, xdinaryheroes: 6 },
   'punk-rock': { xdinaryheroes: 6 },
   
-  // Dancehall / Latin
-  'dancehall': { kard: 10 },
-  'reggaeton': { kard: 6 },
-  'latin': { kard: 3 },
-  
   // R&B / Soul
-  'r&b': { kissoflife: 10, mamamoo: 10, redvelvet: 6, shinee: 3 },
+  'r&b': { kissoflife: 10, mamamoo: 10, redvelvet: 6 },
   'jazz': { mamamoo: 6 },
-  'funk': { mamamoo: 3, shinee: 10 },
+  'funk': { mamamoo: 3 },
   'folk': { redvelvet: 6 },
   
   // Trap
   'trap': { ateez: 3, blackpink: 6, straykids: 6, youngposse: 3 },
   
   // Dance / Synth
-  'dance': { aespa: 6, lesserafim: 6, twice: 6, redvelvet: 6 },
+  'dance': { lesserafim: 6, twice: 6, redvelvet: 6 },
   'synth-pop': { twice: 3 },
   
-  // Funk Pop / Pop variations
-  'funk-pop': { seventeen: 10 },
+  // Pop variations
   'pop-rock-alt': { qwer: 10 },
 };
 
@@ -142,24 +136,19 @@ export function calculateMatches(likedArtistIds: string[]): MatchResult[] {
   const scores: Record<string, number> = {
     twice: 0,
     blackpink: 0,
-    aespa: 0,
     straykids: 0,
     ateez: 0,
     mamamoo: 0,
     ikon: 0,
-    kard: 0,
     day6: 0,
     dreamcatcher: 0,
     akmu: 0,
     bts: 0,
     lesserafim: 0,
     kissoflife: 0,
-    monstax: 0,
     nct127: 0,
     qwer: 0,
     redvelvet: 0,
-    seventeen: 0,
-    shinee: 0,
     therose: 0,
     xdinaryheroes: 0,
     youngposse: 0,

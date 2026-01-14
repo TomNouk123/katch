@@ -1,14 +1,5 @@
 <template>
   <div class="swipe-game">
-    <!-- Logo -->
-    <header class="header">
-      <img 
-        src="@/assets/images/logos/katch-logo-purple.png" 
-        alt="KATCH" 
-        class="logo"
-      />
-    </header>
-
     <!-- Card Stack Container -->
     <div class="card-container">
       <div class="card-stack">
@@ -77,7 +68,7 @@ interface Artist {
 const imageModules = import.meta.glob('@/assets/images/western-artists/*', { eager: true, as: 'url' });
 
 // Number of artists per game
-const ARTISTS_PER_GAME = 30;
+const ARTISTS_PER_GAME = 25;
 
 // Fisher-Yates shuffle algorithm
 function shuffleArray<T>(array: T[]): T[] {
@@ -307,18 +298,6 @@ export default defineComponent({
   -webkit-overflow-scrolling: auto;
 }
 
-.header {
-  padding: 16px 24px 12px;
-  text-align: center;
-  z-index: 10;
-
-  .logo {
-    height: 160px;
-    width: auto;
-    margin-bottom: -200px;
-  }
-}
-
 .card-container {
   flex: 1;
   position: relative;
@@ -346,9 +325,9 @@ export default defineComponent({
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: calc(100% - 48px);
-  height: calc(100% - 16px);
-  max-height: 820px;
+  width: calc(100% - 32px);
+  height: calc(100% - 8px);
+  max-height: 900px;
   cursor: grab;
   user-select: none;
   transition: transform 0.3s ease;
@@ -487,7 +466,7 @@ export default defineComponent({
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, calc(-50% + 430px));
+  transform: translate(-50%, calc(-50% + 480px));
   text-align: center;
   z-index: 10;
   width: 100%;
@@ -496,7 +475,7 @@ export default defineComponent({
 
   &__text {
     font-family: 'Mulish', sans-serif;
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     color: #1a1a2e;
   }

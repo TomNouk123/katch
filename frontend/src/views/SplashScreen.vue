@@ -23,7 +23,7 @@
           alt="KATCH" 
           class="logo"
         />
-        <p class="tagline">Find your K-pop match!</p>
+        <p class="tagline">Swipe. Match. Discover!</p>
       </header>
 
       <!-- CTA -->
@@ -180,7 +180,7 @@ export default defineComponent({
     };
 
     const handleStart = () => {
-      router.push({ name: PageName.SWIPE_GAME });
+      router.push({ name: PageName.INTRO });
     };
 
     onMounted(() => {
