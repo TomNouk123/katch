@@ -1,5 +1,11 @@
 <template>
   <div class="swipe-game">
+    <!-- Now Playing indicator -->
+    <div v-if="currentSongTitle && !showIntro" class="now-playing">
+      <span class="now-playing__label">NOW PLAYING:</span>
+      <span class="now-playing__title">{{ currentSongTitle }}</span>
+    </div>
+
     <!-- Card Stack Container -->
     <div class="card-container">
       <div class="card-stack">
@@ -77,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, onMounted } from 'vue';
+import { defineComponent, ref, computed, onMounted, onUnmounted, watch } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import artistData from '@/assets/data/western-artists.json';
 import { PageName } from '@/utils/_Constants';
@@ -93,6 +99,126 @@ interface Artist {
 
 // Import all western artist images
 const imageModules = import.meta.glob('@/assets/images/western-artists/*', { eager: true, as: 'url' });
+
+// Import all music files
+const musicModules = import.meta.glob('@/assets/music/*.mp3', { eager: true, as: 'url' });
+
+// Map artist IDs to their music files and start times (in seconds)
+const artistMusicMap: Record<string, { file: string; startTime: number }> = {
+  'sabrina': { file: 'sabrinacarpenter-espresso.mp3', startTime: 45 },
+  'travisscott': { file: 'travisscott-goosebumps.mp3', startTime: 55 },
+  'dualipa': { file: 'dualipa-dontsstartnow.mp3', startTime: 40 },
+  'sza': { file: 'sza-killbill.mp3', startTime: 35 },
+  'lanadelrey': { file: 'lanadelrey-summertimesadness.mp3', startTime: 60 },
+  'charli': { file: 'charlixcx-brat.mp3', startTime: 30 },
+  'rosalia': { file: 'rosalia-despecha.mp3', startTime: 45 },
+  'laufey': { file: 'laufey-fromthestart.mp3', startTime: 50 },
+  'phoebe': { file: 'phoebebridgers-motionsickness.mp3', startTime: 55 },
+  'aurora': { file: 'aurora-runaway.mp3', startTime: 60 },
+  'troyesivan': { file: 'troyesivan-rush.mp3', startTime: 45 },
+  'ashnikko': { file: 'ashnikko-daisy.mp3', startTime: 40 },
+  'denzelcurry': { file: 'denzelcurry-walkin.mp3', startTime: 50 },
+  'burnaboy': { file: 'burnaboy-lastlast.mp3', startTime: 55 },
+  'jbalvin': { file: 'jbalvin-migente.mp3', startTime: 45 },
+  'martingarrix': { file: 'martingarrix-animals.mp3', startTime: 60 },
+  'diplo': { file: 'diplo-whereareunow.mp3', startTime: 50 },
+  'avicii': { file: 'avicii-wakemeup.mp3', startTime: 55 },
+  'hanszimmer': { file: 'hanszimmer-cornfieldchase.mp3', startTime: 90 },
+  'maxrichter': { file: 'maxrichter-spring1.mp3', startTime: 60 },
+  'norahjones': { file: 'norahjones-dontknowwhy.mp3', startTime: 45 },
+  'lukecombs': { file: 'lukecombs-whenitrainsitpours.mp3', startTime: 55 },
+  'maneskin': { file: 'maneskin-zitteebuoni.mp3', startTime: 50 },
+  'foofighters': { file: 'foofighters-everlong.mp3', startTime: 85 },
+  'bmth': { file: 'bringmethehorizon-canyoufeelmyheart.mp3', startTime: 55 },
+  'system': { file: 'systemofadown-chopsuey!.mp3', startTime: 35 },
+  'arcticmonkeys': { file: 'artcticmonkeys-doiwannaknow.mp3', startTime: 65 },
+  'beatles': { file: 'beatles-letitbe.mp3', startTime: 50 },
+  'bensonboone': { file: 'bensonboone-beautifulthings.mp3', startTime: 55 },
+  'coldplay': { file: 'coldplay-yellow.mp3', startTime: 55 },
+  'drake': { file: 'drake-onedance.mp3', startTime: 40 },
+  'edsheeran': { file: 'edsheeran-perfect.mp3', startTime: 65 },
+  'gorillaz': { file: 'gorillaz-feelgoodinc.mp3', startTime: 45 },
+  'greenday': { file: 'greenday-boulevardofbrokendreams.mp3', startTime: 50 },
+  'grimes': { file: 'grimes-oblivion.mp3', startTime: 70 },
+  'kehlani': { file: 'kehlani-folded.mp3', startTime: 45 },
+  'kendricklamar': { file: 'kendricklamar-humble.mp3', startTime: 55 },
+  'linkinpark': { file: 'linkinpark-intheend.mp3', startTime: 55 },
+  'oliviadean': { file: 'oliviadean-manineed.mp3', startTime: 50 },
+  'roxydekker': { file: 'roxydekker-sugardaddy.mp3', startTime: 40 },
+  'slipknot': { file: 'slipknot-duality.mp3', startTime: 45 },
+  'suzanfreek': { file: 'suzanfreek-alshetavondis.mp3', startTime: 55 },
+  'tameimpala': { file: 'tameimpala-thelessiknow.mp3', startTime: 75 },
+  'tatemcrae': { file: 'tatemcrae-greedy.mp3', startTime: 35 },
+  'taylorswift': { file: 'taylorswift-cruelsummer.mp3', startTime: 55 },
+  'the1975': { file: 'the1975-somebodyelse.mp3', startTime: 70 },
+  'theweeknd': { file: 'theweekend-blindinglights.mp3', startTime: 50 },
+  'tiesto': { file: 'tiesto-thebusiness.mp3', startTime: 45 },
+};
+
+// Map artist IDs to song titles for "Now Playing" display
+const artistSongTitles: Record<string, string> = {
+  'sabrina': 'Espresso - Sabrina Carpenter',
+  'travisscott': 'Goosebumps - Travis Scott',
+  'dualipa': "Don't Start Now - Dua Lipa",
+  'sza': 'Kill Bill - SZA',
+  'lanadelrey': 'Summertime Sadness - Lana Del Rey',
+  'charli': 'Brat - Charli XCX',
+  'rosalia': 'Despechá - Rosalía',
+  'laufey': 'From The Start - Laufey',
+  'phoebe': 'Motion Sickness - Phoebe Bridgers',
+  'aurora': 'Runaway - AURORA',
+  'troyesivan': 'Rush - Troye Sivan',
+  'ashnikko': 'Daisy - Ashnikko',
+  'denzelcurry': 'Walkin - Denzel Curry',
+  'burnaboy': 'Last Last - Burna Boy',
+  'jbalvin': 'Mi Gente - J Balvin',
+  'martingarrix': 'Animals - Martin Garrix',
+  'diplo': 'Where Are Ü Now - Diplo',
+  'avicii': 'Wake Me Up - Avicii',
+  'hanszimmer': 'Cornfield Chase - Hans Zimmer',
+  'maxrichter': 'Spring 1 - Max Richter',
+  'norahjones': "Don't Know Why - Norah Jones",
+  'lukecombs': 'When It Rains It Pours - Luke Combs',
+  'maneskin': 'Zitti E Buoni - Måneskin',
+  'foofighters': 'Everlong - Foo Fighters',
+  'bmth': 'Can You Feel My Heart - BMTH',
+  'system': 'Chop Suey! - System of a Down',
+  'arcticmonkeys': 'Do I Wanna Know? - Arctic Monkeys',
+  'beatles': 'Let It Be - The Beatles',
+  'bensonboone': 'Beautiful Things - Benson Boone',
+  'coldplay': 'Yellow - Coldplay',
+  'drake': 'One Dance - Drake',
+  'edsheeran': 'Perfect - Ed Sheeran',
+  'gorillaz': 'Feel Good Inc. - Gorillaz',
+  'greenday': 'Boulevard of Broken Dreams - Green Day',
+  'grimes': 'Oblivion - Grimes',
+  'kehlani': 'Folded - Kehlani',
+  'kendricklamar': 'HUMBLE. - Kendrick Lamar',
+  'linkinpark': 'In The End - Linkin Park',
+  'oliviadean': 'The Man I Need - Olivia Dean',
+  'roxydekker': 'Sugar Daddy - Roxy Dekker',
+  'slipknot': 'Duality - Slipknot',
+  'suzanfreek': 'Als Het Avond Is - Suzan & Freek',
+  'tameimpala': 'The Less I Know The Better - Tame Impala',
+  'tatemcrae': 'Greedy - Tate McRae',
+  'taylorswift': 'Cruel Summer - Taylor Swift',
+  'the1975': 'Somebody Else - The 1975',
+  'theweeknd': 'Blinding Lights - The Weeknd',
+  'tiesto': 'The Business - Tiësto',
+};
+
+// Get music URL and start time for an artist
+function getMusicInfo(artistId: string): { url: string; startTime: number } | null {
+  const musicData = artistMusicMap[artistId];
+  if (!musicData) return null;
+  
+  for (const [key, url] of Object.entries(musicModules)) {
+    if (key.includes(musicData.file)) {
+      return { url, startTime: musicData.startTime };
+    }
+  }
+  return null;
+}
 
 // Number of artists per game
 const ARTISTS_PER_GAME = 25;
@@ -125,7 +251,44 @@ export default defineComponent({
     
     const dismissIntro = () => {
       showIntro.value = false;
+      // Start playing music when intro is dismissed
+      playCurrentArtistMusic();
     };
+    
+    // Audio player for background music
+    const audioPlayer = ref<HTMLAudioElement | null>(null);
+    
+    const playCurrentArtistMusic = () => {
+      if (artists.value.length === 0) return;
+      
+      const currentArtist = artists.value[0];
+      const musicInfo = getMusicInfo(currentArtist.id);
+      
+      if (musicInfo) {
+        if (audioPlayer.value) {
+          audioPlayer.value.pause();
+        }
+        audioPlayer.value = new Audio(musicInfo.url);
+        audioPlayer.value.volume = 0.05; // Very quiet background music
+        audioPlayer.value.loop = true;
+        audioPlayer.value.currentTime = musicInfo.startTime; // Start at chorus
+        audioPlayer.value.play().catch(err => {
+          console.log('Audio autoplay blocked:', err);
+        });
+      }
+    };
+    
+    const stopMusic = () => {
+      if (audioPlayer.value) {
+        audioPlayer.value.pause();
+        audioPlayer.value = null;
+      }
+    };
+    
+    // Clean up audio on unmount
+    onUnmounted(() => {
+      stopMusic();
+    });
     
     // Clear previous liked artists when starting a new game
     store.clearLikedArtists();
@@ -144,6 +307,13 @@ export default defineComponent({
 
     const visibleCards = computed(() => {
       return artists.value.slice(0, 3);
+    });
+
+    // Current song title for "Now Playing" display
+    const currentSongTitle = computed(() => {
+      if (artists.value.length === 0) return '';
+      const currentArtist = artists.value[0];
+      return artistSongTitles[currentArtist.id] || '';
     });
 
     const dragDistance = computed(() => currentX.value - startX.value);
@@ -222,10 +392,16 @@ export default defineComponent({
 
       // Check if game is complete
       if (artists.value.length === 0) {
-        // Small delay before showing calculating screen
+        // Stop music and go to calculating screen
+        stopMusic();
         setTimeout(() => {
           goToCalculating();
         }, 500);
+      } else {
+        // Play music for the next artist
+        if (!showIntro.value) {
+          playCurrentArtistMusic();
+        }
       }
     };
 
@@ -314,6 +490,7 @@ export default defineComponent({
       onMouseDown,
       showIntro,
       dismissIntro,
+      currentSongTitle,
     };
   },
 });
@@ -333,6 +510,39 @@ export default defineComponent({
   touch-action: pan-x;
   overscroll-behavior: none;
   -webkit-overflow-scrolling: auto;
+}
+
+.now-playing {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 24px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+
+  &__label {
+    font-family: 'Mulish', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    font-family: 'Mulish', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+  }
 }
 
 .card-container {
@@ -569,7 +779,7 @@ export default defineComponent({
 
   &--right {
     right: 100px;
-    top: 64%;
+    top: 67%;
     text-align: right;
     max-width: 400px;
   }
@@ -592,7 +802,7 @@ export default defineComponent({
   }
   
   &--down-right {
-    margin-left: 150px;
+    margin-left: 90px;
     margin-top: 50px;
     transform: rotate(10deg) scaleX(-1);
   }
