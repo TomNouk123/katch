@@ -4,84 +4,97 @@
       <div class="background__gradient" />
     </div>
 
-    <div class="results-content" v-if="group">
-      <!-- Header with Group Name -->
+    <div class="results-content" v-if="currentGroup">
+      <!-- Fixed Header with Group Name -->
       <header class="header">
-        <h1 class="group-name">{{ group.name }}</h1>
+        <h1 class="group-name">{{ currentGroup.name }}</h1>
+        <p class="header-subtitle">{{ isVideoMuted ? 'Tap to reveal song' : 'NOW PLAYING: ' + currentSongTitle }}</p>
       </header>
 
-      <!-- Main Card -->
-      <div class="main-card">
-        <!-- Video/Image Container (16:9 aspect ratio) -->
-        <div class="video-container">
-          <video 
-            v-if="currentGroupId === 'lesserafim'" 
-            ref="videoRef"
-            class="group-video"
-            :src="lesserafimVideo"
-            autoplay
-            muted
-            loop
-            playsinline
-            disablePictureInPicture
-            disableRemotePlayback
-          />
-          <img v-else :src="getGroupImage(group.image)" :alt="group.name" class="group-image" />
-        </div>
+      <!-- Carousel for Main Cards Only -->
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <!-- Loop through all matched groups - only the main card -->
+          <div 
+            v-for="(groupId, index) in topMatchIds" 
+            :key="groupId" 
+            class="carousel-slide"
+            :class="{
+              'is-active': index === currentIndex,
+              'is-prev': index === currentIndex - 1,
+              'is-next': index === currentIndex + 1,
+              'is-hidden': index < currentIndex - 1 || index > currentIndex + 1
+            }"
+            :style="{ transform: getSlideTransform(index) }"
+          >
+            <div class="main-card" v-if="getGroupById(groupId)">
+              <!-- Video/Image Container (16:9 aspect ratio) -->
+              <div class="video-container">
+                <video 
+                  v-if="getVideoConfig(groupId)" 
+                  :ref="el => setVideoRef(el, groupId)"
+                  class="group-video"
+                  :src="getVideoConfig(groupId)?.src"
+                  :autoplay="index === currentIndex"
+                  muted
+                  loop
+                  playsinline
+                  disablePictureInPicture
+                  disableRemotePlayback
+                />
+                <img v-else :src="getGroupImage(getGroupById(groupId)?.image || '')" :alt="getGroupById(groupId)?.name" class="group-image" />
+              </div>
 
-        <!-- Info Section -->
-        <div class="info-section">
-          <h2 class="fandom-title">Fandom: {{ group.fandomName }}</h2>
-          <p class="now-playing">NOW PLAYING: {{ nowPlayingText }}</p>
-          <p class="members-list">LEDEN: {{ memberNames }}</p>
-          <p class="company">COMPANY: {{ group.company }}</p>
+              <!-- Info Section -->
+              <div class="info-section">
+                <h2 class="fandom-title">Fandom: {{ getGroupById(groupId)?.fandomName }}</h2>
+                <p class="now-playing">{{ getGroupById(groupId)?.tags.join(', ').toUpperCase() }}</p>
+                <p class="members-list">LEDEN: {{ getGroupById(groupId)?.members.map(m => m.name).join(', ') }}</p>
+                <p class="company">COMPANY: {{ getGroupById(groupId)?.company }}</p>
 
-          <!-- Description -->
-          <p class="description">{{ group.description }}</p>
-        </div>
+                <!-- Description -->
+                <p class="description">{{ getGroupById(groupId)?.description }}</p>
+              </div>
 
-        <!-- Lightstick positioned at bottom right with name -->
-        <div class="lightstick-wrapper" v-if="group.lightstick">
-          <p class="lightstick-name" v-if="group.lightstickName">LIGHTSTICK: {{ group.lightstickName }}</p>
-          <div class="lightstick-container">
-            <img :src="getLightstickImage(group.lightstick)" :alt="group.lightstickName" class="lightstick-image" />
+              <!-- Lightstick positioned at bottom right with name -->
+              <div class="lightstick-wrapper" v-if="getGroupById(groupId)?.lightstick">
+                <p class="lightstick-name" v-if="getGroupById(groupId)?.lightstickName">LIGHTSTICK: {{ getGroupById(groupId)?.lightstickName }}</p>
+                <div class="lightstick-container">
+                  <img :src="getLightstickImage(getGroupById(groupId)?.lightstick || '')" :alt="getGroupById(groupId)?.lightstickName" class="lightstick-image" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Bottom Section: QR Code and NFC Hint side by side -->
+      <!-- Pagination Dots -->
+      <div class="pagination-dots" v-if="topMatchIds.length > 1">
+        <span 
+          v-for="(groupId, index) in topMatchIds" 
+          :key="groupId" 
+          class="dot"
+          :class="{ 'active': index === currentIndex }"
+        ></span>
+      </div>
+
+      <!-- Fixed Bottom Section: QR Code and NFC Hint side by side -->
       <div class="bottom-section">
         <!-- QR Code on the left -->
         <div class="qr-section">
-          <div class="qr-code">
-            <img :src="getQrCode(group.qrCode)" :alt="'QR code for ' + group.name" />
-          </div>
           <div class="qr-text">
             <span>Bezoek de</span>
             <span>spotify pagina</span>
+          </div>
+          <div class="qr-code">
+            <img :src="getQrCode(currentGroup.qrCode || '')" :alt="'QR code for ' + currentGroup.name" />
           </div>
         </div>
 
         <!-- NFC Hint on the right -->
         <div class="nfc-hint">
           <p class="nfc-text">Houd je telefoon<br/>hier tegenaan voor<br/>een leuke<br/>verrassing</p>
-          <svg class="nfc-arrow" viewBox="0 0 100 50" width="60" height="30">
-            <path 
-              d="M10 25 Q 50 25, 70 40" 
-              stroke="currentColor" 
-              stroke-width="3" 
-              fill="none"
-              stroke-linecap="round"
-            />
-            <path 
-              d="M60 42 L70 40 L68 30" 
-              stroke="currentColor" 
-              stroke-width="3" 
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+          <img :src="arrowIcon" alt="arrow" class="nfc-arrow" />
         </div>
       </div>
     </div>
@@ -94,23 +107,55 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch, onMounted, onUnmounted } from 'vue';
+import { defineComponent, computed, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDataStore } from '@/store/_DataStore';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
 import { PageName } from '@/utils/_Constants';
 
-// Import group songs
-import blackpinkSong from '@/assets/music/blackpink.mp3';
-import twiceSong from '@/assets/music/twice.mp3';
-
 // Import group videos
+import akmuVideo from '@/assets/videos/akmu-howcanilove.mp4';
+import ateezVideo from '@/assets/videos/ateez-crazyform.mp4';
+import blackpinkVideo from '@/assets/videos/blackpink-jump.mp4';
+import btsVideo from '@/assets/videos/bts-butter.mp4';
+import day6Video from '@/assets/videos/day6-happy.mp4';
+import dreamcatcherVideo from '@/assets/videos/dreamcatcher-boca.mp4';
+import enhypenVideo from '@/assets/videos/enhypen-biteme.mp4';
+import kissoflifeVideo from '@/assets/videos/kissoflife-igloo.mp4';
 import lesserafimVideo from '@/assets/videos/lesserafim-hot.mp4';
+import mamamooVideo from '@/assets/videos/mamamoo-starrynight.mp4';
+import nct127Video from '@/assets/videos/nct127-factcheck.mp4';
+import qwerVideo from '@/assets/videos/qwer-tbh.mp4';
+import redvelvetVideo from '@/assets/videos/redvelvet-cosmic.mp4';
+import straykidsVideo from '@/assets/videos/straykids-chkchkboom.mp4';
+import theroseVideo from '@/assets/videos/therose-backtome.mp4';
+import twiceVideo from '@/assets/videos/twice-thisisfor.mp4';
+import xdinaryheroesVideo from '@/assets/videos/xdinaryheroes-fire.mp4';
+import youngposseVideo from '@/assets/videos/youngposse-xxl.mp4';
 
-// Music configuration for groups (LE SSERAFIM uses video audio instead)
-const groupMusicConfig: Record<string, { src: string; startTime: number; songTitle: string; artist: string }> = {
-  blackpink: { src: blackpinkSong, startTime: 30, songTitle: 'Jump', artist: 'BLACKPINK' },
-  twice: { src: twiceSong, startTime: 35, songTitle: 'The Feels', artist: 'TWICE' },
+// Import arrow icon
+import arrowIcon from '@/assets/images/icons/arrow.png';
+
+// Video configuration for all groups
+const groupVideoConfig: Record<string, { src: string; startTime: number; songTitle: string }> = {
+  akmu: { src: akmuVideo, startTime: 84, songTitle: 'How Can I Love the Heartbreak' },
+  ateez: { src: ateezVideo, startTime: 60, songTitle: 'Crazy Form' },
+  blackpink: { src: blackpinkVideo, startTime: 55, songTitle: 'Jump' },
+  bts: { src: btsVideo, startTime: 29, songTitle: 'Butter' },
+  day6: { src: day6Video, startTime: 56, songTitle: 'Happy' },
+  dreamcatcher: { src: dreamcatcherVideo, startTime: 62, songTitle: 'BOCA' },
+  enhypen: { src: enhypenVideo, startTime: 67, songTitle: 'Bite Me' },
+  kissoflife: { src: kissoflifeVideo, startTime: 20, songTitle: 'Igloo' },
+  lesserafim: { src: lesserafimVideo, startTime: 30, songTitle: 'Hot' },
+  mamamoo: { src: mamamooVideo, startTime: 60, songTitle: 'Starry Night' },
+  nct127: { src: nct127Video, startTime: 33, songTitle: 'Fact Check' },
+  qwer: { src: qwerVideo, startTime: 70, songTitle: 'T.B.H' },
+  redvelvet: { src: redvelvetVideo, startTime: 51, songTitle: 'Cosmic' },
+  straykids: { src: straykidsVideo, startTime: 56, songTitle: 'Chk Chk Boom' },
+  therose: { src: theroseVideo, startTime: 62, songTitle: 'Back To Me' },
+  twice: { src: twiceVideo, startTime: 33, songTitle: 'This is For' },
+  xdinaryheroes: { src: xdinaryheroesVideo, startTime: 24, songTitle: 'FiRE (My Sweet Misery)' },
+  youngposse: { src: youngposseVideo, startTime: 90, songTitle: 'XXL' },
 };
 
 interface Member {
@@ -152,89 +197,88 @@ export default defineComponent({
     // Touch handling for swipe
     const touchStartX = ref(0);
     const touchEndX = ref(0);
+    const swipeOffset = ref(0);
+    const isSwiping = ref(false);
     const minSwipeDistance = 50;
     
-    // Audio management
-    const audioRef = ref<HTMLAudioElement | null>(null);
-    const currentMusicGroup = ref<string | null>(null);
+    // Video management - store refs for each group
+    const videoRefs = ref<Record<string, HTMLVideoElement | null>>({});
+    const videoInitialized = ref<Record<string, boolean>>({}); // Track if video start time was set
+    const videoUnmuted = ref<Record<string, boolean>>({}); // Track unmuted state per group
     
-    // Video management
-    const videoRef = ref<HTMLVideoElement | null>(null);
+    // Computed to check if current video is muted
+    const isVideoMuted = computed(() => {
+      return !videoUnmuted.value[currentGroupId.value];
+    });
+    
+    // Set video ref for a specific group
+    const setVideoRef = (el: any, groupId: string) => {
+      if (el) {
+        videoRefs.value[groupId] = el as HTMLVideoElement;
+        // Only set start time once when video is first mounted
+        if (!videoInitialized.value[groupId]) {
+          const config = groupVideoConfig[groupId];
+          if (config) {
+            el.currentTime = config.startTime;
+            el.volume = 0.15;
+          }
+          videoInitialized.value[groupId] = true;
+        }
+        // Restore unmuted state if previously unmuted
+        if (videoUnmuted.value[groupId]) {
+          el.muted = false;
+          el.volume = 0.15;
+        }
+      }
+    };
     
     // Unmute video on user interaction
     const unmuteVideo = () => {
-      if (videoRef.value && videoRef.value.muted) {
-        videoRef.value.muted = false;
-        videoRef.value.volume = 0.15;
+      const currentVideo = videoRefs.value[currentGroupId.value];
+      if (currentVideo && currentVideo.muted) {
+        currentVideo.muted = false;
+        currentVideo.volume = 0.15;
+        videoUnmuted.value[currentGroupId.value] = true;
       }
     };
     
     const currentGroupId = computed(() => route.params.groupId as string);
     
-    // Function to play group's song
-    const playGroupSong = (groupId: string) => {
-      const config = groupMusicConfig[groupId];
-      if (!config) return;
-      
-      // Always stop current audio first
-      if (audioRef.value) {
-        audioRef.value.pause();
-        audioRef.value = null;
-      }
-      
-      // Create new audio element for this group
-      audioRef.value = new Audio(config.src);
-      audioRef.value.volume = 0.7;
-      audioRef.value.currentTime = config.startTime;
-      currentMusicGroup.value = groupId;
-      
-      audioRef.value.play().catch(err => {
-        console.log('Audio playback failed:', err);
-      });
+    // Get group by ID helper
+    const getGroupById = (groupId: string): KpopGroup | undefined => {
+      return kpopGroupsData.groups.find(g => g.id === groupId) as KpopGroup | undefined;
     };
     
-    // Function to stop the song
-    const stopSong = () => {
-      if (audioRef.value) {
-        audioRef.value.pause();
-        audioRef.value = null;
-      }
-      currentMusicGroup.value = null;
+    // Get video config by group ID
+    const getVideoConfig = (groupId: string) => {
+      return groupVideoConfig[groupId] || null;
     };
     
-    // Watch for changes in the current group
-    watch(currentGroupId, (newGroupId) => {
-      if (newGroupId && newGroupId in groupMusicConfig) {
-        playGroupSong(newGroupId);
-      } else {
-        stopSong();
-      }
-    });
-    
-    onMounted(() => {
-      // Start playing if current group has music
-      const groupId = currentGroupId.value;
-      if (groupId && groupId in groupMusicConfig) {
-        playGroupSong(groupId);
+    // Watch for group changes to handle video playback when swiping
+    watch(currentGroupId, (newGroupId, oldGroupId) => {
+      // Pause old video
+      if (oldGroupId && videoRefs.value[oldGroupId]) {
+        videoRefs.value[oldGroupId]?.pause();
       }
       
-      // Set video start time for LE SSERAFIM
-      if (groupId === 'lesserafim' && videoRef.value) {
-        videoRef.value.currentTime = 30;
-      }
-    });
-    
-    // Watch for video ref to set start time
-    watch(videoRef, (newVideoRef) => {
-      if (newVideoRef && currentGroupId.value === 'lesserafim') {
-        newVideoRef.currentTime = 30;
-        newVideoRef.volume = 0.15;
-      }
-    });
-    
-    onUnmounted(() => {
-      // Clean up audio when leaving the page
-      stopSong();
+      // Play and set start time for new group's video if it exists
+      setTimeout(() => {
+        const config = groupVideoConfig[newGroupId];
+        const currentVideo = videoRefs.value[newGroupId];
+        if (currentVideo && config) {
+          // Only reset to start time if not initialized
+          if (!videoInitialized.value[newGroupId]) {
+            currentVideo.currentTime = config.startTime;
+            videoInitialized.value[newGroupId] = true;
+          }
+          currentVideo.volume = 0.15;
+          // Restore unmuted state if previously unmuted
+          if (videoUnmuted.value[newGroupId]) {
+            currentVideo.muted = false;
+          }
+          currentVideo.play().catch(() => {});
+        }
+      }, 50);
     });
     
     const topMatchIds = computed(() => store.topMatchIds);
@@ -260,6 +304,17 @@ export default defineComponent({
       }
     };
 
+    // Current group for fixed header and bottom section
+    const currentGroup = computed<KpopGroup | undefined>(() => {
+      return kpopGroupsData.groups.find(g => g.id === currentGroupId.value) as KpopGroup | undefined;
+    });
+
+    // Current song title for header
+    const currentSongTitle = computed(() => {
+      const config = groupVideoConfig[currentGroupId.value];
+      return config ? config.songTitle : '';
+    });
+
     const group = computed<KpopGroup | undefined>(() => {
       return kpopGroupsData.groups.find(g => g.id === currentGroupId.value) as KpopGroup | undefined;
     });
@@ -269,10 +324,21 @@ export default defineComponent({
       return group.value.members.map(m => m.name).join(', ');
     });
 
-    // Now playing text based on group
+    // Get current video config
+    const currentVideoConfig = computed(() => {
+      return groupVideoConfig[currentGroupId.value] || null;
+    });
+
+    // Now playing text based on group's video
     const nowPlayingText = computed(() => {
-      if (currentGroupId.value === 'lesserafim') return 'Hot';
-      return 'This is For';
+      const config = groupVideoConfig[currentGroupId.value];
+      return config ? config.songTitle : '';
+    });
+
+    // Genres text for the group
+    const genresText = computed(() => {
+      if (!group.value) return '';
+      return group.value.tags.join(', ').toUpperCase();
     });
 
     // Calculate dynamic font size based on name length
@@ -334,18 +400,47 @@ export default defineComponent({
     
     const onTouchStart = (e: TouchEvent) => {
       touchStartX.value = e.touches[0].clientX;
+      touchEndX.value = e.touches[0].clientX;
+      isSwiping.value = true;
     };
     
     const onTouchMove = (e: TouchEvent) => {
+      if (!isSwiping.value) return;
       touchEndX.value = e.touches[0].clientX;
+      
+      // Calculate offset for visual feedback during swipe
+      const diff = touchEndX.value - touchStartX.value;
+      
+      // Limit the offset at the edges
+      const isAtStart = currentIndex.value === 0;
+      const isAtEnd = currentIndex.value === topMatchIds.value.length - 1;
+      
+      if ((isAtStart && diff > 0) || (isAtEnd && diff < 0)) {
+        // Apply resistance at edges
+        swipeOffset.value = diff * 0.3;
+      } else {
+        swipeOffset.value = diff;
+      }
     };
     
     const onTouchEnd = () => {
-      if (!hasMultipleMatches.value) return;
+      isSwiping.value = false;
+      
+      if (!hasMultipleMatches.value) {
+        swipeOffset.value = 0;
+        return;
+      }
       
       const distance = touchStartX.value - touchEndX.value;
       
-      if (Math.abs(distance) < minSwipeDistance) return;
+      if (Math.abs(distance) < minSwipeDistance) {
+        // Reset offset if swipe wasn't far enough
+        swipeOffset.value = 0;
+        return;
+      }
+      
+      // Reset offset before navigation
+      swipeOffset.value = 0;
       
       if (distance > 0) {
         // Swipe left - go to next
@@ -362,22 +457,46 @@ export default defineComponent({
       }
     };
 
+    // Get transform for each slide based on position relative to current
+    const getSlideTransform = (index: number) => {
+      const offset = swipeOffset.value;
+      const diff = index - currentIndex.value;
+      
+      if (diff === 0) {
+        // Active card - centered with swipe offset
+        return `translateX(calc(-50% + ${offset}px)) scale(1)`;
+      } else if (diff === -1) {
+        // Previous card - left side with swipe offset
+        return `translateX(calc(-50% - 85% + ${offset}px)) scale(0.85)`;
+      } else if (diff === 1) {
+        // Next card - right side with swipe offset
+        return `translateX(calc(-50% + 85% + ${offset}px)) scale(0.85)`;
+      } else {
+        // Hidden cards
+        return `translateX(-50%) scale(0.85)`;
+      }
+    };
+
     return {
-      group,
-      memberNames,
       currentGroupId,
+      currentIndex,
+      currentGroup,
+      currentSongTitle,
       topMatchIds,
       hasMultipleMatches,
       canGoNext,
       canGoPrev,
-      groupNameFontSize,
-      nowPlayingText,
-      videoRef,
-      lesserafimVideo,
-      unmuteVideo,
+      swipeOffset,
+      isVideoMuted,
+      arrowIcon,
+      setVideoRef,
+      getGroupById,
+      getVideoConfig,
       getGroupImage,
       getLightstickImage,
       getQrCode,
+      getSlideTransform,
+      unmuteVideo,
       goHome,
       navigateToGroup,
       goToNext,
@@ -397,7 +516,8 @@ export default defineComponent({
   position: relative;
   min-height: 100vh;
   min-height: 100dvh;
-  overflow-x: hidden;
+  overflow: hidden;
+  background: linear-gradient(135deg, #654EAC 0%, rgb(165, 145, 226) 50%, #654EAC 100%);
 }
 
 .background {
@@ -416,17 +536,70 @@ export default defineComponent({
   position: relative;
   z-index: 1;
   width: 100%;
-  padding: 40px 50px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
   box-sizing: border-box;
 }
 
 .header {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: -20px;
+  margin-bottom: -42px;
   position: relative;
-  z-index: 2;
+  z-index: 10;
+  padding: 0 30px;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  z-index: 1;
+}
+
+.carousel-track {
+  position: relative;
+  width: 100%;
+  min-height: 780px;
+}
+
+.carousel-slide {
+  position: absolute;
+  width: calc(100vw - 60px);
+  max-width: calc(100vw - 60px);
+  left: 50%;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+  opacity: 0.7;
+  z-index: 1;
+  
+  // Position for previous card (left peek)
+  &.is-prev {
+    opacity: 0.7;
+    z-index: 1;
+  }
+  
+  // Position for next card (right peek)
+  &.is-next {
+    opacity: 0.7;
+    z-index: 1;
+  }
+  
+  // Active card: centered and full size
+  &.is-active {
+    opacity: 1;
+    z-index: 3;
+  }
+  
+  // Hide cards that are not adjacent
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 .group-name {
@@ -437,6 +610,16 @@ export default defineComponent({
   margin-bottom: -12px;
   text-transform: uppercase;
   letter-spacing: 1px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.header-subtitle {
+  font-family: 'Mulish', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+  margin: 6px 0 0px 0;
+  line-height: 1;
 }
 
 .main-card {
@@ -445,7 +628,7 @@ export default defineComponent({
   border-style: hidden;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   max-width: 96%;
   margin-left: auto;
   margin-right: auto;
@@ -471,8 +654,8 @@ export default defineComponent({
 
 
 .info-section {
-  padding: 20px 28px 150px;
-  margin-top: -40px;
+  padding: 20px 28px 100px;
+  margin-top: -32px;
   position: relative;
   z-index: 1;
 }
@@ -482,22 +665,22 @@ export default defineComponent({
   font-size: 38px;
   font-weight: 1000;
   color: #594A4E;
-  margin: 30px 0 -4px 10px;
+  margin: 30px 0 -8px 10px;
 }
 
 .now-playing {
   font-family: 'Mulish', sans-serif;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 1000;
   color: #594A4E;
-  margin: 0 0 14px 10px;
+  margin: 0 0 18px 10px;
   line-height: 1;
 }
 
 .members-list {
   font-family: 'Mulish', sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   color: #594A4E;
   margin: 0 0 4px 10px;
   line-height: 1;
@@ -506,7 +689,7 @@ export default defineComponent({
 .company {
   font-family: 'Mulish', sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   color: #594A4E;
   margin: 0 0 20px 10px;
 }
@@ -531,7 +714,7 @@ export default defineComponent({
 .lightstick-wrapper {
   position: absolute;
   bottom: 0px;
-  right: -20px;
+  right: -10px;
   display: flex;
   align-items: flex-end;
   gap: 0px;
@@ -548,8 +731,8 @@ export default defineComponent({
 }
 
 .lightstick-container {
-  width: 230px;
-  height: 270px;
+  width: 210px;
+  height: 250px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -561,26 +744,55 @@ export default defineComponent({
   }
 }
 
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 15px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: background 0.3s ease, transform 0.3s ease;
+  
+  &.active {
+    background: #fff;
+    transform: scale(1.2);
+  }
+}
+
 .bottom-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
+  width: 100%;
+  padding: 0 50px;
+  box-sizing: border-box;
+  margin-top: 15px;
+  position: relative;
+  z-index: 10;
 }
 
 .qr-section {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
-  gap: 12px;
+  gap: 10px;
 }
 
 .qr-code {
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   background: #fff;
-  border-radius: 12px;
-  padding: 8px;
+  border-radius: 14px;
+  padding: 10px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   
   img {
@@ -594,34 +806,33 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   font-family: 'Outfit', sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: #fff;
-  line-height: 1.2;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  line-height: 1;
 }
 
 .nfc-hint {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: 12px;
 }
 
 .nfc-text {
-  font-family: 'Mulish', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
   font-style: italic;
   color: #fff;
   text-align: right;
-  line-height: 1.3;
+  line-height: 1;
   margin: 0;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .nfc-arrow {
-  color: #fff;
+  width: 100px;
+  height: auto;
   flex-shrink: 0;
 }
 

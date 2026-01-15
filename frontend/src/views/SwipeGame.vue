@@ -14,10 +14,10 @@
             'card--third': index === 2
           }"
           :style="getCardStyle(index)"
-          @touchstart="index === 0 ? onTouchStart($event) : null"
-          @touchmove="index === 0 ? onTouchMove($event) : null"
-          @touchend="index === 0 ? onTouchEnd() : null"
-          @mousedown="index === 0 ? onMouseDown($event) : null"
+          @touchstart="index === 0 && !showIntro ? onTouchStart($event) : null"
+          @touchmove="index === 0 && !showIntro ? onTouchMove($event) : null"
+          @touchend="index === 0 && !showIntro ? onTouchEnd() : null"
+          @mousedown="index === 0 && !showIntro ? onMouseDown($event) : null"
         >
           <div class="card__image" :style="{ backgroundImage: `url(${getImageUrl(artist.image)})` }">
             <!-- Gradient overlay for text readability -->
@@ -33,10 +33,10 @@
         </div>
 
         <!-- Action Buttons inside card-stack -->
-        <button class="action-btn action-btn--nope" @click="swipeLeft">
+        <button class="action-btn action-btn--nope" @click="!showIntro && swipeLeft()">
           <span class="action-btn__icon">✕</span>
         </button>
-        <button class="action-btn action-btn--like" @click="swipeRight">
+        <button class="action-btn action-btn--like" @click="!showIntro && swipeRight()">
           <img src="@/assets/images/like.png" alt="Like" class="action-btn__icon" />
         </button>
         
@@ -46,12 +46,39 @@
         </div>
       </div>
     </div>
+
+    <!-- Intro Overlay -->
+    <div v-if="showIntro" class="intro-overlay">
+      <div class="intro-overlay__bg"></div>
+      
+      <!-- Top instruction text -->
+      <div class="intro-instruction intro-instruction--top">
+        <p>Wij gaan op zoek naar jouw<br/>Kpop match! We moeten eerst<br/>alleen even weten wat jouw<br/>muziek smaak is!</p>
+      </div>
+
+      <!-- Left instruction (pointing to X button) -->
+      <div class="intro-instruction intro-instruction--left">
+        <p>Swipe de artiesten gebaseerd op<br/>of je ze leuk vindt of niet</p>
+        <img src="@/assets/images/icons/arrow.png" alt="" class="intro-arrow intro-arrow--down-left" />
+      </div>
+
+      <!-- Right instruction (pointing to heart button) -->
+      <div class="intro-instruction intro-instruction--right">
+        <p>Ken je de artiest niet? Geen<br/>zorgen, swipe dan op basis van<br/>de genres of het liedje dat je<br/>hoort!</p>
+        <img src="@/assets/images/icons/arrow.png" alt="" class="intro-arrow intro-arrow--down-right" />
+      </div>
+
+      <!-- Start Button -->
+      <button class="intro-start-btn" @click="dismissIntro">
+        START
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
-import { useRouter } from 'vue-router';
+import { defineComponent, ref, computed, onMounted } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
 import artistData from '@/assets/data/western-artists.json';
 import { PageName } from '@/utils/_Constants';
 import { useDataStore } from '@/store/_DataStore';
@@ -90,7 +117,15 @@ export default defineComponent({
   name: 'SwipeGame',
   setup() {
     const router = useRouter();
+    const route = useRoute();
     const store = useDataStore();
+    
+    // Show intro overlay (check if coming from intro page)
+    const showIntro = ref(route.query.intro !== 'false');
+    
+    const dismissIntro = () => {
+      showIntro.value = false;
+    };
     
     // Clear previous liked artists when starting a new game
     store.clearLikedArtists();
@@ -277,6 +312,8 @@ export default defineComponent({
       onTouchMove,
       onTouchEnd,
       onMouseDown,
+      showIntro,
+      dismissIntro,
     };
   },
 });
@@ -478,6 +515,114 @@ export default defineComponent({
     font-size: 28px;
     font-weight: 700;
     color: #1a1a2e;
+  }
+}
+
+// Intro Overlay Styles
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: auto;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.70);
+  }
+}
+
+.intro-instruction {
+  position: absolute;
+  z-index: 101;
+  
+  p {
+    font-family: 'Mulish', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  &--top {
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+    
+    p {
+      font-size: 34px;
+      font-weight: 700;
+    }
+  }
+
+  &--left {
+    left: 50px;
+    top: 58%;
+    text-align: left;
+    max-width: 300px;
+  }
+
+  &--right {
+    right: 100px;
+    top: 64%;
+    text-align: right;
+    max-width: 400px;
+  }
+}
+
+.intro-instruction--right .intro-arrow--down-right {
+  margin-top: -30px;
+}
+
+.intro-arrow {
+  display: block;
+  width: 120px;
+  height: auto;
+  margin-top: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  
+  &--down-left {
+    margin-top: 0px;
+    transform: rotate(30deg) translateX(10px);
+  }
+  
+  &--down-right {
+    margin-left: 150px;
+    margin-top: 50px;
+    transform: rotate(10deg) scaleX(-1);
+  }
+}
+
+.intro-start-btn {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  color: #6D28D9;
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 16px 80px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 101;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: auto;
+
+  &:hover {
+    transform: translateX(-50%) scale(1.05);
+    box-shadow: 0 6px 30px rgba(109, 40, 217, 0.4);
+  }
+
+  &:active {
+    transform: translateX(-50%) scale(0.98);
   }
 }
 </style>
