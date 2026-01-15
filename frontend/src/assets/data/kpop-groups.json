@@ -21,6 +21,7 @@
         {
           "name": "Nayeon",
           "nameKr": "Im Na-yeon",
+          "birthdate": "22/09/1995",
           "role": "Lead Vocalist, Lead Dancer, Center",
           "image": "twice/nayeon.jpeg",
           "description": "De energieke frontvrouw van TWICE met een onweerstaanbare glimlach en krachtige vocals die elke performance naar een hoger niveau tillen."
@@ -28,6 +29,7 @@
         {
           "name": "Jeongyeon",
           "nameKr": "Yoo Jeong-yeon",
+          "birthdate": "01/11/1996",
           "role": "Lead Vocalist",
           "image": "twice/jeongyeon.jpeg",
           "description": "Bekend om haar sterke, stabiele stem en no-nonsense persoonlijkheid. Jeongyeon brengt balans en kracht naar de groep."
@@ -35,6 +37,7 @@
         {
           "name": "Momo",
           "nameKr": "Hirai Momo",
+          "birthdate": "09/11/1996",
           "role": "Main Dancer, Sub Vocalist",
           "image": "twice/momo.jpeg",
           "description": "Een danslegende wiens moves viral gaan. Momo's precisie en passie maken haar tot een van de beste dansers in K-pop."
@@ -42,6 +45,7 @@
         {
           "name": "Sana",
           "nameKr": "Minatozaki Sana",
+          "birthdate": "29/12/1996",
           "role": "Sub Vocalist",
           "image": "twice/sana.jpeg",
           "description": "De schattige en charismatische Sana wiens 'Shy Shy Shy' moment iconisch werd. Haar energie is aanstekelijk."
@@ -49,6 +53,7 @@
         {
           "name": "Jihyo",
           "nameKr": "Park Ji-hyo",
+          "birthdate": "01/02/1997",
           "role": "Leader, Main Vocalist",
           "image": "twice/jihyo.jpeg",
           "description": "De powerhouse leader met een stem die bergen kan verzetten. Jihyo's leiderschap en vocale kracht zijn ongeëvenaard."
@@ -56,6 +61,7 @@
         {
           "name": "Mina",
           "nameKr": "Myoui Mina",
+          "birthdate": "24/03/1997",
           "role": "Main Dancer, Sub Vocalist",
           "image": "twice/mina.jpeg",
           "description": "De elegante ballerina van TWICE. Mina's gratie en zachte stem brengen een verfijnde touch aan de groep."
@@ -63,6 +69,7 @@
         {
           "name": "Dahyun",
           "nameKr": "Kim Da-hyun",
+          "birthdate": "28/05/1998",
           "role": "Lead Rapper, Sub Vocalist",
           "image": "twice/dahyun.jpeg",
           "description": "Het entertainment powerhouse met haar iconische eagle dance en eindeloze energie die fans wereldwijd laat lachen."
@@ -70,6 +77,7 @@
         {
           "name": "Chaeyoung",
           "nameKr": "Son Chae-young",
+          "birthdate": "23/04/1999",
           "role": "Main Rapper, Sub Vocalist",
           "image": "twice/chaeyoung.jpeg",
           "description": "De artistieke ziel van TWICE met een unieke stijl en creatieve geest. Chaeyoung brengt edge en originaliteit."
@@ -77,6 +85,7 @@
         {
           "name": "Tzuyu",
           "nameKr": "Chou Tzuyu",
+          "birthdate": "14/06/1999",
           "role": "Lead Dancer, Sub Vocalist, Visual",
           "image": "twice/tzuyu.jpeg",
           "description": "De statige visual van TWICE wiens schoonheid en talent haar tot een van de meest bewonderde idols maken."
@@ -104,6 +113,7 @@
         {
           "name": "Jisoo",
           "nameKr": "Kim Ji-soo",
+          "birthdate": "03/01/1995",
           "role": "Lead Vocalist, Visual",
           "image": "blackpink/jisoo.jpeg",
           "description": "De elegante visual met een warm karakter. Jisoo's acteertalent en vocale stabiliteit maken haar veelzijdig en geliefd."
@@ -111,6 +121,7 @@
         {
           "name": "Jennie",
           "nameKr": "Kim Jennie",
+          "birthdate": "16/01/1996",
           "role": "Main Rapper, Lead Vocalist",
           "image": "blackpink/jennie.jpeg",
           "description": "De 'Human Chanel' met killer rap skills en ongeëvenaarde stage presence. Jennie definieert cool in K-pop."
@@ -118,6 +129,7 @@
         {
           "name": "Rosé",
           "nameKr": "Roseanne Park",
+          "birthdate": "11/02/1997",
           "role": "Main Vocalist, Lead Dancer",
           "image": "blackpink/rose.jpeg",
           "description": "Een unieke stem die je direct herkent. Rosé's emotionele diepte en gitaarskills maken haar tot een echte artiest."
@@ -125,6 +137,7 @@
         {
           "name": "Lisa",
           "nameKr": "Lalisa Manobal",
+          "birthdate": "27/03/1997",
           "role": "Main Dancer, Lead Rapper, Sub Vocalist",
           "image": "blackpink/lisa.jpeg",
           "description": "De dance machine met miljoenen solo fans. Lisa's moves zijn legendarisch en haar rap delivery is ongeëvenaard."
@@ -152,6 +165,7 @@
         {
           "name": "Bang Chan",
           "nameKr": "Christopher Chahn Bahng",
+          "birthdate": "03/10/1997",
           "role": "Leader, Lead Vocalist, Lead Dancer, Producer",
           "image": "straykids/bangchan.jpeg",
           "description": "De Australische leader en producer die Stray Kids vormde. Chan's toewijding aan fans en muziek is legendarisch."
@@ -159,6 +173,7 @@
         {
           "name": "Lee Know",
           "nameKr": "Lee Min-ho",
+          "birthdate": "25/10/1998",
           "role": "Main Dancer, Sub Vocalist",
           "image": "straykids/leeknow.jpeg",
           "description": "De mysterieuze danser met een droog gevoel voor humor. Lee Know's precisie en cattige persoonlijkheid zijn iconisch."
@@ -166,6 +181,7 @@
         {
           "name": "Changbin",
           "nameKr": "Seo Chang-bin",
+          "birthdate": "11/08/1999",
           "role": "Main Rapper, Sub Vocalist, Producer",
           "image": "straykids/changbin.jpeg",
           "description": "Een rap machine met een ongelooflijke flow. Changbin's verse zijn altijd highlights van elke track."
@@ -173,6 +189,7 @@
         {
           "name": "Hyunjin",
           "nameKr": "Hwang Hyun-jin",
+          "birthdate": "20/03/2000",
           "role": "Main Dancer, Lead Rapper, Sub Vocalist, Visual",
           "image": "straykids/hyunjin.jpeg",
           "description": "De artistieke visual met bewegingen als water. Hyunjin's dans en visuals zijn adembenemend mooi."
@@ -180,6 +197,7 @@
         {
           "name": "Han",
           "nameKr": "Han Ji-sung",
+          "birthdate": "14/09/2000",
           "role": "Main Rapper, Lead Vocalist, Producer",
           "image": "straykids/han.jpeg",
           "description": "Een veelzijdig genie dat rapt, zingt én produceert op topniveau. Han's emotionele diepte raakt fans."
@@ -187,6 +205,7 @@
         {
           "name": "Felix",
           "nameKr": "Felix Lee",
+          "birthdate": "15/09/2000",
           "role": "Lead Dancer, Lead Rapper, Sub Vocalist",
           "image": "straykids/felix.jpeg",
           "description": "De Australische sunshine met de diepste stem in K-pop. Felix's contrast tussen looks en stem is iconisch."
@@ -194,6 +213,7 @@
         {
           "name": "Seungmin",
           "nameKr": "Kim Seung-min",
+          "birthdate": "22/09/2000",
           "role": "Lead Vocalist",
           "image": "straykids/seungmin.jpeg",
           "description": "De stabiele vocalist met een kristalheldere stem. Seungmin's techniek en toewijding zijn bewonderenswaardig."
@@ -201,6 +221,7 @@
         {
           "name": "I.N",
           "nameKr": "Yang Jeong-in",
+          "birthdate": "08/02/2001",
           "role": "Sub Vocalist, Maknae",
           "image": "straykids/in.jpeg",
           "description": "De lieve maknae met een groeiende vocale presence. I.N's ontwikkeling en charme winnen harten."
@@ -228,6 +249,7 @@
         {
           "name": "Hongjoong",
           "nameKr": "Kim Hong-joong",
+          "birthdate": "07/11/1998",
           "role": "Leader, Main Rapper, Sub Vocalist, Producer",
           "image": "ateez/hongjoong.jpeg",
           "description": "De creatieve leider die ATEEZ's visie vormgeeft. Hongjoong's passie voor muziek en mode inspireren miljoenen."
@@ -235,6 +257,7 @@
         {
           "name": "Seonghwa",
           "nameKr": "Park Seong-hwa",
+          "birthdate": "03/04/1998",
           "role": "Lead Vocalist, Visual",
           "image": "ateez/seonghwa.jpeg",
           "description": "De elegante performer met perfecte uitdrukkingen. Seonghwa's transformatie op stage is magnetisch."
@@ -242,6 +265,7 @@
         {
           "name": "Yunho",
           "nameKr": "Jeong Yun-ho",
+          "birthdate": "23/03/1999",
           "role": "Main Dancer, Sub Vocalist",
           "image": "ateez/yunho.jpeg",
           "description": "De vriendelijke reus met ongelooflijke danstalent. Yunho's grootte en gratie maken een unieke combinatie."
@@ -249,6 +273,7 @@
         {
           "name": "Yeosang",
           "nameKr": "Kang Yeo-sang",
+          "birthdate": "15/06/1999",
           "role": "Lead Dancer, Sub Vocalist, Visual",
           "image": "ateez/yeosang.jpeg",
           "description": "De stille, mysterieuze visual met scherpe features. Yeosang's presence op stage is onderschat maar krachtig."
@@ -256,6 +281,7 @@
         {
           "name": "San",
           "nameKr": "Choi San",
+          "birthdate": "10/07/1999",
           "role": "Main Dancer, Sub Vocalist",
           "image": "ateez/san.jpeg",
           "description": "Een performance beast wiens expressies viraal gaan. San geeft 200% bij elke performance."
@@ -263,6 +289,7 @@
         {
           "name": "Mingi",
           "nameKr": "Song Min-gi",
+          "birthdate": "09/08/1999",
           "role": "Main Rapper, Sub Vocalist",
           "image": "ateez/mingi.jpeg",
           "description": "De rapper met een diepe stem en groter-dan-leven energie. Mingi's presence vult elk podium."
@@ -270,6 +297,7 @@
         {
           "name": "Wooyoung",
           "nameKr": "Jung Woo-young",
+          "birthdate": "26/11/1999",
           "role": "Main Dancer, Lead Vocalist",
           "image": "ateez/wooyoung.jpeg",
           "description": "De energieke entertainer die nooit stopt met shinen. Wooyoung's charisma en talent zijn aanstekelijk."
@@ -277,6 +305,7 @@
         {
           "name": "Jongho",
           "nameKr": "Choi Jong-ho",
+          "birthdate": "12/10/2000",
           "role": "Main Vocalist, Maknae",
           "image": "ateez/jongho.jpeg",
           "description": "De vocale powerhouse die appels breekt met zijn blote handen. Jongho's stem is fenomenaal krachtig."
@@ -304,6 +333,7 @@
         {
           "name": "Solar",
           "nameKr": "Kim Yong-sun",
+          "birthdate": "21/02/1991",
           "role": "Leader, Main Vocalist",
           "image": "mamamoo/solar.jpeg",
           "description": "De stralende leader met een stem van goud. Solar's vocale kracht en positieve energie zijn inspirerend."
@@ -311,6 +341,7 @@
         {
           "name": "Moonbyul",
           "nameKr": "Moon Byul-yi",
+          "birthdate": "22/12/1992",
           "role": "Main Rapper, Lead Dancer, Sub Vocalist",
           "image": "mamamoo/moonbyul.jpeg",
           "description": "De coole rapper met een androgyne stijl. Moonbyul's flow en charisma maken haar tot een trendsetter."
@@ -318,6 +349,7 @@
         {
           "name": "Wheein",
           "nameKr": "Jung Whee-in",
+          "birthdate": "17/04/1995",
           "role": "Lead Vocalist, Lead Dancer",
           "image": "mamamoo/wheein.jpeg",
           "description": "De artistieke ziel met een unieke stem. Wheein's emotionele interpretatie raakt het hart."
@@ -325,6 +357,7 @@
         {
           "name": "Hwasa",
           "nameKr": "Ahn Hye-jin",
+          "birthdate": "23/07/1995",
           "role": "Main Vocalist, Lead Rapper",
           "image": "mamamoo/hwasa.jpeg",
           "description": "De onbevreesde diva die barrières breekt. Hwasa's body positivity en talent maken haar iconisch."
@@ -352,6 +385,7 @@
         {
           "name": "Jay",
           "nameKr": "Kim Jin-hwan",
+          "birthdate": "07/02/1994",
           "role": "Lead Rapper, Lead Dancer",
           "image": "ikon/jay.jpeg",
           "description": "De energieke performer met een aanstekelijke lach. Jay's dans en rap skills zijn on point."
@@ -359,6 +393,7 @@
         {
           "name": "Song",
           "nameKr": "Song Yun-hyeong",
+          "birthdate": "08/02/1995",
           "role": "Lead Vocalist",
           "image": "ikon/song.jpeg",
           "description": "De emotionele vocalist met een stem die het hart raakt. Song's interpretatie is altijd oprecht."
@@ -366,6 +401,7 @@
         {
           "name": "Bobby",
           "nameKr": "Kim Ji-won",
+          "birthdate": "21/12/1995",
           "role": "Main Rapper",
           "image": "ikon/bobby.jpeg",
           "description": "De Show Me The Money winnaar met een explosieve rap style. Bobby's energie is ongeëvenaard."
@@ -373,6 +409,7 @@
         {
           "name": "DK",
           "nameKr": "Kim Dong-hyuk",
+          "birthdate": "03/01/1997",
           "role": "Main Vocalist",
           "image": "ikon/DK.jpeg",
           "description": "De vocale pilaar met een warme, emotionele stem. DK's ballads zijn altijd fan favorites."
@@ -380,6 +417,7 @@
         {
           "name": "Ju-ne",
           "nameKr": "Koo Jun-hoe",
+          "birthdate": "31/03/1997",
           "role": "Lead Vocalist",
           "image": "ikon/ju-ne.jpeg",
           "description": "De R&B prins met een smooth stem. Ju-ne's vocalen zijn perfect voor late night vibes."
@@ -387,6 +425,7 @@
         {
           "name": "Chan",
           "nameKr": "Jung Chan-woo",
+          "birthdate": "26/06/1998",
           "role": "Sub Vocalist, Maknae",
           "image": "ikon/chan.jpeg",
           "description": "De hardwerkende maknae die altijd groeit. Chan's toewijding en charme maken hem geliefd."
@@ -414,6 +453,7 @@
         {
           "name": "Sungjin",
           "nameKr": "Park Sung-jin",
+          "birthdate": "16/01/1993",
           "role": "Leader, Main Vocalist, Rhythm Guitarist",
           "image": "day6/sungjin.jpeg",
           "description": "De leider met een krachtige, emotionele stem. Sungjin's vocalen zijn het hart van DAY6's sound."
@@ -421,6 +461,7 @@
         {
           "name": "Young K",
           "nameKr": "Kang Young-hyun",
+          "birthdate": "19/12/1993",
           "role": "Main Rapper, Lead Vocalist, Bassist",
           "image": "day6/youngk.jpeg",
           "description": "De creatieve kracht achter veel DAY6 hits. Young K's songwriting en baslijnen zijn iconisch."
@@ -428,6 +469,7 @@
         {
           "name": "Wonpil",
           "nameKr": "Kim Won-pil",
+          "birthdate": "28/04/1994",
           "role": "Lead Vocalist, Keyboardist",
           "image": "day6/wonpil.jpeg",
           "description": "De emotionele stem met een hoog bereik. Wonpil's keyboard en vocalen creëren DAY6's unieke sound."
@@ -435,6 +477,7 @@
         {
           "name": "Dowoon",
           "nameKr": "Yoon Do-woon",
+          "birthdate": "25/08/1995",
           "role": "Drummer, Sub Vocalist",
           "image": "day6/dowoon.jpeg",
           "description": "De ritmische backbone van DAY6. Dowoon's drums en growing vocals tonen zijn continue groei."
@@ -462,6 +505,7 @@
         {
           "name": "JiU",
           "nameKr": "Kim Min Ji",
+          "birthdate": "17/05/1994",
           "role": "Leader, Main Vocalist, Lead Dancer",
           "image": "dreamcatcher/jiu.jpeg",
           "description": "De liefhebbende leader met een engelachtige stem. JiU's contrast tussen cute en fierce is legendarisch."
@@ -469,6 +513,7 @@
         {
           "name": "SuA",
           "nameKr": "Kim Bo Ra",
+          "birthdate": "10/08/1994",
           "role": "Main Dancer, Lead Rapper, Sub Vocalist",
           "image": "dreamcatcher/sua.jpeg",
           "description": "De energieke performer met explosieve moves. SuA's charisma en humor maken haar een fan favorite."
@@ -476,6 +521,7 @@
         {
           "name": "Siyeon",
           "nameKr": "Lee Si Yeon",
+          "birthdate": "01/10/1995",
           "role": "Main Vocalist",
           "image": "dreamcatcher/siyeon.jpeg",
           "description": "De vocale powerhouse met een rock-ready stem. Siyeon's kracht en bereik zijn ongeëvenaard."
@@ -483,6 +529,7 @@
         {
           "name": "Handong",
           "nameKr": "Han Dong",
+          "birthdate": "26/03/1996",
           "role": "Sub Vocalist",
           "image": "dreamcatcher/handong.jpeg",
           "description": "De elegante Chinese member met een zachte, mooie stem. Handong brengt gratie naar de groep."
@@ -490,6 +537,7 @@
         {
           "name": "Yoohyeon",
           "nameKr": "Kim Yoo Hyeon",
+          "birthdate": "07/01/1997",
           "role": "Lead Vocalist",
           "image": "dreamcatcher/yoohyeon.jpeg",
           "description": "De speelse vocalist met een veelzijdige stem. Yoohyeon's energie en vocals zijn altijd highlights."
@@ -497,6 +545,7 @@
         {
           "name": "Dami",
           "nameKr": "Lee Yu Bin",
+          "birthdate": "07/03/1997",
           "role": "Main Rapper, Sub Vocalist",
           "image": "dreamcatcher/dami.jpeg",
           "description": "De coole rapper met snelle, precise flows. Dami's rap skills en stijl zijn indrukwekkend."
@@ -504,6 +553,7 @@
         {
           "name": "Gahyeon",
           "nameKr": "Lee Ga Hyun",
+          "birthdate": "03/02/1999",
           "role": "Lead Rapper, Sub Vocalist, Maknae",
           "image": "dreamcatcher/gahyeon.jpeg",
           "description": "De maknae met een groeien de vocale presence. Gahyeon's charme en talent maken haar geliefd."
@@ -531,6 +581,7 @@
         {
           "name": "Chanhyuk",
           "nameKr": "Lee Chanhyuk",
+          "birthdate": "12/09/1996",
           "role": "Leader, Main Rapper, Vocalist, Producer",
           "image": "akmu/chanhyuk.jpeg",
           "description": "Het creatieve brein achter AKMU's unieke sound. Chanhyuk's songwriting is poëtisch en diepzinnig."
@@ -538,6 +589,7 @@
         {
           "name": "Suhyun",
           "nameKr": "Lee Suhyun",
+          "birthdate": "04/05/1999",
           "role": "Main Vocalist",
           "image": "akmu/suhyun.jpeg",
           "description": "De stem van een generatie met een pure, emotionele delivery. Suhyun's vocals zijn tijdloos mooi."
@@ -565,6 +617,7 @@
         {
           "name": "RM",
           "nameKr": "Kim Nam-joon",
+          "birthdate": "12/09/1994",
           "role": "Leader, Main Rapper",
           "image": "bts/rm.jpg",
           "description": "De intellectuele leader met een IQ van 148. RM's lyrische genialiteit en leiderschap definiëren BTS."
@@ -572,6 +625,7 @@
         {
           "name": "Jin",
           "nameKr": "Kim Seok-jin",
+          "birthdate": "04/12/1992",
           "role": "Sub Vocalist, Visual",
           "image": "bts/jin.jpg",
           "description": "De charmante vocalist met wereldwijde schoonheid. Jin's humor en vocalen maken hem iconisch."
@@ -579,6 +633,7 @@
         {
           "name": "Suga",
           "nameKr": "Min Yoon-gi",
+          "birthdate": "09/03/1993",
           "role": "Lead Rapper, Producer",
           "image": "bts/suga.jpg",
           "description": "De geniale producer en rapper. Suga's eerlijke teksten over mentale gezondheid raken miljoenen."
@@ -586,6 +641,7 @@
         {
           "name": "J-Hope",
           "nameKr": "Jung Ho-seok",
+          "birthdate": "18/02/1994",
           "role": "Main Dancer, Sub Rapper, Sub Vocalist",
           "image": "bts/jhope.jpg",
           "description": "De sunshine van BTS met ongelooflijke dansskills. J-Hope's energie en positiviteit zijn aanstekelijk."
@@ -593,6 +649,7 @@
         {
           "name": "Jimin",
           "nameKr": "Park Ji-min",
+          "birthdate": "13/10/1995",
           "role": "Lead Vocalist, Main Dancer",
           "image": "bts/jimin.jpg",
           "description": "De betoverende performer met een unieke stem. Jimin's expressie en dans zijn adembenemend."
@@ -600,6 +657,7 @@
         {
           "name": "V",
           "nameKr": "Kim Tae-hyung",
+          "birthdate": "30/12/1995",
           "role": "Lead Dancer, Sub Vocalist, Visual",
           "image": "bts/v.jpg",
           "description": "De artistieke ziel met een diepe, unieke stem. V's charme en creativiteit zijn grenzeloos."
@@ -607,6 +665,7 @@
         {
           "name": "Jungkook",
           "nameKr": "Jeon Jung-kook",
+          "birthdate": "01/09/1997",
           "role": "Main Vocalist, Lead Dancer, Sub Rapper, Center, Maknae",
           "image": "bts/jungkook.jpg",
           "description": "De 'Golden Maknae' die alles kan. Jungkook's veelzijdigheid en talent zijn legendarisch."
@@ -634,6 +693,7 @@
         {
           "name": "Sakura",
           "nameKr": "Miyawaki Sakura",
+          "birthdate": "19/03/1998",
           "role": "Lead Dancer, Sub Vocalist, Visual",
           "image": "lesserafim/sakura.jpeg",
           "description": "De Japanse veteraan van IZ*ONE. Sakura's ervaring en gratie maken haar een pilaar van de groep."
@@ -641,6 +701,7 @@
         {
           "name": "Chaewon",
           "nameKr": "Kim Chae-won",
+          "birthdate": "01/08/2000",
           "role": "Leader, Main Vocalist, Lead Dancer",
           "image": "lesserafim/chaewon.jpeg",
           "description": "De talentvolle leader met stabiele vocalen. Chaewon's veelzijdigheid en leiderschap zijn bewonderenswaardig."
@@ -648,6 +709,7 @@
         {
           "name": "Yunjin",
           "nameKr": "Huh Yun-jin",
+          "birthdate": "08/10/2001",
           "role": "Lead Vocalist, Lead Rapper",
           "image": "lesserafim/yunjin.jpeg",
           "description": "De krachtige vocalist met een unieke stem. Yunjin's zelfvertrouwen en vocalen zijn onmisbaar."
@@ -655,6 +717,7 @@
         {
           "name": "Kazuha",
           "nameKr": "Nakamura Kazuha",
+          "birthdate": "09/08/2003",
           "role": "Lead Dancer, Sub Vocalist, Visual",
           "image": "lesserafim/kazuha.jpeg",
           "description": "De voormalige ballerina met elegante bewegingen. Kazuha brengt artistieke gratie naar elke performance."
@@ -662,6 +725,7 @@
         {
           "name": "Eunchae",
           "nameKr": "Hong Eun-chae",
+          "birthdate": "10/11/2006",
           "role": "Sub Vocalist, Maknae",
           "image": "lesserafim/eunchae.jpeg",
           "description": "De energieke maknae met aanstekelijke energie. Eunchae's jeugdige charme maakt haar geliefd."
@@ -689,6 +753,7 @@
         {
           "name": "Julie",
           "nameKr": "Julie Han",
+          "birthdate": "04/08/2002",
           "role": "Leader, Main Vocalist",
           "image": "kissoflife/julie.jpg",
           "description": "De Amerikaanse leider met soulvolle vocalen. Julie's sterke stem definieert KISS OF LIFE's sound."
@@ -696,6 +761,7 @@
         {
           "name": "Natty",
           "nameKr": "Natty Suputhipong",
+          "birthdate": "18/12/2002",
           "role": "Main Dancer, Sub Vocalist",
           "image": "kissoflife/natty.jpg",
           "description": "De Thaise dansexpert met jaren ervaring. Natty's moves en charisma zijn onweerstaanbaar."
@@ -703,6 +769,7 @@
         {
           "name": "Belle",
           "nameKr": "Belle Guive Languilit",
+          "birthdate": "22/06/2004",
           "role": "Lead Vocalist, Lead Rapper",
           "image": "kissoflife/belle.jpg",
           "description": "De veelzijdige performer uit de Filipijnen. Belle kan zowel zingen als rappen met gemak."
@@ -710,6 +777,7 @@
         {
           "name": "Haneul",
           "nameKr": "Han Na-eul",
+          "birthdate": "12/10/2005",
           "role": "Main Rapper, Sub Vocalist, Maknae",
           "image": "kissoflife/haneul.jpg",
           "description": "De krachtige rapper met een unieke flow. Haneul's rap skills geven KISS OF LIFE extra edge."
@@ -737,6 +805,7 @@
         {
           "name": "Taeyong",
           "nameKr": "Lee Tae-yong",
+          "birthdate": "01/07/1995",
           "role": "Leader, Main Rapper, Main Dancer, Sub Vocalist, Center",
           "image": "nct127/taeyong.jpg",
           "description": "De artistieke leider met ongekende creativiteit. Taeyong's rap en dans zijn baanbrekend."
@@ -744,6 +813,7 @@
         {
           "name": "Johnny",
           "nameKr": "Seo Young-ho",
+          "birthdate": "09/02/1995",
           "role": "Sub Vocalist",
           "image": "nct127/johnny.jpg",
           "description": "De lange Amerikaan met een warm hart. Johnny's humor en charme maken hem geliefd."
@@ -751,6 +821,7 @@
         {
           "name": "Yuta",
           "nameKr": "Nakamoto Yuta",
+          "birthdate": "26/10/1995",
           "role": "Lead Dancer, Sub Vocalist",
           "image": "nct127/yuta.jpg",
           "description": "De Japanse performer met intense energie. Yuta's passie en stage presence zijn magnetisch."
@@ -758,6 +829,7 @@
         {
           "name": "Doyoung",
           "nameKr": "Kim Dong-young",
+          "birthdate": "01/02/1996",
           "role": "Main Vocalist",
           "image": "nct127/doyoung.jpg",
           "description": "De vocale pilaar met perfecte techniek. Doyoung's stem is stabiel en emotioneel."
@@ -765,6 +837,7 @@
         {
           "name": "Jaehyun",
           "nameKr": "Jung Jae-hyun",
+          "birthdate": "14/02/1997",
           "role": "Lead Vocalist, Lead Dancer, Visual",
           "image": "nct127/jaehyun.jpg",
           "description": "De perfecte all-rounder met looks en talent. Jaehyun's charme is onweerstaanbaar."
@@ -772,6 +845,7 @@
         {
           "name": "Jungwoo",
           "nameKr": "Kim Jung-woo",
+          "birthdate": "19/02/1998",
           "role": "Lead Vocalist",
           "image": "nct127/jungwoo.jpg",
           "description": "De unieke performer met een speelse persoonlijkheid. Jungwoo's stem en charme zijn aanstekelijk."
@@ -779,6 +853,7 @@
         {
           "name": "Mark",
           "nameKr": "Mark Lee",
+          "birthdate": "02/08/1999",
           "role": "Main Rapper, Sub Vocalist",
           "image": "nct127/mark.jpg",
           "description": "Het hardwerkende genie dat in meerdere NCT units zit. Mark's veelzijdigheid is ongeëvenaard."
@@ -786,6 +861,7 @@
         {
           "name": "Haechan",
           "nameKr": "Lee Dong-hyuck",
+          "birthdate": "06/06/2000",
           "role": "Main Vocalist, Lead Dancer",
           "image": "nct127/haechan.jpg",
           "description": "De sunshine met een krachtige stem. Haechan's vocalen en persoonlijkheid zijn altijd highlights."
@@ -813,6 +889,7 @@
         {
           "name": "Chodan",
           "nameKr": "Kim Cho-dan",
+          "birthdate": "01/01/1997",
           "role": "Leader, Main Vocalist, Guitarist",
           "image": "qwer/chodan.jpeg",
           "description": "De charismatische frontvrouw en gitariste. Chodan's stem en energie leiden QWER's performances."
@@ -820,6 +897,7 @@
         {
           "name": "Siyeon",
           "nameKr": "Lee Si-yeon",
+          "birthdate": "03/03/2000",
           "role": "Lead Vocalist, Bassist",
           "image": "qwer/siyeon.jpeg",
           "description": "De bassist met stabiele vocalen. Siyeon's groove en stem zijn essentieel voor QWER's sound."
@@ -827,6 +905,7 @@
         {
           "name": "Hina",
           "nameKr": "Kim Hyun-ah",
+          "birthdate": "25/07/2002",
           "role": "Sub Vocalist, Keyboardist",
           "image": "qwer/hina.jpeg",
           "description": "De keyboard queen die de melodieën creëert. Hina's muzikaliteit verrijkt elke song."
@@ -834,6 +913,7 @@
         {
           "name": "Magenta",
           "nameKr": "Shin Jang-mi",
+          "birthdate": "22/09/2003",
           "role": "Drummer, Sub Vocalist, Maknae",
           "image": "qwer/magenta.jpeg",
           "description": "De energieke drummer die het ritme bepaalt. Magenta's kracht en precisie drijven de band."
@@ -861,6 +941,7 @@
         {
           "name": "Irene",
           "nameKr": "Bae Joo-hyun",
+          "birthdate": "29/03/1991",
           "role": "Leader, Lead Rapper, Lead Dancer, Sub Vocalist, Visual, Center",
           "image": "redvelvet/irene.jpg",
           "description": "De elegante leider en ultieme visual. Irene's schoonheid en charisma zijn legendarisch."
@@ -868,6 +949,7 @@
         {
           "name": "Seulgi",
           "nameKr": "Kang Seul-gi",
+          "birthdate": "10/02/1994",
           "role": "Main Dancer, Lead Vocalist",
           "image": "redvelvet/seulgi.jpg",
           "description": "De all-rounder die excelleert in zang en dans. Seulgi's veelzijdigheid is ongeëvenaard."
@@ -875,6 +957,7 @@
         {
           "name": "Wendy",
           "nameKr": "Son Seung-wan",
+          "birthdate": "21/02/1994",
           "role": "Main Vocalist",
           "image": "redvelvet/wendy.jpg",
           "description": "De vocale powerhouse met een engelachtige stem. Wendy's techniek en emotie zijn fenomenaal."
@@ -882,6 +965,7 @@
         {
           "name": "Joy",
           "nameKr": "Park Soo-young",
+          "birthdate": "03/09/1996",
           "role": "Lead Rapper, Sub Vocalist",
           "image": "redvelvet/joy.jpg",
           "description": "De stralende entertainer met een warm karakter. Joy's acteertalent en charme maken haar geliefd."
@@ -889,6 +973,7 @@
         {
           "name": "Yeri",
           "nameKr": "Kim Ye-rim",
+          "birthdate": "05/03/1999",
           "role": "Sub Vocalist, Sub Rapper, Maknae",
           "image": "redvelvet/yeri.jpg",
           "description": "De artistieke maknae met een unieke stijl. Yeri's creativiteit en persoonlijkheid zijn verfrissend."
@@ -916,6 +1001,7 @@
         {
           "name": "Woosung",
           "nameKr": "Kim Woo-sung",
+          "birthdate": "25/07/1993",
           "role": "Leader, Main Vocalist, Lead Guitarist",
           "image": "therose/woosung.jpg",
           "description": "De charismatische frontman met een unieke stem. Woosung's emotie en gitaarskills zijn meeslepend."
@@ -923,6 +1009,7 @@
         {
           "name": "Dojoon",
           "nameKr": "Park Do-joon",
+          "birthdate": "04/08/1994",
           "role": "Keyboardist, Lead Vocalist",
           "image": "therose/dojoon.jpg",
           "description": "De keyboard virtuoos met krachtige vocalen. Dojoon's muzikaliteit verrijkt elke song."
@@ -930,6 +1017,7 @@
         {
           "name": "Hajoon",
           "nameKr": "Lee Ha-joon",
+          "birthdate": "09/10/1995",
           "role": "Drummer, Sub Vocalist",
           "image": "therose/hajoon.jpg",
           "description": "De energieke drummer die het ritme bepaalt. Hajoon's passie en precisie drijven de band."
@@ -937,6 +1025,7 @@
         {
           "name": "Taegyeom",
           "nameKr": "Park Tae-gyeom",
+          "birthdate": "14/03/1996",
           "role": "Bassist, Sub Vocalist",
           "image": "therose/taegyeom.jpg",
           "description": "De bassist die de groove creëert. Taegyeom's groove is de ruggengraat van The Rose's sound."
@@ -964,6 +1053,7 @@
         {
           "name": "Gunil",
           "nameKr": "Go Gun-il",
+          "birthdate": "17/01/1997",
           "role": "Leader, Drummer",
           "image": "xdinaryheroes/gunil.jpeg",
           "description": "De ervaren leider en drummer. Gunil's ritme en leiderschap vormen de basis van de band."
@@ -971,6 +1061,7 @@
         {
           "name": "Jungsu",
           "nameKr": "Jung-su",
+          "birthdate": "13/05/2000",
           "role": "Bassist, Lead Vocalist",
           "image": "xdinaryheroes/jungsu.jpeg",
           "description": "De bassist met krachtige vocalen. Jungsu's stem en groove zijn essentieel voor de sound."
@@ -978,6 +1069,7 @@
         {
           "name": "Gaon",
           "nameKr": "Ga-on",
+          "birthdate": "18/07/2001",
           "role": "Main Vocalist, Guitarist",
           "image": "xdinaryheroes/gaon.jpeg",
           "description": "De hoofdzanger met een krachtige stem. Gaon's vocalen en gitaar drijven de melodieën."
@@ -985,6 +1077,7 @@
         {
           "name": "O.de",
           "nameKr": "O-de",
+          "birthdate": "05/10/2001",
           "role": "Keyboardist, Sub Vocalist",
           "image": "xdinaryheroes/o.de.jpeg",
           "description": "De keyboard virtuoos met unieke sounds. O.de's synthesizers geven de band hun moderne edge."
@@ -992,6 +1085,7 @@
         {
           "name": "Jun Han",
           "nameKr": "Jun-han",
+          "birthdate": "09/03/2002",
           "role": "Main Guitarist, Lead Vocalist",
           "image": "xdinaryheroes/junhan.jpeg",
           "description": "De lead gitarist met shredding skills. Jun Han's solo's en vocalen zijn altijd highlights."
@@ -999,6 +1093,7 @@
         {
           "name": "Jooyeon",
           "nameKr": "Joo-yeon",
+          "birthdate": "16/08/2003",
           "role": "Guitarist, Sub Vocalist, Maknae",
           "image": "xdinaryheroes/jooyeon.jpeg",
           "description": "De jonge gitarist met veel potentieel. Jooyeon's skills groeien met elke performance."
@@ -1026,6 +1121,7 @@
         {
           "name": "Jeon Yeonjung",
           "nameKr": "Jeon Yeon-jung",
+          "birthdate": "03/05/2002",
           "role": "Leader, Main Rapper",
           "image": "youngposse/yeonjung.jpeg",
           "description": "De krachtige leider en rapper. Yeonjung's flow en presence definiëren YOUNG POSSE's vibe."
@@ -1033,6 +1129,7 @@
         {
           "name": "Sunhye",
           "nameKr": "Sun-hye",
+          "birthdate": "15/08/2003",
           "role": "Main Vocalist, Lead Dancer",
           "image": "youngposse/sunhye.jpeg",
           "description": "De veelzijdige vocalist en danser. Sunhye's vocalen en moves zijn altijd on point."
@@ -1040,6 +1137,7 @@
         {
           "name": "Jiana",
           "nameKr": "Ji-ana",
+          "birthdate": "22/11/2004",
           "role": "Lead Vocalist, Sub Rapper",
           "image": "youngposse/jiana.jpeg",
           "description": "De charme van de groep met sterke vocalen. Jiana's presence en zang zijn aansprekend."
@@ -1047,6 +1145,7 @@
         {
           "name": "Doeun",
           "nameKr": "Do-eun",
+          "birthdate": "07/02/2005",
           "role": "Main Dancer, Sub Vocalist",
           "image": "youngposse/doeun.jpeg",
           "description": "De energieke danser met grote expressie. Doeun's moves en energie verlichten elke stage."
@@ -1054,6 +1153,7 @@
         {
           "name": "Jieun",
           "nameKr": "Ji-eun",
+          "birthdate": "19/06/2006",
           "role": "Lead Rapper, Sub Vocalist, Maknae",
           "image": "youngposse/jieun.jpeg",
           "description": "De maknae met sterke rap skills. Jieun's flow en attitude maken haar een future star."

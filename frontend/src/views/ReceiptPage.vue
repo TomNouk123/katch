@@ -9,15 +9,17 @@
     <div class="cards-container" v-if="cards.length > 0">
       <!-- Header -->
       <div class="header">
-        <h1 class="header__title">Your K-pop Cards</h1>
-        <p class="header__subtitle">Tap to reveal your members!</p>
+        <h1 class="header__title">Jouw K-pop Cards</h1>
       </div>
 
       <!-- Card Display -->
       <div class="card-wrapper">
         <div 
           class="card" 
-          :class="{ 'card--flipped': cards[activeCardIndex]?.isFlipped }"
+          :class="{ 
+            'card--flipped': cards[activeCardIndex]?.isFlipped,
+            'card--no-animation': !isAnimating
+          }"
           @click="flipCard"
         >
           <!-- Card Back (Logo) -->
@@ -116,6 +118,7 @@ interface Song {
 interface Member {
   name: string;
   nameKr: string;
+  birthdate?: string;
   role: string;
   image: string;
   description: string;
@@ -246,7 +249,7 @@ export default defineComponent({
               memberName: randomMember?.name || 'Unknown',
               memberNameKr: randomMember?.nameKr || '',
               memberRole: randomMember?.role || '',
-              memberBirthdate: '',
+              memberBirthdate: randomMember?.birthdate || '',
               memberNationality: 'Koreaans',
               memberCardUrl: randomMember ? getCardImageUrl(match.id, randomMember.name) : '',
               isFlipped: false,
@@ -260,13 +263,19 @@ export default defineComponent({
       }
     };
 
+    // Track if we should animate the flip
+    const isAnimating = ref(true);
+
     const flipCard = () => {
       if (cards.value[activeCardIndex.value]) {
+        isAnimating.value = true;
         cards.value[activeCardIndex.value].isFlipped = !cards.value[activeCardIndex.value].isFlipped;
       }
     };
 
     const switchCard = (index: number) => {
+      // Disable animation when switching cards
+      isAnimating.value = false;
       activeCardIndex.value = index;
     };
 
@@ -278,6 +287,7 @@ export default defineComponent({
       cards,
       loading,
       activeCardIndex,
+      isAnimating,
       flipCard,
       switchCard,
     };
@@ -309,7 +319,7 @@ export default defineComponent({
   &__gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    background: linear-gradient(135deg, #654EAC 0%,rgb(165, 145, 226) 50%, #654EAC 100%);
   }
 }
 
@@ -332,7 +342,7 @@ export default defineComponent({
     font-size: 28px;
     font-weight: 700;
     color: #fff;
-    margin: 0 0 8px 0;
+    margin: 0 0 -2px 0;
   }
   
   &__subtitle {
@@ -359,6 +369,10 @@ export default defineComponent({
   
   &--flipped {
     transform: rotateY(180deg);
+  }
+  
+  &--no-animation {
+    transition: none;
   }
   
   &__face {
@@ -389,12 +403,12 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
   }
   
   &__group-name {
     font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 800;
     color: #1a1a2e;
     text-transform: uppercase;
@@ -412,16 +426,16 @@ export default defineComponent({
   
   &__fandom {
     font-family: 'Mulish', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 800;
     color: #654EAC;
-    margin: 0 0 4px 0;
+    margin: 0 0 0px 0;
   }
   
   &__genres {
     font-family: 'Mulish', sans-serif;
-    font-size: 12px;
-    color: #666;
+    font-size: 16px;
+    color: #333;
     margin: 0;
     text-transform: capitalize;
   }
@@ -436,11 +450,11 @@ export default defineComponent({
   
   &__tap-text {
     font-family: 'Outfit', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     font-weight: 700;
     font-style: italic;
     color: #654EAC;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
   }
   
   &__heart {
@@ -453,7 +467,7 @@ export default defineComponent({
   
   &__songs-title {
     font-family: 'Mulish', sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 700;
     color: #333;
     margin: 0 0 8px 0;
@@ -463,9 +477,9 @@ export default defineComponent({
     display: flex;
     justify-content: space-between;
     font-family: 'Mulish', sans-serif;
-    font-size: 11px;
-    color: #666;
-    padding: 3px 0;
+    font-size: 14px;
+    color: #333;
+    padding: 0px 0;
   }
   
   &__song-title {
@@ -473,7 +487,7 @@ export default defineComponent({
   }
   
   &__song-duration {
-    color: #999;
+    color: #333;
   }
   
   // Front (Member) styles
@@ -517,23 +531,23 @@ export default defineComponent({
   &__member-name-kr {
     font-family: 'Mulish', sans-serif;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
-    margin: 4px 0 8px 0;
+    color: rgb(255, 255, 255);
+    margin: -8px 0 10px 0;
   }
   
   &__member-birthdate,
   &__member-nationality {
     font-family: 'Mulish', sans-serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 2px 0;
+    color: rgb(255, 255, 255);
+    margin: 0px 0;
   }
   
   &__member-role {
     font-family: 'Mulish', sans-serif;
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.7);
-    margin: 4px 0 0 0;
+    color: rgb(255, 255, 255);
+    margin: 0px 0 0 0;
   }
 }
 

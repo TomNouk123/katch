@@ -68,5 +68,3 @@ app.listen(PORT, () => {
   console.log(`  POST /api/result - Save a new result`);
   console.log(`  GET  /api/result - Get the latest result`);
 });
-
-
