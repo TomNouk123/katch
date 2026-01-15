@@ -339,7 +339,7 @@ export default defineComponent({
   
   &__title {
     font-family: 'Outfit', sans-serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: #fff;
     margin: 0 0 -2px 0;

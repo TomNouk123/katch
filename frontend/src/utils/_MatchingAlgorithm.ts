@@ -84,18 +84,17 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'acoustic': { akmu: 3, therose: 3 },
   
   // EDM / Electronic
-  'edm': { ateez: 10, blackpink: 3, straykids: 3 },
+  'edm': { ateez: 10, blackpink: 3, straykids: 3, enhypen: 3 },
   'techno': { ateez: 6 },
   'electronic': { nct127: 6 },
   'experimental': { nct127: 3 },
   
   // Pop
-  'pop': { blackpink: 10, lesserafim: 10, twice: 10, kissoflife: 3, redvelvet: 3, xdinaryheroes: 3 },
+  'pop': { blackpink: 10, lesserafim: 10, twice: 10, enhypen: 10, kissoflife: 3, redvelvet: 3, xdinaryheroes: 3 },
   
   // Hip Hop / Rap
-  'hip-hop': { bts: 10, ikon: 10, nct127: 10, straykids: 10, youngposse: 10, kissoflife: 6 },
+  'hip-hop': { bts: 10, nct127: 10, straykids: 10, youngposse: 10, kissoflife: 6 },
   'old-school-hip-hop': { youngposse: 10 },
-  'pop-rap': { ikon: 6 },
   
   // Rock
   'alternative-rock': { day6: 10, xdinaryheroes: 10 },
@@ -116,7 +115,7 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'trap': { ateez: 3, blackpink: 6, straykids: 6, youngposse: 3 },
   
   // Dance / Synth
-  'dance': { lesserafim: 6, twice: 6, redvelvet: 6 },
+  'dance': { lesserafim: 6, twice: 6, enhypen: 6, redvelvet: 6 },
   'synth-pop': { twice: 3 },
   
   // Pop variations
@@ -139,7 +138,6 @@ export function calculateMatches(likedArtistIds: string[]): MatchResult[] {
     straykids: 0,
     ateez: 0,
     mamamoo: 0,
-    ikon: 0,
     day6: 0,
     dreamcatcher: 0,
     akmu: 0,
@@ -152,6 +150,7 @@ export function calculateMatches(likedArtistIds: string[]): MatchResult[] {
     therose: 0,
     xdinaryheroes: 0,
     youngposse: 0,
+    enhypen: 0,
   };
 
   // For each liked artist, add their tag scores to groups

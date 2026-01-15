@@ -1,79 +1,89 @@
 <template>
-  <div class="results-page" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+  <div class="results-page" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd" @click="unmuteVideo">
+    <div class="background">
+      <div class="background__gradient" />
+    </div>
+
     <div class="results-content" v-if="group">
-      <!-- Header with dots -->
+      <!-- Header with Group Name -->
       <header class="header">
-        <div class="page-dots" v-if="hasMultipleMatches">
-          <span 
-            v-for="(groupId, index) in topMatchIds" 
-            :key="groupId" 
-            class="dot"
-            :class="{ active: currentGroupId === groupId }"
-            @click="navigateToGroup(groupId)"
-          ></span>
-        </div>
-        <h1 class="header__title" v-else>Jouw K-pop match!</h1>
+        <h1 class="group-name">{{ group.name }}</h1>
       </header>
 
-      <!-- Group Card with Image + Black Info Section -->
-      <div class="group-card">
-        <!-- Group Image -->
-        <div class="group-image">
-          <img :src="getGroupImage(group.image)" :alt="group.name" />
-          <div class="group-image__gradient" />
+      <!-- Main Card -->
+      <div class="main-card">
+        <!-- Video/Image Container (16:9 aspect ratio) -->
+        <div class="video-container">
+          <video 
+            v-if="currentGroupId === 'lesserafim'" 
+            ref="videoRef"
+            class="group-video"
+            :src="lesserafimVideo"
+            autoplay
+            muted
+            loop
+            playsinline
+            disablePictureInPicture
+            disableRemotePlayback
+          />
+          <img v-else :src="getGroupImage(group.image)" :alt="group.name" class="group-image" />
         </div>
-        
-        <!-- Black Info Section -->
-        <div class="group-info">
-          <!-- Now Playing -->
-          <div v-if="currentSongInfo" class="now-playing">
-            <span class="now-playing__label">NOW PLAYING</span>
-            <span class="now-playing__song">{{ currentSongInfo.songTitle }} - {{ currentSongInfo.artist }}</span>
-          </div>
-          <h2 class="group-name">{{ group.name }}</h2>
-          <p class="group-members">{{ memberNames }}</p>
-          <p class="group-company">COMPANY: {{ group.company }}</p>
-          <p class="group-description">{{ group.description }}</p>
 
-          <!-- Spotify Button -->
-          <a :href="group.spotifyUrl" target="_blank" class="spotify-btn">
-            <div class="spotify-qr">
-              <img :src="getQrCode(group.qrCode)" :alt="group.qrCode" class="codeqr"/>
-            </div>
-            <div class="spotify-text">
-              <span>Bezoek de</span>
-              <span>spotify pagina</span>
-            </div>
-          </a>
+        <!-- Info Section -->
+        <div class="info-section">
+          <h2 class="fandom-title">Fandom: {{ group.fandomName }}</h2>
+          <p class="now-playing">NOW PLAYING: {{ nowPlayingText }}</p>
+          <p class="members-list">LEDEN: {{ memberNames }}</p>
+          <p class="company">COMPANY: {{ group.company }}</p>
 
-          <!-- Members Section -->
-          <div class="members-section">
-            <h3 class="members-title">LEDEN</h3>
-            
-            <div class="members-list">
-              <div 
-                v-for="member in group.members" 
-                :key="member.name"
-                class="member-card"
-              >
-                <div class="member-image">
-                  <img :src="getMemberImage(member.image)" :alt="member.name" />
-                </div>
-                <div class="member-info">
-                  <h4 class="member-name">{{ member.name.toUpperCase() }} <span class="member-name-kr">({{ member.nameKr }})</span></h4>
-                  <p class="member-role">{{ member.role }}</p>
-                  <p class="member-description">{{ member.description }}</p>
-                </div>
-              </div>
-            </div>
+          <!-- Description -->
+          <p class="description">{{ group.description }}</p>
+        </div>
+
+        <!-- Lightstick positioned at bottom right with name -->
+        <div class="lightstick-wrapper" v-if="group.lightstick">
+          <p class="lightstick-name" v-if="group.lightstickName">LIGHTSTICK: {{ group.lightstickName }}</p>
+          <div class="lightstick-container">
+            <img :src="getLightstickImage(group.lightstick)" :alt="group.lightstickName" class="lightstick-image" />
           </div>
         </div>
       </div>
 
-      <!-- Replay Button -->
-      <button class="replay-btn" @click="goHome">
-        Opnieuw spelen
-      </button>
+      <!-- Bottom Section: QR Code and NFC Hint side by side -->
+      <div class="bottom-section">
+        <!-- QR Code on the left -->
+        <div class="qr-section">
+          <div class="qr-code">
+            <img :src="getQrCode(group.qrCode)" :alt="'QR code for ' + group.name" />
+          </div>
+          <div class="qr-text">
+            <span>Bezoek de</span>
+            <span>spotify pagina</span>
+          </div>
+        </div>
+
+        <!-- NFC Hint on the right -->
+        <div class="nfc-hint">
+          <p class="nfc-text">Houd je telefoon<br/>hier tegenaan voor<br/>een leuke<br/>verrassing</p>
+          <svg class="nfc-arrow" viewBox="0 0 100 50" width="60" height="30">
+            <path 
+              d="M10 25 Q 50 25, 70 40" 
+              stroke="currentColor" 
+              stroke-width="3" 
+              fill="none"
+              stroke-linecap="round"
+            />
+            <path 
+              d="M60 42 L70 40 L68 30" 
+              stroke="currentColor" 
+              stroke-width="3" 
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
 
     <!-- Loading State -->
@@ -93,13 +103,14 @@ import { PageName } from '@/utils/_Constants';
 // Import group songs
 import blackpinkSong from '@/assets/music/blackpink.mp3';
 import twiceSong from '@/assets/music/twice.mp3';
-import lesserafimSong from '@/assets/music/lesserafim.mp3';
 
-// Music configuration for groups
+// Import group videos
+import lesserafimVideo from '@/assets/videos/lesserafim-hot.mp4';
+
+// Music configuration for groups (LE SSERAFIM uses video audio instead)
 const groupMusicConfig: Record<string, { src: string; startTime: number; songTitle: string; artist: string }> = {
   blackpink: { src: blackpinkSong, startTime: 30, songTitle: 'Jump', artist: 'BLACKPINK' },
   twice: { src: twiceSong, startTime: 35, songTitle: 'The Feels', artist: 'TWICE' },
-  lesserafim: { src: lesserafimSong, startTime: 60, songTitle: 'Perfect Night', artist: 'LE SSERAFIM' },
 };
 
 interface Member {
@@ -116,10 +127,13 @@ interface KpopGroup {
   nameKr: string;
   color: string;
   company: string;
+  fandomName: string;
   description: string;
   spotifyUrl: string;
   image: string;
   qrCode: string;
+  lightstick?: string;
+  lightstickName?: string;
   tags: string[];
   members: Member[];
 }
@@ -143,6 +157,17 @@ export default defineComponent({
     // Audio management
     const audioRef = ref<HTMLAudioElement | null>(null);
     const currentMusicGroup = ref<string | null>(null);
+    
+    // Video management
+    const videoRef = ref<HTMLVideoElement | null>(null);
+    
+    // Unmute video on user interaction
+    const unmuteVideo = () => {
+      if (videoRef.value && videoRef.value.muted) {
+        videoRef.value.muted = false;
+        videoRef.value.volume = 0.15;
+      }
+    };
     
     const currentGroupId = computed(() => route.params.groupId as string);
     
@@ -192,6 +217,19 @@ export default defineComponent({
       if (groupId && groupId in groupMusicConfig) {
         playGroupSong(groupId);
       }
+      
+      // Set video start time for LE SSERAFIM
+      if (groupId === 'lesserafim' && videoRef.value) {
+        videoRef.value.currentTime = 30;
+      }
+    });
+    
+    // Watch for video ref to set start time
+    watch(videoRef, (newVideoRef) => {
+      if (newVideoRef && currentGroupId.value === 'lesserafim') {
+        newVideoRef.currentTime = 30;
+        newVideoRef.volume = 0.15;
+      }
     });
     
     onUnmounted(() => {
@@ -202,6 +240,25 @@ export default defineComponent({
     const topMatchIds = computed(() => store.topMatchIds);
     
     const hasMultipleMatches = computed(() => topMatchIds.value.length > 1);
+    
+    const currentIndex = computed(() => {
+      return topMatchIds.value.indexOf(currentGroupId.value);
+    });
+    
+    const canGoNext = computed(() => {
+      return currentIndex.value < topMatchIds.value.length - 1;
+    });
+    
+    const canGoPrev = computed(() => {
+      return currentIndex.value > 0;
+    });
+    
+    const goToPrev = () => {
+      const prevIndex = currentIndex.value - 1;
+      if (prevIndex >= 0) {
+        navigateToGroup(topMatchIds.value[prevIndex]);
+      }
+    };
 
     const group = computed<KpopGroup | undefined>(() => {
       return kpopGroupsData.groups.find(g => g.id === currentGroupId.value) as KpopGroup | undefined;
@@ -209,23 +266,39 @@ export default defineComponent({
 
     const memberNames = computed(() => {
       if (!group.value) return '';
-      return group.value.members.map(m => m.name.toUpperCase()).join(', ');
+      return group.value.members.map(m => m.name).join(', ');
     });
-    
-    const currentIndex = computed(() => {
-      return topMatchIds.value.indexOf(currentGroupId.value);
+
+    // Now playing text based on group
+    const nowPlayingText = computed(() => {
+      if (currentGroupId.value === 'lesserafim') return 'Hot';
+      return 'This is For';
     });
-    
-    // Get current song info for "Now Playing" display
-    const currentSongInfo = computed(() => {
-      const groupId = currentGroupId.value;
-      if (groupId && groupId in groupMusicConfig) {
-        return groupMusicConfig[groupId];
-      }
-      return null;
+
+    // Calculate dynamic font size based on name length
+    const groupNameFontSize = computed(() => {
+      if (!group.value) return '88px';
+      const nameLength = group.value.name.length;
+      // Scale font size inversely with name length
+      // Short names (4-5 chars like "TWICE", "BTS") get 88px
+      // Long names (14+ chars like "Xdinary Heroes") get smaller
+      if (nameLength <= 5) return '88px';
+      if (nameLength <= 7) return '72px';
+      if (nameLength <= 10) return '58px';
+      if (nameLength <= 13) return '48px';
+      return '42px';
     });
 
     const getGroupImage = (imagePath: string) => {
+      for (const [key, url] of Object.entries(groupImages)) {
+        if (key.includes(imagePath)) {
+          return url;
+        }
+      }
+      return '';
+    };
+
+    const getLightstickImage = (imagePath: string) => {
       for (const [key, url] of Object.entries(groupImages)) {
         if (key.includes(imagePath)) {
           return url;
@@ -243,15 +316,6 @@ export default defineComponent({
       return '';
     };
 
-    const getMemberImage = (imagePath: string) => {
-      for (const [key, url] of Object.entries(groupImages)) {
-        if (key.includes(imagePath)) {
-          return url;
-        }
-      }
-      return '';
-    };
-
     const goHome = () => {
       store.clearTopMatchIds();
       router.push({ name: PageName.HOME });
@@ -259,6 +323,13 @@ export default defineComponent({
     
     const navigateToGroup = (groupId: string) => {
       router.replace({ name: PageName.RESULTS, params: { groupId } });
+    };
+    
+    const goToNext = () => {
+      const nextIndex = currentIndex.value + 1;
+      if (nextIndex < topMatchIds.value.length) {
+        navigateToGroup(topMatchIds.value[nextIndex]);
+      }
     };
     
     const onTouchStart = (e: TouchEvent) => {
@@ -297,12 +368,20 @@ export default defineComponent({
       currentGroupId,
       topMatchIds,
       hasMultipleMatches,
-      currentSongInfo,
+      canGoNext,
+      canGoPrev,
+      groupNameFontSize,
+      nowPlayingText,
+      videoRef,
+      lesserafimVideo,
+      unmuteVideo,
       getGroupImage,
+      getLightstickImage,
       getQrCode,
-      getMemberImage,
       goHome,
       navigateToGroup,
+      goToNext,
+      goToPrev,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
@@ -315,314 +394,240 @@ export default defineComponent({
 @import '@/assets/styles/config/fonts';
 
 .results-page {
+  position: relative;
   min-height: 100vh;
-  background: #fff;
+  min-height: 100dvh;
   overflow-x: hidden;
 }
 
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #654EAC 0%, rgb(165, 145, 226) 50%, #654EAC 100%);
+  }
+}
+
 .results-content {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  padding: 50px;
+  padding: 40px 50px;
+  box-sizing: border-box;
 }
 
 .header {
-  text-align: center;
-  margin-bottom: 32px;
-
-  &__title {
-    font-family: 'Outfit', sans-serif;
-    font-size: 42px;
-    font-weight: 600;
-    font-style: italic;
-    color: #8b5cf6;
-    margin: 0;
-  }
-}
-
-.page-dots {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 10px 0;
-}
-
-.dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: #d4d4d8;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  
-  &.active {
-    background: #8b5cf6;
-    transform: scale(1.2);
-  }
-  
-  &:hover:not(.active) {
-    background: #a78bfa;
-  }
-}
-
-.group-card {
-  width: 100%;
-  border-radius: 45px;
-  overflow: hidden;
-  margin-bottom: 24px;
-}
-
-.group-image {
-  width: 100%;
-  height: 700px;
+  margin-bottom: -20px;
   position: relative;
-  line-height: 0;
+  z-index: 2;
+}
 
-  img {
-    display: block;
+.group-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 80px;
+  font-weight: 1000;
+  color: #fff;
+  margin-bottom: -12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.main-card {
+  background: #fff;
+  border-radius: 71px;
+  border-style: hidden;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  margin-bottom: 40px;
+  max-width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.video-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+  
+  .group-image,
+  .group-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-  }
-
-  &__gradient {
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 350px;
-    background: linear-gradient(to bottom, transparent 0%, #000 100%);
+    pointer-events: none; // Disable all interaction with video
   }
 }
 
-.group-info {
-  background: #000;
-  padding: 24px 24px 40px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.info-section {
+  padding: 20px 28px 150px;
+  margin-top: -40px;
+  position: relative;
+  z-index: 1;
+}
+
+.fandom-title {
+  font-family: 'Mulish', sans-serif;
+  font-size: 38px;
+  font-weight: 1000;
+  color: #594A4E;
+  margin: 30px 0 -4px 10px;
 }
 
 .now-playing {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 8px;
-  position: relative;
-  z-index: 1000;
-  
-  &__label {
-    font-family: 'Mulish', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    color: #8b5cf6;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: -4px;
-  }
-  
-  &__song {
-    font-family: 'Mulish', sans-serif;
-    font-size: 24px;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.9);
-    letter-spacing: 0.5px;
-  }
-}
-
-.group-name {
-  font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
-  font-size: 80px;
-  font-weight: 700;
-  color: #fff;
-  margin: 0 0 4px 0;
+  font-family: 'Mulish', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #594A4E;
+  margin: 0 0 14px 10px;
   line-height: 1;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  position: relative;
-  z-index: 999;
-}
-
-.group-members {
-  font-family: 'Mulish', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: #fff;
-  margin: 0 0 6px 0;
-  letter-spacing: 0.5px;
-  max-width: 90%;
-}
-
-.group-company {
-  font-family: 'Mulish', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
-  margin: 0 0 24px 0;
-  letter-spacing: 0.5px;
-}
-
-.group-description {
-  font-family: 'Mulish', sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: #fff;
-  margin: 0 auto;
-  line-height: 1.4;
-  text-align: center;
-  max-width: 90%;
-  padding: 0 20px;
-}
-
-.spotify-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  text-decoration: none;
-  margin: 32px auto 48px;
-  text-align: left;
-}
-
-.spotify-qr {
-  flex-shrink: 0;
-
-  .qr-placeholder {
-    width: 100px;
-    height: 100px;
-    background: #fff;
-    border-radius: 8px;
-    // QR code pattern simulation
-    background-image: 
-      linear-gradient(45deg, #000 25%, transparent 25%),
-      linear-gradient(-45deg, #000 25%, transparent 25%),
-      linear-gradient(45deg, transparent 75%, #000 75%),
-      linear-gradient(-45deg, transparent 75%, #000 75%);
-    background-size: 10px 10px;
-    background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
-  }
-
-  .codeqr {
-    width: 200px;
-    height: 200px;
-    background: #fff;
-    border-radius: 8px;
-  }
-}
-
-.spotify-text {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Outfit', sans-serif;
-  font-size: 32px;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.2;
-}
-
-.members-section {
-  text-align: left;
-  max-width: 95%;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.members-title {
-  font-family: 'Mulish', sans-serif;
-  font-size: 42px;
-  font-weight: 800;
-  color: #fff;
-  margin: 0 0 36px 0;
-  letter-spacing: 1px;
 }
 
 .members-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #594A4E;
+  margin: 0 0 4px 10px;
+  line-height: 1;
 }
 
-.member-card {
+.company {
+  font-family: 'Mulish', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #594A4E;
+  margin: 0 0 20px 10px;
+}
+
+.description-row {
   display: flex;
   gap: 20px;
   align-items: flex-start;
+  margin-bottom: 16px;
 }
 
-.member-image {
-  flex-shrink: 0;
+.description {
+  font-family: 'Mulish', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #594A4E;
+  margin: 0 0 0 10px;
+  line-height: 1.3;
+  max-width: 70%;
+}
+
+.lightstick-wrapper {
+  position: absolute;
+  bottom: 0px;
+  right: -20px;
+  display: flex;
+  align-items: flex-end;
+  gap: 0px;
+}
+
+.lightstick-name {
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #594A4E;
+  margin: 0 -40px 20px 0;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.lightstick-container {
+  width: 230px;
+  height: 270px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  
+  .lightstick-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+.bottom-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.qr-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.qr-code {
   width: 140px;
   height: 140px;
-  border-radius: 50%;
-  overflow: hidden;
-
+  background: #fff;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  
   img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 
-.member-info {
-  flex: 1;
-  min-width: 0;
-  padding-top: 4px;
-}
-
-.member-name {
-  font-family: 'Mulish', sans-serif;
-  font-size: 28px;
-  font-weight: 800;
+.qr-text {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
   color: #fff;
-  margin: 0 0 4px 0;
+  line-height: 1.2;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.member-name-kr {
-  font-family: 'Mulish', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
+.nfc-hint {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
 }
 
-.member-role {
-  font-family: 'Mulish', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #fff;
-  margin: -8px 0 12px 0;
-  letter-spacing: 0.3px;
-}
-
-.member-description {
+.nfc-text {
   font-family: 'Mulish', sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
+  font-style: italic;
   color: #fff;
+  text-align: right;
+  line-height: 1.3;
   margin: 0;
-  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
-.replay-btn {
-  width: 100%;
-  background: #8b5cf6;
-  border: none;
-  border-radius: 30px;
-  padding: 20px;
-  font-family: 'Outfit', sans-serif;
-  font-size: 18px;
-  font-weight: 600;
+.nfc-arrow {
   color: #fff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-
-  &:hover {
-    background: #7c3aed;
-    transform: translateY(-2px);
-  }
+  flex-shrink: 0;
 }
 
 .loading {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -631,7 +636,7 @@ export default defineComponent({
   p {
     font-family: 'Mulish', sans-serif;
     font-size: 18px;
-    color: #333;
+    color: #fff;
   }
 }
 </style>

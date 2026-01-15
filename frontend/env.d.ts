@@ -6,6 +6,12 @@ declare module '*.mp3' {
   export default src;
 }
 
+// Video file declarations
+declare module '*.mp4' {
+  const src: string;
+  export default src;
+}
+
 interface ImportMetaEnv {
   readonly VITE_GTM_ID: string,
   readonly VITE_IS_MULTILINGUAL: string,
