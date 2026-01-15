@@ -128,6 +128,93 @@ export interface MatchResult {
   percentage: number;
 }
 
+// Define which K-pop groups belong to which primary genre categories
+const groupGenreCategories: Record<string, string[]> = {
+  // Jazz / R&B / Soul groups
+  'mamamoo': ['jazz', 'r&b', 'funk'],
+  'kissoflife': ['r&b', 'hip-hop'],
+  'redvelvet': ['r&b', 'pop', 'dance'],
+  
+  // Rock / Indie groups
+  'day6': ['rock', 'alternative-rock', 'indie-rock'],
+  'therose': ['indie-rock', 'soft-rock', 'acoustic'],
+  'dreamcatcher': ['rock', 'alternative-metal'],
+  'xdinaryheroes': ['rock', 'alternative-rock', 'punk-rock'],
+  'qwer': ['rock', 'indie-rock', 'pop-rock'],
+  
+  // Hip Hop groups
+  'bts': ['hip-hop', 'pop'],
+  'straykids': ['hip-hop', 'edm', 'trap'],
+  'nct127': ['hip-hop', 'electronic'],
+  'youngposse': ['hip-hop', 'old-school-hip-hop'],
+  
+  // Pop / Dance groups
+  'twice': ['pop', 'dance'],
+  'blackpink': ['pop', 'edm', 'trap'],
+  'lesserafim': ['pop', 'dance'],
+  'enhypen': ['pop', 'dance', 'edm'],
+  
+  // EDM / Electronic groups
+  'ateez': ['edm', 'hip-hop', 'trap'],
+  
+  // Folk / Acoustic groups
+  'akmu': ['folk-pop', 'indie-pop', 'acoustic'],
+};
+
+// Genre category groupings for detecting user preferences
+const genreCategories: Record<string, string[]> = {
+  'jazz-rnb': ['jazz', 'r&b', 'funk', 'neo-soul'],
+  'rock': ['rock', 'alternative-rock', 'indie-rock', 'soft-rock', 'alternative-metal', 'punk-rock', 'pop-rock'],
+  'hip-hop': ['hip-hop', 'trap', 'old-school-hip-hop'],
+  'pop-dance': ['pop', 'dance', 'synth-pop'],
+  'edm': ['edm', 'electronic', 'techno'],
+  'folk-indie': ['folk-pop', 'indie-pop', 'acoustic', 'folk'],
+};
+
+// Which K-pop groups best represent each genre category
+const categoryToGroups: Record<string, string[]> = {
+  'jazz-rnb': ['mamamoo', 'kissoflife', 'redvelvet'],
+  'rock': ['day6', 'therose', 'dreamcatcher', 'xdinaryheroes', 'qwer'],
+  'hip-hop': ['bts', 'straykids', 'nct127', 'youngposse'],
+  'pop-dance': ['twice', 'blackpink', 'lesserafim', 'enhypen', 'redvelvet'],
+  'edm': ['ateez', 'straykids', 'blackpink'],
+  'folk-indie': ['akmu', 'therose', 'day6'],
+};
+
+/**
+ * Detect the user's dominant genre categories based on liked artists
+ */
+function detectDominantCategories(likedArtistIds: string[]): { category: string; count: number }[] {
+  const categoryCounts: Record<string, number> = {
+    'jazz-rnb': 0,
+    'rock': 0,
+    'hip-hop': 0,
+    'pop-dance': 0,
+    'edm': 0,
+    'folk-indie': 0,
+  };
+
+  for (const artistId of likedArtistIds) {
+    const tags = artistTagMapping[artistId];
+    if (!tags) continue;
+
+    for (const tag of tags) {
+      for (const [category, categoryTags] of Object.entries(genreCategories)) {
+        if (categoryTags.includes(tag)) {
+          // Weight primary tags (first in list) more heavily
+          const tagIndex = tags.indexOf(tag);
+          const weight = tagIndex === 0 ? 3 : tagIndex === 1 ? 2 : 1;
+          categoryCounts[category] += weight;
+        }
+      }
+    }
+  }
+
+  return Object.entries(categoryCounts)
+    .map(([category, count]) => ({ category, count }))
+    .sort((a, b) => b.count - a.count);
+}
+
 /**
  * Calculate K-pop group matches based on liked western artists
  */
@@ -183,6 +270,83 @@ export function calculateMatches(likedArtistIds: string[]): MatchResult[] {
 }
 
 /**
+ * Get top N matches with genre diversity
+ * Ensures that if user has a clear genre preference (jazz, rock, etc.),
+ * at least 2 of the 3 results will be from that genre category
+ */
+export function getTopMatchesWithDiversity(likedArtistIds: string[], count: number = 3): MatchResult[] {
+  const allMatches = calculateMatches(likedArtistIds);
+  const dominantCategories = detectDominantCategories(likedArtistIds);
+  
+  // Check if there's a clear dominant non-pop category
+  // (pop-dance is excluded because it's too common as a secondary genre)
+  const nonPopCategories = dominantCategories.filter(c => c.category !== 'pop-dance');
+  const topNonPopCategory = nonPopCategories[0];
+  const secondCategory = dominantCategories[1];
+  
+  // If there's a strong preference for a specific genre (jazz, rock, hip-hop, etc.)
+  // and it's significantly higher than pop-dance, ensure genre representation
+  const popDanceCount = dominantCategories.find(c => c.category === 'pop-dance')?.count || 0;
+  
+  if (topNonPopCategory && topNonPopCategory.count >= popDanceCount * 0.7 && topNonPopCategory.count >= 4) {
+    const preferredGroups = categoryToGroups[topNonPopCategory.category] || [];
+    const selectedResults: MatchResult[] = [];
+    const usedGroupIds = new Set<string>();
+    
+    // First, get the top match overall (regardless of category)
+    if (allMatches.length > 0) {
+      selectedResults.push(allMatches[0]);
+      usedGroupIds.add(allMatches[0].groupId);
+    }
+    
+    // Then, ensure at least one more match from the preferred genre category
+    // Find the highest scoring group from the preferred category that isn't already selected
+    for (const match of allMatches) {
+      if (selectedResults.length >= 2) break;
+      if (usedGroupIds.has(match.groupId)) continue;
+      
+      if (preferredGroups.includes(match.groupId)) {
+        selectedResults.push(match);
+        usedGroupIds.add(match.groupId);
+      }
+    }
+    
+    // If we still need more from preferred category and first pick wasn't from it
+    if (selectedResults.length < 2 || !preferredGroups.includes(selectedResults[0].groupId)) {
+      for (const match of allMatches) {
+        if (selectedResults.length >= 2) break;
+        if (usedGroupIds.has(match.groupId)) continue;
+        
+        if (preferredGroups.includes(match.groupId)) {
+          selectedResults.push(match);
+          usedGroupIds.add(match.groupId);
+        }
+      }
+    }
+    
+    // Fill remaining slots with next highest scoring groups
+    for (const match of allMatches) {
+      if (selectedResults.length >= count) break;
+      if (usedGroupIds.has(match.groupId)) continue;
+      
+      selectedResults.push(match);
+      usedGroupIds.add(match.groupId);
+    }
+    
+    // Recalculate percentages based on the selected results
+    const maxScore = selectedResults[0]?.score || 1;
+    for (const result of selectedResults) {
+      result.percentage = Math.round((result.score / maxScore) * 100);
+    }
+    
+    return selectedResults.slice(0, count);
+  }
+  
+  // No strong genre preference, just return top matches
+  return allMatches.slice(0, count);
+}
+
+/**
  * Get the top matched K-pop group
  */
 export function getTopMatch(likedArtistIds: string[]): string | null {
@@ -193,9 +357,8 @@ export function getTopMatch(likedArtistIds: string[]): string | null {
 }
 
 /**
- * Get top N matches
+ * Get top N matches (uses diversity-aware algorithm)
  */
 export function getTopMatches(likedArtistIds: string[], count: number = 3): MatchResult[] {
-  const matches = calculateMatches(likedArtistIds);
-  return matches.slice(0, count);
+  return getTopMatchesWithDiversity(likedArtistIds, count);
 }
