@@ -407,7 +407,7 @@ export default defineComponent({
     };
     
     // Idle screen functionality
-    const IDLE_TIMEOUT = 15000; // 15 seconds before showing overlay
+    const IDLE_TIMEOUT = 20000; // 20 seconds before showing overlay
     const COUNTDOWN_DURATION = 15; // 15 second countdown
     
     const showIdleOverlay = ref(false);
@@ -862,7 +862,7 @@ export default defineComponent({
   width: 100%;
   padding: 0 50px;
   box-sizing: border-box;
-  margin-top: 0px;
+  margin-top: -15px;
   position: relative;
   z-index: 10;
 }

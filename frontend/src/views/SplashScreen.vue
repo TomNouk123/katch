@@ -208,11 +208,12 @@ export default defineComponent({
 @import '@/assets/styles/config/fonts';
 
 .splash-screen {
-  position: relative;
-  width: 100%;
-  height: 100vh;
+  position: fixed;
+  inset: 0;
   overflow: hidden;
   background-color: #000;
+  touch-action: pan-x;
+  overscroll-behavior: none;
 }
 
 .background-container {

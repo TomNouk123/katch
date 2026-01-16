@@ -408,10 +408,12 @@ export default defineComponent({
   
   &__group-name {
     font-family: map-get(map-get($fonts, 'avant-garde'), 'bold'), sans-serif;
-    font-size: 30px;
+    font-size: 26px;
     font-weight: 800;
     color: #1a1a2e;
     text-transform: uppercase;
+    line-height: 1.1;
+    margin-top: 4px;
   }
   
   &__logo {
@@ -429,7 +431,7 @@ export default defineComponent({
     font-size: 18px;
     font-weight: 800;
     color: #654EAC;
-    margin: 0 0 0px 0;
+    margin: -8px 0 0px 0;
   }
   
   &__genres {
