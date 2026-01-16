@@ -78,7 +78,7 @@
         ></span>
       </div>
 
-      <!-- Fixed Bottom Section: QR Code and NFC Hint side by side -->
+      <!-- Fixed Bottom Section: QR Code, Replay Button, and NFC Hint -->
       <div class="bottom-section">
         <!-- QR Code on the left -->
         <div class="qr-section">
@@ -90,6 +90,11 @@
             <img :src="getQrCode(currentGroup.qrCode || '')" :alt="'QR code for ' + currentGroup.name" />
           </div>
         </div>
+
+        <!-- Replay Button in the middle -->
+        <button class="replay-btn" @click="goToSplash">
+          OPNIEUW SPELEN
+        </button>
 
         <!-- NFC Hint on the right -->
         <div class="nfc-hint">
@@ -103,11 +108,20 @@
     <div v-else class="loading">
       <p>Je match wordt berekend...</p>
     </div>
+
+    <!-- Idle Overlay -->
+    <div v-if="showIdleOverlay" class="idle-overlay" @click.stop="dismissIdleOverlay" @touchstart.stop @touchmove.stop @touchend.stop>
+      <div class="idle-overlay__bg"></div>
+      <div class="idle-content">
+        <h2 class="idle-title">Ben je er nog?</h2>
+        <p class="idle-timer">{{ idleCountdown }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch } from 'vue';
+import { defineComponent, computed, ref, watch, onMounted, onUnmounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useDataStore } from '@/store/_DataStore';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
@@ -387,6 +401,75 @@ export default defineComponent({
       router.push({ name: PageName.HOME });
     };
     
+    const goToSplash = () => {
+      store.clearTopMatchIds();
+      router.push({ name: PageName.HOME });
+    };
+    
+    // Idle screen functionality
+    const IDLE_TIMEOUT = 15000; // 15 seconds before showing overlay
+    const COUNTDOWN_DURATION = 15; // 15 second countdown
+    
+    const showIdleOverlay = ref(false);
+    const idleCountdown = ref(COUNTDOWN_DURATION);
+    let idleTimer: ReturnType<typeof setTimeout> | null = null;
+    let countdownInterval: ReturnType<typeof setInterval> | null = null;
+    
+    const resetIdleTimer = () => {
+      // Clear existing timers
+      if (idleTimer) clearTimeout(idleTimer);
+      if (countdownInterval) clearInterval(countdownInterval);
+      
+      // If overlay is showing, just dismiss it
+      if (showIdleOverlay.value) {
+        showIdleOverlay.value = false;
+        idleCountdown.value = COUNTDOWN_DURATION;
+      }
+      
+      // Start new idle timer
+      idleTimer = setTimeout(() => {
+        showIdleOverlay.value = true;
+        idleCountdown.value = COUNTDOWN_DURATION;
+        
+        // Start countdown
+        countdownInterval = setInterval(() => {
+          idleCountdown.value--;
+          
+          if (idleCountdown.value <= 0) {
+            // Time's up - go to splash screen
+            if (countdownInterval) clearInterval(countdownInterval);
+            goToSplash();
+          }
+        }, 1000);
+      }, IDLE_TIMEOUT);
+    };
+    
+    const dismissIdleOverlay = () => {
+      resetIdleTimer();
+    };
+    
+    // Set up activity listeners
+    onMounted(() => {
+      resetIdleTimer();
+      
+      // Listen for any interaction to reset the timer
+      document.addEventListener('touchstart', resetIdleTimer);
+      document.addEventListener('mousedown', resetIdleTimer);
+      document.addEventListener('mousemove', resetIdleTimer);
+      document.addEventListener('keydown', resetIdleTimer);
+    });
+    
+    onUnmounted(() => {
+      // Clean up timers and listeners
+      if (idleTimer) clearTimeout(idleTimer);
+      if (countdownInterval) clearInterval(countdownInterval);
+      
+      document.removeEventListener('touchstart', resetIdleTimer);
+      document.removeEventListener('mousedown', resetIdleTimer);
+      document.removeEventListener('mousemove', resetIdleTimer);
+      document.removeEventListener('keydown', resetIdleTimer);
+    });
+    
     const navigateToGroup = (groupId: string) => {
       router.replace({ name: PageName.RESULTS, params: { groupId } });
     };
@@ -498,12 +581,16 @@ export default defineComponent({
       getSlideTransform,
       unmuteVideo,
       goHome,
+      goToSplash,
       navigateToGroup,
       goToNext,
       goToPrev,
       onTouchStart,
       onTouchMove,
       onTouchEnd,
+      showIdleOverlay,
+      idleCountdown,
+      dismissIdleOverlay,
     };
   },
 });
@@ -513,11 +600,12 @@ export default defineComponent({
 @import '@/assets/styles/config/fonts';
 
 .results-page {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+  position: fixed;
+  inset: 0;
   overflow: hidden;
   background: linear-gradient(135deg, #654EAC 0%, rgb(165, 145, 226) 50%, #654EAC 100%);
+  touch-action: pan-x; // Only allow horizontal swipes, prevent vertical scroll
+  overscroll-behavior: none; // Prevent pull-to-refresh and bounce effects
 }
 
 .background {
@@ -770,11 +858,11 @@ export default defineComponent({
 .bottom-section {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: flex-end;
   width: 100%;
   padding: 0 50px;
   box-sizing: border-box;
-  margin-top: 15px;
+  margin-top: 0px;
   position: relative;
   z-index: 10;
 }
@@ -810,6 +898,32 @@ export default defineComponent({
   font-weight: 700;
   color: #fff;
   line-height: 1;
+}
+
+.replay-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid #fff;
+  border-radius: 25px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  
+  &:active {
+    transform: translateX(-50%) scale(0.95);
+  }
 }
 
 .nfc-hint {
@@ -849,5 +963,51 @@ export default defineComponent({
     font-size: 18px;
     color: #fff;
   }
+}
+
+// Idle overlay styles
+.idle-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  // Prevent any layout shifts
+  pointer-events: auto;
+}
+
+.idle-overlay__bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.idle-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.idle-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  text-align: center;
+}
+
+.idle-timer {
+  font-family: 'Outfit', sans-serif;
+  font-size: 120px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1;
 }
 </style>

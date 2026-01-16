@@ -305,10 +305,10 @@ export default defineComponent({
 
       // Randomized text templates
         const textTemplates = [
-          `Je swipes laten een duidelijk patroon zien. ${genre1} komt vaker terug dan toeval zou toestaan.\n${genre2} duikt op als onverwachte wildcard.\nOnze algoritmes doen nu alsof dit heel ingewikkeld is.\nResultaat volgt zo.`,
-          `We nemen je keuzes serieus. Misschien iets té serieus.\nTot nu toe zeggen ze dit:\nje voelt je comfortabel bij ${genre1},\nmaar ${genre2} maakt je nieuwsgierig genoeg om te blijven swipen.\nWe zetten alles netjes op een rijtje.`,
-          `We zijn diep gedoken in je swipes en kwamen twee dingen tegen die je niet meer kunt ontkennen:\n${genre1} en ${genre2}.\n\nWat dat precies betekent?\nDat gaan we zo voor je onthullen.`,
-          `We hebben al je swipes bekeken, herbekeken en misschien één keer te kritisch geanalyseerd.\nWat meteen opvalt: ${genre1} was duidelijk jouw veilige keuze.\nMaar elke keer als ${genre2} voorbij kwam, twijfelde je nét iets langer.\nDat vinden we interessant.\nWe leggen de laatste verbanden nu.`,
+          `${genre1} komt vaker terug dan toeval zou toestaan.\n${genre2} duikt op als onverwachte wildcard.\nOnze algoritmes doen nu alsof dit heel ingewikkeld is.\nResultaat volgt zo.`,
+          `We nemen je keuzes serieus. Misschien iets té serieus.\nje voelt je comfortabel bij ${genre1},\nmaar ${genre2} komt ook vaak voor.\nWe zetten alles netjes op een rijtje.`,
+          `We zijn diep gedoken in je swipes en kwamen twee dingen tegen:\n${genre1} en ${genre2}.\n\nWat dat precies betekent?\nDat gaan we zo voor je onthullen.`,
+          `We hebben al je swipes bekeken en kritisch geanalyseerd.\nWat meteen opvalt: ${genre1} was duidelijk jouw favoriet.\nMaar ${genre2} komt ook in de buurt. \nWe leggen de laatste verbanden nu.`,
         ];
 
       // Pick a random template
@@ -554,7 +554,6 @@ export default defineComponent({
   
   &.ranking-mode {
     font-size: 48px;
-    font-style: italic;
   }
 }
 

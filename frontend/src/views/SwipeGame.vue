@@ -62,16 +62,10 @@
         <p>Wij gaan op zoek naar jouw<br/>Kpop match! We moeten eerst<br/>alleen even weten wat jouw<br/>muziek smaak is!</p>
       </div>
 
-      <!-- Left instruction (pointing to X button) -->
+      <!-- Left instruction (pointing to buttons) -->
       <div class="intro-instruction intro-instruction--left">
-        <p>Swipe de artiesten gebaseerd op<br/>of je ze leuk vindt of niet</p>
+        <p>Swipe de artiesten die je leuk vindt naar rechts en de rest naar links. Ken je de artiest niet? Geen zorgen, swipe dan op basis van de genres of de muziek die je hoort!</p>
         <img src="@/assets/images/icons/arrow.png" alt="" class="intro-arrow intro-arrow--down-left" />
-      </div>
-
-      <!-- Right instruction (pointing to heart button) -->
-      <div class="intro-instruction intro-instruction--right">
-        <p>Ken je de artiest niet? Geen<br/>zorgen, swipe dan op basis van<br/>de genres of het liedje dat je<br/>hoort!</p>
-        <img src="@/assets/images/icons/arrow.png" alt="" class="intro-arrow intro-arrow--down-right" />
       </div>
 
       <!-- Start Button -->
@@ -223,6 +217,18 @@ function getMusicInfo(artistId: string): { url: string; startTime: number } | nu
 // Number of artists per game
 const ARTISTS_PER_GAME = 25;
 
+// Genre categories with their representative artist IDs
+// Each category must have at least one artist in every game
+const genreCategoryArtists: Record<string, string[]> = {
+  'pop-dance': ['sabrina', 'dualipa', 'troyesivan', 'taylorswift', 'tatemcrae', 'roxydekker', 'bensonboone'],
+  'rnb-soul': ['sza', 'kehlani', 'theweeknd', 'norahjones', 'oliviadean', 'drake'],
+  'hip-hop': ['travisscott', 'denzelcurry', 'kendricklamar', 'drake', 'burnaboy'],
+  'rock': ['maneskin', 'foofighters', 'bmth', 'system', 'linkinpark', 'greenday', 'slipknot', 'arcticmonkeys', 'coldplay', 'gorillaz'],
+  'indie-folk': ['lanadelrey', 'phoebe', 'aurora', 'laufey', 'the1975', 'tameimpala', 'lukecombs', 'suzanfreek', 'edsheeran'],
+  'electronic-edm': ['charli', 'ashnikko', 'grimes', 'martingarrix', 'diplo', 'avicii', 'tiesto'],
+  'latin-world': ['rosalia', 'jbalvin', 'burnaboy'],
+};
+
 // Fisher-Yates shuffle algorithm
 function shuffleArray<T>(array: T[]): T[] {
   const shuffled = [...array];
@@ -233,10 +239,39 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-// Get random selection of artists
+// Get random selection of artists ensuring every genre category is represented
 function getRandomArtists(allArtists: Artist[], count: number): Artist[] {
-  const shuffled = shuffleArray(allArtists);
-  return shuffled.slice(0, count);
+  const selectedIds = new Set<string>();
+  const selectedArtists: Artist[] = [];
+  
+  // First, pick one random artist from each genre category
+  for (const [category, artistIds] of Object.entries(genreCategoryArtists)) {
+    const shuffledCategoryArtists = shuffleArray(artistIds);
+    
+    // Find the first artist from this category that exists in allArtists and isn't already selected
+    for (const artistId of shuffledCategoryArtists) {
+      if (selectedIds.has(artistId)) continue;
+      
+      const artist = allArtists.find(a => a.id === artistId);
+      if (artist) {
+        selectedArtists.push(artist);
+        selectedIds.add(artistId);
+        break;
+      }
+    }
+  }
+  
+  // Fill remaining slots with random artists from the pool
+  const remainingArtists = allArtists.filter(a => !selectedIds.has(a.id));
+  const shuffledRemaining = shuffleArray(remainingArtists);
+  
+  for (const artist of shuffledRemaining) {
+    if (selectedArtists.length >= count) break;
+    selectedArtists.push(artist);
+  }
+  
+  // Shuffle the final selection so genre representatives aren't always first
+  return shuffleArray(selectedArtists);
 }
 
 export default defineComponent({
@@ -249,22 +284,38 @@ export default defineComponent({
     // Show intro overlay (check if coming from intro page)
     const showIntro = ref(route.query.intro !== 'false');
     
-    const dismissIntro = () => {
-      showIntro.value = false;
-      // Start playing music when intro is dismissed
-      playCurrentArtistMusic();
-    };
-    
     // Audio player for background music - create once and reuse for iOS compatibility
     const audioPlayer = ref<HTMLAudioElement | null>(null);
+    const isAudioUnlocked = ref(false);
     
-    // Initialize audio element once (will be activated on first user interaction)
-    const initAudioPlayer = () => {
+    const dismissIntro = () => {
+      showIntro.value = false;
+      
+      // On iOS, we need to create and play audio in the SAME user gesture
+      // Create audio element during the tap event
       if (!audioPlayer.value) {
         audioPlayer.value = new Audio();
-        audioPlayer.value.volume = 0.05; // Very quiet background music
+        audioPlayer.value.volume = 0.05;
         audioPlayer.value.loop = true;
+        
+        // iOS needs the canplaythrough event to set currentTime reliably
+        audioPlayer.value.addEventListener('canplaythrough', function onCanPlay() {
+          if (audioPlayer.value && !isAudioUnlocked.value) {
+            const currentArtist = artists.value[0];
+            const musicInfo = getMusicInfo(currentArtist?.id || '');
+            if (musicInfo) {
+              audioPlayer.value.currentTime = musicInfo.startTime;
+            }
+            audioPlayer.value.play().catch(err => {
+              console.log('Audio play failed:', err);
+            });
+            isAudioUnlocked.value = true;
+          }
+        }, { once: true });
       }
+      
+      // Start playing first song
+      playCurrentArtistMusic();
     };
     
     const playCurrentArtistMusic = () => {
@@ -273,30 +324,50 @@ export default defineComponent({
       const currentArtist = artists.value[0];
       const musicInfo = getMusicInfo(currentArtist.id);
       
-      if (musicInfo) {
-        // Initialize if needed
-        initAudioPlayer();
+      if (musicInfo && audioPlayer.value) {
+        // Stop current playback
+        audioPlayer.value.pause();
         
-        if (audioPlayer.value) {
-          // Pause current playback
-          audioPlayer.value.pause();
-          
-          // Change the source on the existing audio element (iOS compatible)
-          audioPlayer.value.src = musicInfo.url;
-          audioPlayer.value.currentTime = musicInfo.startTime; // Start at chorus
-          
-          // Play the new track
-          audioPlayer.value.play().catch(err => {
-            console.log('Audio autoplay blocked:', err);
-          });
-        }
+        // Set up listener for when new source is ready
+        const onCanPlay = () => {
+          if (audioPlayer.value) {
+            audioPlayer.value.currentTime = musicInfo.startTime;
+            audioPlayer.value.play().catch(err => {
+              console.log('Audio autoplay blocked:', err);
+            });
+          }
+        };
+        
+        // Remove any existing listener and add new one
+        audioPlayer.value.removeEventListener('canplaythrough', onCanPlay);
+        audioPlayer.value.addEventListener('canplaythrough', onCanPlay, { once: true });
+        
+        // Change source and load
+        audioPlayer.value.src = musicInfo.url;
+        audioPlayer.value.load();
+      } else if (musicInfo && !audioPlayer.value) {
+        // First time - create audio element
+        audioPlayer.value = new Audio(musicInfo.url);
+        audioPlayer.value.volume = 0.05;
+        audioPlayer.value.loop = true;
+        
+        audioPlayer.value.addEventListener('canplaythrough', () => {
+          if (audioPlayer.value) {
+            audioPlayer.value.currentTime = musicInfo.startTime;
+            audioPlayer.value.play().catch(err => {
+              console.log('Audio autoplay blocked:', err);
+            });
+          }
+        }, { once: true });
+        
+        audioPlayer.value.load();
       }
     };
     
     const stopMusic = () => {
       if (audioPlayer.value) {
         audioPlayer.value.pause();
-        audioPlayer.value.src = ''; // Clear source
+        audioPlayer.value.src = '';
       }
     };
     
@@ -787,21 +858,10 @@ export default defineComponent({
 
   &--left {
     left: 50px;
-    top: 58%;
+    top: 56%;
     text-align: left;
-    max-width: 300px;
+    max-width: 550px;
   }
-
-  &--right {
-    right: 100px;
-    top: 67%;
-    text-align: right;
-    max-width: 400px;
-  }
-}
-
-.intro-instruction--right .intro-arrow--down-right {
-  margin-top: -30px;
 }
 
 .intro-arrow {
@@ -814,12 +874,6 @@ export default defineComponent({
   &--down-left {
     margin-top: 0px;
     transform: rotate(30deg) translateX(10px);
-  }
-  
-  &--down-right {
-    margin-left: 90px;
-    margin-top: 50px;
-    transform: rotate(10deg) scaleX(-1);
   }
 }
 

@@ -9,22 +9,22 @@
 // Genre/style tags that each western artist contributes to K-pop matching
 export const artistTagMapping: Record<string, string[]> = {
   // Pop artists
-  'sabrina': ['pop', 'dance', 'r&b'],
+  'sabrina': ['pop', 'dance'],
   'dualipa': ['pop', 'dance', 'funk'],
   'troyesivan': ['pop', 'synth-pop', 'dance'],
   'taylorswift': ['pop', 'folk-pop', 'indie-rock'],
   'edsheeran': ['pop', 'acoustic', 'folk-pop'],
   'bensonboone': ['pop', 'indie-rock', 'acoustic'],
-  'tatemcrae': ['pop', 'dance', 'r&b'],
+  'tatemcrae': ['pop', 'dance'],
   'roxydekker': ['pop', 'dance', 'funk-pop'],
   
-  // R&B / Soul
-  'sza': ['r&b', 'jazz', 'pop'],
+  // R&B / Soul - removed pop from pure R&B artists
+  'sza': ['r&b', 'neo-soul', 'jazz'],
   'norahjones': ['jazz', 'r&b', 'acoustic'],
-  'theweeknd': ['r&b', 'synth-pop', 'pop'],
-  'kehlani': ['r&b', 'pop', 'dance'],
+  'theweeknd': ['r&b', 'synth-pop', 'electronic'],
+  'kehlani': ['r&b', 'neo-soul', 'funk'],
   'oliviadean': ['r&b', 'jazz', 'funk'],
-  'drake': ['hip-hop', 'r&b', 'pop', 'trap'],
+  'drake': ['hip-hop', 'r&b', 'trap'],
   
   // Indie / Alternative / Dream Pop
   'lanadelrey': ['indie-pop', 'pop', 'soft-rock'],
@@ -89,8 +89,8 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'electronic': { nct127: 6 },
   'experimental': { nct127: 3 },
   
-  // Pop
-  'pop': { blackpink: 10, lesserafim: 10, twice: 10, enhypen: 10, kissoflife: 3, redvelvet: 3, xdinaryheroes: 3 },
+  // Pop - reduced points to not overwhelm other genres
+  'pop': { blackpink: 6, lesserafim: 6, twice: 6, enhypen: 6 },
   
   // Hip Hop / Rap
   'hip-hop': { bts: 10, nct127: 10, straykids: 10, youngposse: 10, kissoflife: 6 },
@@ -105,11 +105,12 @@ export const tagToGroupScores: Record<string, Record<string, number>> = {
   'pop-rock': { day6: 3, xdinaryheroes: 6 },
   'punk-rock': { xdinaryheroes: 6 },
   
-  // R&B / Soul
-  'r&b': { kissoflife: 10, mamamoo: 10, redvelvet: 6 },
-  'jazz': { mamamoo: 6 },
-  'funk': { mamamoo: 3 },
-  'folk': { redvelvet: 6 },
+  // R&B / Soul - boosted points for R&B groups
+  'r&b': { kissoflife: 10, mamamoo: 10, redvelvet: 10 },
+  'neo-soul': { mamamoo: 10, kissoflife: 6, redvelvet: 6 },
+  'jazz': { mamamoo: 10, redvelvet: 3 },
+  'funk': { mamamoo: 6, kissoflife: 3 },
+  'folk': { redvelvet: 3 },
   
   // Trap
   'trap': { ateez: 3, blackpink: 6, straykids: 6, youngposse: 3 },
@@ -163,7 +164,7 @@ const groupGenreCategories: Record<string, string[]> = {
 
 // Genre category groupings for detecting user preferences
 const genreCategories: Record<string, string[]> = {
-  'jazz-rnb': ['jazz', 'r&b', 'funk', 'neo-soul'],
+  'jazz-rnb': ['jazz', 'r&b', 'funk', 'neo-soul', 'soul'],
   'rock': ['rock', 'alternative-rock', 'indie-rock', 'soft-rock', 'alternative-metal', 'punk-rock', 'pop-rock'],
   'hip-hop': ['hip-hop', 'trap', 'old-school-hip-hop'],
   'pop-dance': ['pop', 'dance', 'synth-pop'],
