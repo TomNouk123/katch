@@ -255,8 +255,17 @@ export default defineComponent({
       playCurrentArtistMusic();
     };
     
-    // Audio player for background music
+    // Audio player for background music - create once and reuse for iOS compatibility
     const audioPlayer = ref<HTMLAudioElement | null>(null);
+    
+    // Initialize audio element once (will be activated on first user interaction)
+    const initAudioPlayer = () => {
+      if (!audioPlayer.value) {
+        audioPlayer.value = new Audio();
+        audioPlayer.value.volume = 0.05; // Very quiet background music
+        audioPlayer.value.loop = true;
+      }
+    };
     
     const playCurrentArtistMusic = () => {
       if (artists.value.length === 0) return;
@@ -265,23 +274,29 @@ export default defineComponent({
       const musicInfo = getMusicInfo(currentArtist.id);
       
       if (musicInfo) {
+        // Initialize if needed
+        initAudioPlayer();
+        
         if (audioPlayer.value) {
+          // Pause current playback
           audioPlayer.value.pause();
+          
+          // Change the source on the existing audio element (iOS compatible)
+          audioPlayer.value.src = musicInfo.url;
+          audioPlayer.value.currentTime = musicInfo.startTime; // Start at chorus
+          
+          // Play the new track
+          audioPlayer.value.play().catch(err => {
+            console.log('Audio autoplay blocked:', err);
+          });
         }
-        audioPlayer.value = new Audio(musicInfo.url);
-        audioPlayer.value.volume = 0.05; // Very quiet background music
-        audioPlayer.value.loop = true;
-        audioPlayer.value.currentTime = musicInfo.startTime; // Start at chorus
-        audioPlayer.value.play().catch(err => {
-          console.log('Audio autoplay blocked:', err);
-        });
       }
     };
     
     const stopMusic = () => {
       if (audioPlayer.value) {
         audioPlayer.value.pause();
-        audioPlayer.value = null;
+        audioPlayer.value.src = ''; // Clear source
       }
     };
     
