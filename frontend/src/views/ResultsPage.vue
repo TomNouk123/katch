@@ -132,28 +132,28 @@ import { PageName } from '@/utils/_Constants';
 import arrowIcon from '@/assets/images/icons/arrow.png';
 
 // Load all video URLs eagerly (just the URLs, not the video data)
-const videoModules = import.meta.glob('@/assets/videos/*.webm', { eager: true, as: 'url' });
+const videoModules = import.meta.glob('@/assets/videos/*.mp4', { eager: true, as: 'url' });
 
 // Video configuration - maps group ID to video filename and song title
 const groupVideoInfo: Record<string, { filename: string; songTitle: string }> = {
-  akmu: { filename: 'akmu-howcanilove.webm', songTitle: 'How Can I Love the Heartbreak' },
-  ateez: { filename: 'ateez-crazyform.webm', songTitle: 'Crazy Form' },
-  blackpink: { filename: 'blackpink-jump.webm', songTitle: 'Jump' },
-  bts: { filename: 'bts-butter.webm', songTitle: 'Butter' },
-  day6: { filename: 'day6-happy.webm', songTitle: 'Happy' },
-  dreamcatcher: { filename: 'dreamcatcher-boca.webm', songTitle: 'BOCA' },
-  enhypen: { filename: 'enhypen-biteme.webm', songTitle: 'Bite Me' },
-  kissoflife: { filename: 'kissoflife-igloo.webm', songTitle: 'Igloo' },
-  lesserafim: { filename: 'lesserafim-hot.webm', songTitle: 'Hot' },
-  mamamoo: { filename: 'mamamoo-starrynight.webm', songTitle: 'Starry Night' },
-  nct127: { filename: 'nct127-factcheck.webm', songTitle: 'Fact Check' },
-  qwer: { filename: 'qwer-tbh.webm', songTitle: 'T.B.H' },
-  redvelvet: { filename: 'redvelvet-cosmic.webm', songTitle: 'Cosmic' },
-  straykids: { filename: 'straykids-chkchkboom.webm', songTitle: 'Chk Chk Boom' },
-  therose: { filename: 'therose-backtome.webm', songTitle: 'Back To Me' },
-  twice: { filename: 'twice-thisisfor.webm', songTitle: 'This is For' },
-  xdinaryheroes: { filename: 'xdinaryheroes-fire.webm', songTitle: 'FiRE (My Sweet Misery)' },
-  youngposse: { filename: 'youngposse-xxl.webm', songTitle: 'XXL' },
+  akmu: { filename: 'akmu-howcanilove.mp4', songTitle: 'How Can I Love the Heartbreak' },
+  ateez: { filename: 'ateez-crazyform.mp4', songTitle: 'Crazy Form' },
+  blackpink: { filename: 'blackpink-jump.mp4', songTitle: 'Jump' },
+  bts: { filename: 'bts-butter.mp4', songTitle: 'Butter' },
+  day6: { filename: 'day6-happy.mp4', songTitle: 'Happy' },
+  dreamcatcher: { filename: 'dreamcatcher-boca.mp4', songTitle: 'BOCA' },
+  enhypen: { filename: 'enhypen-biteme.mp4', songTitle: 'Bite Me' },
+  kissoflife: { filename: 'kissoflife-igloo.mp4', songTitle: 'Igloo' },
+  lesserafim: { filename: 'lesserafim-hot.mp4', songTitle: 'Hot' },
+  mamamoo: { filename: 'mamamoo-starrynight.mp4', songTitle: 'Starry Night' },
+  nct127: { filename: 'nct127-factcheck.mp4', songTitle: 'Fact Check' },
+  qwer: { filename: 'qwer-tbh.mp4', songTitle: 'T.B.H' },
+  redvelvet: { filename: 'redvelvet-cosmic.mp4', songTitle: 'Cosmic' },
+  straykids: { filename: 'straykids-chkchkboom.mp4', songTitle: 'Chk Chk Boom' },
+  therose: { filename: 'therose-backtome.mp4', songTitle: 'Back To Me' },
+  twice: { filename: 'twice-thisisfor.mp4', songTitle: 'This is For' },
+  xdinaryheroes: { filename: 'xdinaryheroes-fire.mp4', songTitle: 'FiRE (My Sweet Misery)' },
+  youngposse: { filename: 'youngposse-xxl.mp4', songTitle: 'XXL' },
 };
 
 // Helper to get video URL by filename
