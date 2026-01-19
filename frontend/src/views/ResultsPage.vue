@@ -127,49 +127,32 @@ import { useDataStore } from '@/store/_DataStore';
 import kpopGroupsData from '@/assets/data/kpop-groups.json';
 import { PageName } from '@/utils/_Constants';
 
-// Import group videos
-import akmuVideo from '@/assets/videos/akmu-howcanilove.mp4';
-import ateezVideo from '@/assets/videos/ateez-crazyform.mp4';
-import blackpinkVideo from '@/assets/videos/blackpink-jump.mp4';
-import btsVideo from '@/assets/videos/bts-butter.mp4';
-import day6Video from '@/assets/videos/day6-happy.mp4';
-import dreamcatcherVideo from '@/assets/videos/dreamcatcher-boca.mp4';
-import enhypenVideo from '@/assets/videos/enhypen-biteme.mp4';
-import kissoflifeVideo from '@/assets/videos/kissoflife-igloo.mp4';
-import lesserafimVideo from '@/assets/videos/lesserafim-hot.mp4';
-import mamamooVideo from '@/assets/videos/mamamoo-starrynight.mp4';
-import nct127Video from '@/assets/videos/nct127-factcheck.mp4';
-import qwerVideo from '@/assets/videos/qwer-tbh.mp4';
-import redvelvetVideo from '@/assets/videos/redvelvet-cosmic.mp4';
-import straykidsVideo from '@/assets/videos/straykids-chkchkboom.mp4';
-import theroseVideo from '@/assets/videos/therose-backtome.mp4';
-import twiceVideo from '@/assets/videos/twice-thisisfor.mp4';
-import xdinaryheroesVideo from '@/assets/videos/xdinaryheroes-fire.mp4';
-import youngposseVideo from '@/assets/videos/youngposse-xxl.mp4';
-
 // Import arrow icon
 import arrowIcon from '@/assets/images/icons/arrow.png';
 
-// Video configuration for all groups
-const groupVideoConfig: Record<string, { src: string; startTime: number; songTitle: string }> = {
-  akmu: { src: akmuVideo, startTime: 84, songTitle: 'How Can I Love the Heartbreak' },
-  ateez: { src: ateezVideo, startTime: 60, songTitle: 'Crazy Form' },
-  blackpink: { src: blackpinkVideo, startTime: 55, songTitle: 'Jump' },
-  bts: { src: btsVideo, startTime: 29, songTitle: 'Butter' },
-  day6: { src: day6Video, startTime: 56, songTitle: 'Happy' },
-  dreamcatcher: { src: dreamcatcherVideo, startTime: 62, songTitle: 'BOCA' },
-  enhypen: { src: enhypenVideo, startTime: 67, songTitle: 'Bite Me' },
-  kissoflife: { src: kissoflifeVideo, startTime: 20, songTitle: 'Igloo' },
-  lesserafim: { src: lesserafimVideo, startTime: 30, songTitle: 'Hot' },
-  mamamoo: { src: mamamooVideo, startTime: 60, songTitle: 'Starry Night' },
-  nct127: { src: nct127Video, startTime: 33, songTitle: 'Fact Check' },
-  qwer: { src: qwerVideo, startTime: 70, songTitle: 'T.B.H' },
-  redvelvet: { src: redvelvetVideo, startTime: 51, songTitle: 'Cosmic' },
-  straykids: { src: straykidsVideo, startTime: 56, songTitle: 'Chk Chk Boom' },
-  therose: { src: theroseVideo, startTime: 62, songTitle: 'Back To Me' },
-  twice: { src: twiceVideo, startTime: 33, songTitle: 'This is For' },
-  xdinaryheroes: { src: xdinaryheroesVideo, startTime: 24, songTitle: 'FiRE (My Sweet Misery)' },
-  youngposse: { src: youngposseVideo, startTime: 90, songTitle: 'XXL' },
+// Lazy load videos - only loads when accessed
+const videoModules = import.meta.glob('@/assets/videos/*.webm', { eager: false, as: 'url' });
+
+// Video configuration - maps group ID to video filename and song title
+const groupVideoInfo: Record<string, { filename: string; songTitle: string }> = {
+  akmu: { filename: 'akmu-howcanilove.webm', songTitle: 'How Can I Love the Heartbreak' },
+  ateez: { filename: 'ateez-crazyform.webm', songTitle: 'Crazy Form' },
+  blackpink: { filename: 'blackpink-jump.webm', songTitle: 'Jump' },
+  bts: { filename: 'bts-butter.webm', songTitle: 'Butter' },
+  day6: { filename: 'day6-happy.webm', songTitle: 'Happy' },
+  dreamcatcher: { filename: 'dreamcatcher-boca.webm', songTitle: 'BOCA' },
+  enhypen: { filename: 'enhypen-biteme.webm', songTitle: 'Bite Me' },
+  kissoflife: { filename: 'kissoflife-igloo.webm', songTitle: 'Igloo' },
+  lesserafim: { filename: 'lesserafim-hot.webm', songTitle: 'Hot' },
+  mamamoo: { filename: 'mamamoo-starrynight.webm', songTitle: 'Starry Night' },
+  nct127: { filename: 'nct127-factcheck.webm', songTitle: 'Fact Check' },
+  qwer: { filename: 'qwer-tbh.webm', songTitle: 'T.B.H' },
+  redvelvet: { filename: 'redvelvet-cosmic.webm', songTitle: 'Cosmic' },
+  straykids: { filename: 'straykids-chkchkboom.webm', songTitle: 'Chk Chk Boom' },
+  therose: { filename: 'therose-backtome.webm', songTitle: 'Back To Me' },
+  twice: { filename: 'twice-thisisfor.webm', songTitle: 'This is For' },
+  xdinaryheroes: { filename: 'xdinaryheroes-fire.webm', songTitle: 'FiRE (My Sweet Misery)' },
+  youngposse: { filename: 'youngposse-xxl.webm', songTitle: 'XXL' },
 };
 
 interface Member {
@@ -219,6 +202,7 @@ export default defineComponent({
     const videoRefs = ref<Record<string, HTMLVideoElement | null>>({});
     const videoInitialized = ref<Record<string, boolean>>({}); // Track if video start time was set
     const videoUnmuted = ref<Record<string, boolean>>({}); // Track unmuted state per group
+    const loadedVideoUrls = ref<Record<string, string>>({}); // Cache loaded video URLs
     
     // Computed to check if current video is muted
     const isVideoMuted = computed(() => {
@@ -229,13 +213,9 @@ export default defineComponent({
     const setVideoRef = (el: any, groupId: string) => {
       if (el) {
         videoRefs.value[groupId] = el as HTMLVideoElement;
-        // Only set start time once when video is first mounted
+        // Initialize video settings once when first mounted
         if (!videoInitialized.value[groupId]) {
-          const config = groupVideoConfig[groupId];
-          if (config) {
-            el.currentTime = config.startTime;
-            el.volume = 0.15;
-          }
+          el.volume = 0.15;
           videoInitialized.value[groupId] = true;
         }
         // Restore unmuted state if previously unmuted
@@ -263,9 +243,39 @@ export default defineComponent({
       return kpopGroupsData.groups.find(g => g.id === groupId) as KpopGroup | undefined;
     };
     
-    // Get video config by group ID
+    // Get video config by group ID (returns loaded URL and song title)
     const getVideoConfig = (groupId: string) => {
-      return groupVideoConfig[groupId] || null;
+      const info = groupVideoInfo[groupId];
+      if (!info) return null;
+      const url = loadedVideoUrls.value[groupId];
+      if (!url) return null;
+      return { src: url, songTitle: info.songTitle };
+    };
+    
+    // Get song title for a group (doesn't require video to be loaded)
+    const getSongTitle = (groupId: string) => {
+      return groupVideoInfo[groupId]?.songTitle || '';
+    };
+    
+    // Load videos for matched groups only
+    const loadVideosForMatches = async (groupIds: string[]) => {
+      for (const groupId of groupIds) {
+        const info = groupVideoInfo[groupId];
+        if (info && !loadedVideoUrls.value[groupId]) {
+          // Find the matching video module
+          for (const [key, loader] of Object.entries(videoModules)) {
+            if (key.includes(info.filename)) {
+              try {
+                const url = await (loader as () => Promise<string>)();
+                loadedVideoUrls.value[groupId] = url;
+              } catch (err) {
+                console.error(`Failed to load video for ${groupId}:`, err);
+              }
+              break;
+            }
+          }
+        }
+      }
     };
     
     // Watch for group changes to handle video playback when swiping
@@ -275,14 +285,12 @@ export default defineComponent({
         videoRefs.value[oldGroupId]?.pause();
       }
       
-      // Play and set start time for new group's video if it exists
+      // Play video for new group if it exists
       setTimeout(() => {
-        const config = groupVideoConfig[newGroupId];
         const currentVideo = videoRefs.value[newGroupId];
-        if (currentVideo && config) {
-          // Only reset to start time if not initialized
+        if (currentVideo && loadedVideoUrls.value[newGroupId]) {
+          // Initialize video settings once
           if (!videoInitialized.value[newGroupId]) {
-            currentVideo.currentTime = config.startTime;
             videoInitialized.value[newGroupId] = true;
           }
           currentVideo.volume = 0.15;
@@ -325,8 +333,7 @@ export default defineComponent({
 
     // Current song title for header
     const currentSongTitle = computed(() => {
-      const config = groupVideoConfig[currentGroupId.value];
-      return config ? config.songTitle : '';
+      return getSongTitle(currentGroupId.value);
     });
 
     const group = computed<KpopGroup | undefined>(() => {
@@ -340,13 +347,12 @@ export default defineComponent({
 
     // Get current video config
     const currentVideoConfig = computed(() => {
-      return groupVideoConfig[currentGroupId.value] || null;
+      return getVideoConfig(currentGroupId.value);
     });
 
     // Now playing text based on group's video
     const nowPlayingText = computed(() => {
-      const config = groupVideoConfig[currentGroupId.value];
-      return config ? config.songTitle : '';
+      return getSongTitle(currentGroupId.value);
     });
 
     // Genres text for the group
@@ -448,9 +454,12 @@ export default defineComponent({
       resetIdleTimer();
     };
     
-    // Set up activity listeners
-    onMounted(() => {
+    // Set up activity listeners and load videos for matched groups
+    onMounted(async () => {
       resetIdleTimer();
+      
+      // Load videos only for the matched groups (not all 18)
+      await loadVideosForMatches(topMatchIds.value);
       
       // Listen for any interaction to reset the timer
       document.addEventListener('touchstart', resetIdleTimer);

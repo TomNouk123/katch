@@ -98,55 +98,55 @@ const imageModules = import.meta.glob('@/assets/images/western-artists/*', { eag
 const musicModules = import.meta.glob('@/assets/music/*.mp3', { eager: true, as: 'url' });
 
 // Map artist IDs to their music files and start times (in seconds)
-const artistMusicMap: Record<string, { file: string; startTime: number }> = {
-  'sabrina': { file: 'sabrinacarpenter-espresso.mp3', startTime: 45 },
-  'travisscott': { file: 'travisscott-goosebumps.mp3', startTime: 55 },
-  'dualipa': { file: 'dualipa-dontsstartnow.mp3', startTime: 40 },
-  'sza': { file: 'sza-killbill.mp3', startTime: 35 },
-  'lanadelrey': { file: 'lanadelrey-summertimesadness.mp3', startTime: 60 },
-  'charli': { file: 'charlixcx-brat.mp3', startTime: 30 },
-  'rosalia': { file: 'rosalia-despecha.mp3', startTime: 45 },
-  'laufey': { file: 'laufey-fromthestart.mp3', startTime: 50 },
-  'phoebe': { file: 'phoebebridgers-motionsickness.mp3', startTime: 55 },
-  'aurora': { file: 'aurora-runaway.mp3', startTime: 60 },
-  'troyesivan': { file: 'troyesivan-rush.mp3', startTime: 45 },
-  'ashnikko': { file: 'ashnikko-daisy.mp3', startTime: 40 },
-  'denzelcurry': { file: 'denzelcurry-walkin.mp3', startTime: 50 },
-  'burnaboy': { file: 'burnaboy-lastlast.mp3', startTime: 55 },
-  'jbalvin': { file: 'jbalvin-migente.mp3', startTime: 45 },
-  'martingarrix': { file: 'martingarrix-animals.mp3', startTime: 60 },
-  'diplo': { file: 'diplo-whereareunow.mp3', startTime: 50 },
-  'avicii': { file: 'avicii-wakemeup.mp3', startTime: 55 },
-  'hanszimmer': { file: 'hanszimmer-cornfieldchase.mp3', startTime: 90 },
-  'maxrichter': { file: 'maxrichter-spring1.mp3', startTime: 60 },
-  'norahjones': { file: 'norahjones-dontknowwhy.mp3', startTime: 45 },
-  'lukecombs': { file: 'lukecombs-whenitrainsitpours.mp3', startTime: 55 },
-  'maneskin': { file: 'maneskin-zitteebuoni.mp3', startTime: 50 },
-  'foofighters': { file: 'foofighters-everlong.mp3', startTime: 85 },
-  'bmth': { file: 'bringmethehorizon-canyoufeelmyheart.mp3', startTime: 55 },
-  'system': { file: 'systemofadown-chopsuey!.mp3', startTime: 35 },
-  'arcticmonkeys': { file: 'artcticmonkeys-doiwannaknow.mp3', startTime: 65 },
-  'beatles': { file: 'beatles-letitbe.mp3', startTime: 50 },
-  'bensonboone': { file: 'bensonboone-beautifulthings.mp3', startTime: 55 },
-  'coldplay': { file: 'coldplay-yellow.mp3', startTime: 55 },
-  'drake': { file: 'drake-onedance.mp3', startTime: 40 },
-  'edsheeran': { file: 'edsheeran-perfect.mp3', startTime: 65 },
-  'gorillaz': { file: 'gorillaz-feelgoodinc.mp3', startTime: 45 },
-  'greenday': { file: 'greenday-boulevardofbrokendreams.mp3', startTime: 50 },
-  'grimes': { file: 'grimes-oblivion.mp3', startTime: 70 },
-  'kehlani': { file: 'kehlani-folded.mp3', startTime: 45 },
-  'kendricklamar': { file: 'kendricklamar-humble.mp3', startTime: 55 },
-  'linkinpark': { file: 'linkinpark-intheend.mp3', startTime: 55 },
-  'oliviadean': { file: 'oliviadean-manineed.mp3', startTime: 50 },
-  'roxydekker': { file: 'roxydekker-sugardaddy.mp3', startTime: 40 },
-  'slipknot': { file: 'slipknot-duality.mp3', startTime: 45 },
-  'suzanfreek': { file: 'suzanfreek-alshetavondis.mp3', startTime: 55 },
-  'tameimpala': { file: 'tameimpala-thelessiknow.mp3', startTime: 75 },
-  'tatemcrae': { file: 'tatemcrae-greedy.mp3', startTime: 35 },
-  'taylorswift': { file: 'taylorswift-cruelsummer.mp3', startTime: 55 },
-  'the1975': { file: 'the1975-somebodyelse.mp3', startTime: 70 },
-  'theweeknd': { file: 'theweekend-blindinglights.mp3', startTime: 50 },
-  'tiesto': { file: 'tiesto-thebusiness.mp3', startTime: 45 },
+const artistMusicMap: Record<string, string> = {
+  'sabrina': 'sabrinacarpenter-espresso.mp3',
+  'travisscott': 'travisscott-goosebumps.mp3',
+  'dualipa': 'dualipa-dontsstartnow.mp3',
+  'sza': 'sza-killbill.mp3',
+  'lanadelrey': 'lanadelrey-summertimesadness.mp3',
+  'charli': 'charlixcx-brat.mp3',
+  'rosalia': 'rosalia-despecha.mp3',
+  'laufey': 'laufey-fromthestart.mp3',
+  'phoebe': 'phoebebridgers-motionsickness.mp3',
+  'aurora': 'aurora-runaway.mp3',
+  'troyesivan': 'troyesivan-rush.mp3',
+  'ashnikko': 'ashnikko-daisy.mp3',
+  'denzelcurry': 'denzelcurry-walkin.mp3',
+  'burnaboy': 'burnaboy-lastlast.mp3',
+  'jbalvin': 'jbalvin-migente.mp3',
+  'martingarrix': 'martingarrix-animals.mp3',
+  'diplo': 'diplo-whereareunow.mp3',
+  'avicii': 'avicii-wakemeup.mp3',
+  'hanszimmer': 'hanszimmer-cornfieldchase.mp3',
+  'maxrichter': 'maxrichter-spring1.mp3',
+  'norahjones': 'norahjones-dontknowwhy.mp3',
+  'lukecombs': 'lukecombs-whenitrainsitpours.mp3',
+  'maneskin': 'maneskin-zitteebuoni.mp3',
+  'foofighters': 'foofighters-everlong.mp3',
+  'bmth': 'bringmethehorizon-canyoufeelmyheart.mp3',
+  'system': 'systemofadown-chopsuey!.mp3',
+  'arcticmonkeys': 'artcticmonkeys-doiwannaknow.mp3',
+  'beatles': 'beatles-letitbe.mp3',
+  'bensonboone': 'bensonboone-beautifulthings.mp3',
+  'coldplay': 'coldplay-yellow.mp3',
+  'drake': 'drake-onedance.mp3',
+  'edsheeran': 'edsheeran-perfect.mp3',
+  'gorillaz': 'gorillaz-feelgoodinc.mp3',
+  'greenday': 'greenday-boulevardofbrokendreams.mp3',
+  'grimes': 'grimes-oblivion.mp3',
+  'kehlani': 'kehlani-folded.mp3',
+  'kendricklamar': 'kendricklamar-humble.mp3',
+  'linkinpark': 'linkinpark-intheend.mp3',
+  'oliviadean': 'oliviadean-manineed.mp3',
+  'roxydekker': 'roxydekker-sugardaddy.mp3',
+  'slipknot': 'slipknot-duality.mp3',
+  'suzanfreek': 'suzanfreek-alshetavondis.mp3',
+  'tameimpala': 'tameimpala-thelessiknow.mp3',
+  'tatemcrae': 'tatemcrae-greedy.mp3',
+  'taylorswift': 'taylorswift-cruelsummer.mp3',
+  'the1975': 'the1975-somebodyelse.mp3',
+  'theweeknd': 'theweekend-blindinglights.mp3',
+  'tiesto': 'tiesto-thebusiness.mp3',
 };
 
 // Map artist IDs to song titles for "Now Playing" display
@@ -201,14 +201,14 @@ const artistSongTitles: Record<string, string> = {
   'tiesto': 'The Business - Tiësto',
 };
 
-// Get music URL and start time for an artist
-function getMusicInfo(artistId: string): { url: string; startTime: number } | null {
-  const musicData = artistMusicMap[artistId];
-  if (!musicData) return null;
+// Get music URL for an artist
+function getMusicInfo(artistId: string): { url: string } | null {
+  const musicFile = artistMusicMap[artistId];
+  if (!musicFile) return null;
   
   for (const [key, url] of Object.entries(musicModules)) {
-    if (key.includes(musicData.file)) {
-      return { url, startTime: musicData.startTime };
+    if (key.includes(musicFile)) {
+      return { url };
     }
   }
   return null;
@@ -304,7 +304,7 @@ export default defineComponent({
             const currentArtist = artists.value[0];
             const musicInfo = getMusicInfo(currentArtist?.id || '');
             if (musicInfo) {
-              audioPlayer.value.currentTime = musicInfo.startTime;
+              audioPlayer.value.currentTime = 0;
             }
             audioPlayer.value.play().catch(err => {
               console.log('Audio play failed:', err);
@@ -331,7 +331,7 @@ export default defineComponent({
         // Set up listener for when new source is ready
         const onCanPlay = () => {
           if (audioPlayer.value) {
-            audioPlayer.value.currentTime = musicInfo.startTime;
+            audioPlayer.value.currentTime = 0;
             audioPlayer.value.play().catch(err => {
               console.log('Audio autoplay blocked:', err);
             });
@@ -353,7 +353,7 @@ export default defineComponent({
         
         audioPlayer.value.addEventListener('canplaythrough', () => {
           if (audioPlayer.value) {
-            audioPlayer.value.currentTime = musicInfo.startTime;
+            audioPlayer.value.currentTime = 0;
             audioPlayer.value.play().catch(err => {
               console.log('Audio autoplay blocked:', err);
             });
