@@ -39,9 +39,10 @@
                   muted
                   loop
                   playsinline
-                  preload= "metadata"
+                  :preload="Math.abs(index - currentIndex) <= 1 ? 'auto' : 'none'"
                   disablePictureInPicture
                   disableRemotePlayback
+                  @loadeddata="index !== currentIndex && ($event.target as HTMLVideoElement).pause()"
                 />
                 <img v-else :src="getGroupImage(getGroupById(groupId)?.image || '')" :alt="getGroupById(groupId)?.name" class="group-image" />
               </div>
