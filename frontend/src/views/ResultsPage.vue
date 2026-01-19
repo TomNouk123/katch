@@ -39,6 +39,7 @@
                   muted
                   loop
                   playsinline
+                  preload= "metadata"
                   disablePictureInPicture
                   disableRemotePlayback
                 />
@@ -130,8 +131,8 @@ import { PageName } from '@/utils/_Constants';
 // Import arrow icon
 import arrowIcon from '@/assets/images/icons/arrow.png';
 
-// Lazy load videos - only loads when accessed
-const videoModules = import.meta.glob('@/assets/videos/*.webm', { eager: false, as: 'url' });
+// Load all video URLs eagerly (just the URLs, not the video data)
+const videoModules = import.meta.glob('@/assets/videos/*.webm', { eager: true, as: 'url' });
 
 // Video configuration - maps group ID to video filename and song title
 const groupVideoInfo: Record<string, { filename: string; songTitle: string }> = {
@@ -154,6 +155,16 @@ const groupVideoInfo: Record<string, { filename: string; songTitle: string }> = 
   xdinaryheroes: { filename: 'xdinaryheroes-fire.webm', songTitle: 'FiRE (My Sweet Misery)' },
   youngposse: { filename: 'youngposse-xxl.webm', songTitle: 'XXL' },
 };
+
+// Helper to get video URL by filename
+function getVideoUrl(filename: string): string | null {
+  for (const [key, url] of Object.entries(videoModules)) {
+    if (key.includes(filename)) {
+      return url as string;
+    }
+  }
+  return null;
+}
 
 interface Member {
   name: string;
@@ -202,7 +213,6 @@ export default defineComponent({
     const videoRefs = ref<Record<string, HTMLVideoElement | null>>({});
     const videoInitialized = ref<Record<string, boolean>>({}); // Track if video start time was set
     const videoUnmuted = ref<Record<string, boolean>>({}); // Track unmuted state per group
-    const loadedVideoUrls = ref<Record<string, string>>({}); // Cache loaded video URLs
     
     // Computed to check if current video is muted
     const isVideoMuted = computed(() => {
@@ -243,39 +253,18 @@ export default defineComponent({
       return kpopGroupsData.groups.find(g => g.id === groupId) as KpopGroup | undefined;
     };
     
-    // Get video config by group ID (returns loaded URL and song title)
+    // Get video config by group ID (returns URL and song title)
     const getVideoConfig = (groupId: string) => {
       const info = groupVideoInfo[groupId];
       if (!info) return null;
-      const url = loadedVideoUrls.value[groupId];
+      const url = getVideoUrl(info.filename);
       if (!url) return null;
       return { src: url, songTitle: info.songTitle };
     };
     
-    // Get song title for a group (doesn't require video to be loaded)
+    // Get song title for a group
     const getSongTitle = (groupId: string) => {
       return groupVideoInfo[groupId]?.songTitle || '';
-    };
-    
-    // Load videos for matched groups only
-    const loadVideosForMatches = async (groupIds: string[]) => {
-      for (const groupId of groupIds) {
-        const info = groupVideoInfo[groupId];
-        if (info && !loadedVideoUrls.value[groupId]) {
-          // Find the matching video module
-          for (const [key, loader] of Object.entries(videoModules)) {
-            if (key.includes(info.filename)) {
-              try {
-                const url = await (loader as () => Promise<string>)();
-                loadedVideoUrls.value[groupId] = url;
-              } catch (err) {
-                console.error(`Failed to load video for ${groupId}:`, err);
-              }
-              break;
-            }
-          }
-        }
-      }
     };
     
     // Watch for group changes to handle video playback when swiping
@@ -288,7 +277,7 @@ export default defineComponent({
       // Play video for new group if it exists
       setTimeout(() => {
         const currentVideo = videoRefs.value[newGroupId];
-        if (currentVideo && loadedVideoUrls.value[newGroupId]) {
+        if (currentVideo) {
           // Initialize video settings once
           if (!videoInitialized.value[newGroupId]) {
             videoInitialized.value[newGroupId] = true;
@@ -454,12 +443,9 @@ export default defineComponent({
       resetIdleTimer();
     };
     
-    // Set up activity listeners and load videos for matched groups
-    onMounted(async () => {
+    // Set up activity listeners
+    onMounted(() => {
       resetIdleTimer();
-      
-      // Load videos only for the matched groups (not all 18)
-      await loadVideosForMatches(topMatchIds.value);
       
       // Listen for any interaction to reset the timer
       document.addEventListener('touchstart', resetIdleTimer);
