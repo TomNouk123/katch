@@ -215,7 +215,7 @@ function getMusicInfo(artistId: string): { url: string } | null {
 }
 
 // Number of artists per game
-const ARTISTS_PER_GAME = 25;
+const ARTISTS_PER_GAME = 20;
 
 // Genre categories with their representative artist IDs
 // Each category must have at least one artist in every game
