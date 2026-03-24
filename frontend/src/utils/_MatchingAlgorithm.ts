@@ -334,6 +334,9 @@ export function getTopMatchesWithDiversity(likedArtistIds: string[], count: numb
       usedGroupIds.add(match.groupId);
     }
     
+    // Sort by score descending to ensure highest match is first
+    selectedResults.sort((a, b) => b.score - a.score);
+    
     // Recalculate percentages based on the selected results
     const maxScore = selectedResults[0]?.score || 1;
     for (const result of selectedResults) {
@@ -343,7 +346,7 @@ export function getTopMatchesWithDiversity(likedArtistIds: string[], count: numb
     return selectedResults.slice(0, count);
   }
   
-  // No strong genre preference, just return top matches
+  // No strong genre preference, just return top matches (already sorted)
   return allMatches.slice(0, count);
 }
 

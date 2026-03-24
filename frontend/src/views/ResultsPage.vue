@@ -56,9 +56,17 @@
 
                 <!-- Description -->
                 <p class="description">{{ getGroupById(groupId)?.description }}</p>
+
+                <!-- Small Spotify QR code underneath description -->
+                <div class="spotify-qr-mini">
+                  <div class="qr-mini">
+                    <img :src="getQrCode(getGroupById(groupId)?.qrCode || '')" :alt="'QR code for ' + getGroupById(groupId)?.name" />
+                  </div>
+                  <span class="spotify-label">Spotify</span>
+                </div>
               </div>
 
-              <!-- Lightstick positioned at bottom right with name -->
+              <!-- Lightstick positioned at bottom right -->
               <div class="lightstick-wrapper" v-if="getGroupById(groupId)?.lightstick">
                 <p class="lightstick-name" v-if="getGroupById(groupId)?.lightstickName">LIGHTSTICK: {{ getGroupById(groupId)?.lightstickName }}</p>
                 <div class="lightstick-container">
@@ -80,17 +88,17 @@
         ></span>
       </div>
 
-      <!-- Fixed Bottom Section: QR Code, Replay Button, and NFC Hint -->
+      <!-- Fixed Bottom Section: Terms, Replay Button, and NFC Hint -->
       <div class="bottom-section">
-        <!-- QR Code on the left -->
-        <div class="qr-section">
-          <div class="qr-text">
-            <span>Bezoek de</span>
-            <span>spotify pagina</span>
-          </div>
-          <div class="qr-code">
-            <img :src="getQrCode(currentGroup.qrCode || '')" :alt="'QR code for ' + currentGroup.name" />
-          </div>
+        <!-- K-pop term definition on the left (cycles through terms) -->
+        <div class="kpop-term-definition">
+          <transition name="term-fade" mode="out-in">
+            <div :key="currentTermIndex" class="term-content">
+              <h3 class="term-word">{{ kpopTerms[currentTermIndex].term }}</h3>
+              <div class="term-divider"></div>
+              <p class="term-meaning">{{ kpopTerms[currentTermIndex].definition }}</p>
+            </div>
+          </transition>
         </div>
 
         <!-- Replay Button in the middle -->
@@ -100,7 +108,7 @@
 
         <!-- NFC Hint on the right -->
         <div class="nfc-hint">
-          <p class="nfc-text">Houd je telefoon<br/>hier tegenaan voor<br/>een leuke<br/>verrassing</p>
+          <p class="nfc-text">Houd je telefoon<br/>hier tegenaan en<br/>claim jouw<br/>photocards</p>
           <img :src="arrowIcon" alt="arrow" class="nfc-arrow" />
         </div>
       </div>
@@ -167,6 +175,20 @@ function getVideoUrl(filename: string): string | null {
   return null;
 }
 
+// K-pop terms and definitions
+const kpopTerms = [
+  { term: 'Idol', definition: 'Een artiest binnen de K-pop industrie, vaak onderdeel van een groep en getraind in zingen, dansen en performance' },
+  { term: 'Bias', definition: 'Je favoriete lid binnen een groep' },
+  { term: 'Bias wrecker', definition: 'Een ander lid dat jouw aandacht steelt van je bias' },
+  { term: 'Fandom', definition: 'De naam van de fanbase van de groep, elke groep heeft een eigen naam hiervoor' },
+  { term: 'Comeback', definition: 'Wanneer een groep weer nieuwe muziek uitbrengt' },
+  { term: 'Lightstick', definition: 'Een officiële lamp (uniek per groep) die fans meenemen naar concerten' },
+  { term: 'Photocard', definition: 'Kleine verzamelkaartjes van idols die je krijgt bij albums' },
+  { term: 'Concept', definition: 'De stijl of het thema van een comeback zoals cute, dark of powerful' },
+  { term: 'Maknae', definition: 'Het jongste lid van de groep' },
+  { term: 'Stan', definition: 'Grote fan zijn van een artiest/groep' },
+];
+
 interface Member {
   name: string;
   nameKr: string;
@@ -209,6 +231,10 @@ export default defineComponent({
     const swipeOffset = ref(0);
     const isSwiping = ref(false);
     const minSwipeDistance = 50;
+    
+    // K-pop term cycling
+    const currentTermIndex = ref(0);
+    let termCycleInterval: ReturnType<typeof setInterval> | null = null;
     
     // Video management - store refs for each group
     const videoRefs = ref<Record<string, HTMLVideoElement | null>>({});
@@ -453,12 +479,18 @@ export default defineComponent({
       document.addEventListener('mousedown', resetIdleTimer);
       document.addEventListener('mousemove', resetIdleTimer);
       document.addEventListener('keydown', resetIdleTimer);
+      
+      // Start K-pop term cycling
+      termCycleInterval = setInterval(() => {
+        currentTermIndex.value = (currentTermIndex.value + 1) % kpopTerms.length;
+      }, 8000);
     });
     
     onUnmounted(() => {
       // Clean up timers and listeners
       if (idleTimer) clearTimeout(idleTimer);
       if (countdownInterval) clearInterval(countdownInterval);
+      if (termCycleInterval) clearInterval(termCycleInterval);
       
       document.removeEventListener('touchstart', resetIdleTimer);
       document.removeEventListener('mousedown', resetIdleTimer);
@@ -587,6 +619,8 @@ export default defineComponent({
       showIdleOverlay,
       idleCountdown,
       dismissIdleOverlay,
+      kpopTerms,
+      currentTermIndex,
     };
   },
 });
@@ -738,7 +772,7 @@ export default defineComponent({
 
 
 .info-section {
-  padding: 20px 28px 100px;
+  padding: 20px 28px 20px;
   margin-top: -32px;
   position: relative;
   z-index: 1;
@@ -778,19 +812,12 @@ export default defineComponent({
   margin: 0 0 20px 10px;
 }
 
-.description-row {
-  display: flex;
-  gap: 20px;
-  align-items: flex-start;
-  margin-bottom: 16px;
-}
-
 .description {
   font-family: 'Mulish', sans-serif;
   font-size: 18px;
   font-weight: 500;
   color: #594A4E;
-  margin: 0 0 0 10px;
+  margin: 0 0 12px 10px;
   line-height: 1.3;
   max-width: 70%;
 }
@@ -854,7 +881,7 @@ export default defineComponent({
 .bottom-section {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 100%;
   padding: 0 50px;
   box-sizing: border-box;
@@ -863,21 +890,28 @@ export default defineComponent({
   z-index: 10;
 }
 
-.qr-section {
+.spotify-qr-mini {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  gap: 8px;
+  margin-left: 10px;
+  justify-content: flex-start;
 }
 
-.qr-code {
-  width: 160px;
-  height: 160px;
+.spotify-label {
+  font-family: 'Mulish', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #594A4E;
+}
+
+.qr-mini {
+  width: 60px;
+  height: 60px;
   background: #fff;
-  border-radius: 14px;
-  padding: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   
   img {
     width: 100%;
@@ -896,6 +930,57 @@ export default defineComponent({
   line-height: 1;
 }
 
+.kpop-term-definition {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 45px;
+  max-width: 220px;
+  min-height: 150px;
+}
+
+.term-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.term-word {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px 0;
+}
+
+.term-divider {
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+.term-meaning {
+  font-family: 'Mulish', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+// Term cycling transition
+.term-fade-enter-active,
+.term-fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.term-fade-enter-from,
+.term-fade-leave-to {
+  opacity: 0;
+}
+
 .replay-btn {
   font-family: 'Outfit', sans-serif;
   font-size: 14px;
@@ -911,7 +996,7 @@ export default defineComponent({
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 0;
+  bottom: -10px;
   
   &:hover {
     background: rgba(255, 255, 255, 0.3);
@@ -926,18 +1011,19 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 12px;
+  gap: 0;
+  margin-top: 45px;
 }
 
 .nfc-text {
   font-family: 'Outfit', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   font-style: italic;
   color: #fff;
   text-align: right;
   line-height: 1;
-  margin: 0;
+  margin: 0 0 5px 0;
 }
 
 .nfc-arrow {
