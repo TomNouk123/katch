@@ -570,11 +570,13 @@ export default defineComponent({
   position: relative;
   width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow-x: hidden;
   overflow-y: auto;
   display: flex;
   align-items: flex-start;
   justify-content: center;
+  -webkit-overflow-scrolling: touch;
 }
 
 .background-hearts {
@@ -630,14 +632,13 @@ export default defineComponent({
   position: relative;
   z-index: 2;
   text-align: center;
-  padding: 40px 28px 60px;
+  padding: 40px 28px 80px;
   max-width: 800px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  min-height: 100vh;
 }
 
 .heading {
@@ -660,7 +661,6 @@ export default defineComponent({
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  flex: 1;
 }
 
 .text-container {
@@ -702,6 +702,7 @@ export default defineComponent({
   align-items: center;
   width: 100%;
   margin-top: 30px;
+  padding-bottom: 20px;
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -744,6 +745,8 @@ export default defineComponent({
   width: 100%;
   max-width: 600px;
   margin-bottom: 30px;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .group-card {
