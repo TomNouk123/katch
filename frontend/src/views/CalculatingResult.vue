@@ -47,10 +47,31 @@
           <p class="game-subtitle">Vraag hen welke 3 groepen zij denken dat jouw perfecte match is!</p>
           <p class="game-hint">Selecteer 3 of skip</p>
 
-          <!-- Group Grid -->
-          <div class="groups-grid">
+          <!-- Group Grid - Row 1 -->
+          <div class="groups-row">
             <div 
-              v-for="group in displayedGroups" 
+              v-for="group in displayedGroups.slice(0, 4)" 
+              :key="group.id"
+              class="group-card"
+              :class="{ 'selected': selectedGroups.includes(group.id) }"
+              @click="toggleGroupSelection(group.id)"
+            >
+              <div class="group-image-wrapper">
+                <img :src="getGroupImage(group.image)" :alt="group.name" class="group-image" />
+                <div class="selection-indicator" v-if="selectedGroups.includes(group.id)">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+              </div>
+              <p class="group-name">{{ group.name }}</p>
+            </div>
+          </div>
+
+          <!-- Group Grid - Row 2 -->
+          <div class="groups-row">
+            <div 
+              v-for="group in displayedGroups.slice(4, 8)" 
               :key="group.id"
               class="group-card"
               :class="{ 'selected': selectedGroups.includes(group.id) }"
@@ -702,10 +723,7 @@ export default defineComponent({
   align-items: center;
   width: 100%;
   margin-top: 30px;
-  padding-bottom: 40px;
   animation: fadeIn 0.5s ease-out;
-  position: relative;
-  z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -740,14 +758,13 @@ export default defineComponent({
   opacity: 0.7;
 }
 
-.groups-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, auto);
+.groups-row {
+  display: flex;
+  justify-content: center;
   gap: 16px;
   width: 100%;
   max-width: 600px;
-  margin-bottom: 30px;
+  margin-bottom: 16px;
   padding: 0 10px;
   box-sizing: border-box;
 }
@@ -758,8 +775,9 @@ export default defineComponent({
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease;
-  position: relative;
-  z-index: 1;
+  width: 22%;
+  max-width: 130px;
+  flex-shrink: 0;
   
   &:hover {
     transform: scale(1.05);
@@ -825,12 +843,10 @@ export default defineComponent({
   background: transparent;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 16px;
   opacity: 0.7;
   transition: opacity 0.2s ease;
-  position: relative;
-  z-index: 2;
   
   &:hover {
     opacity: 1;
@@ -848,8 +864,6 @@ export default defineComponent({
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
-  position: relative;
-  z-index: 2;
   
   &:hover:not(.disabled) {
     background: #654EAC;
