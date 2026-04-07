@@ -885,7 +885,7 @@ export default defineComponent({
   width: 100%;
   padding: 0 50px;
   box-sizing: border-box;
-  margin-top: -15px;
+  margin-top: -35px;
   position: relative;
   z-index: 10;
 }

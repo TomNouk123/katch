@@ -702,8 +702,10 @@ export default defineComponent({
   align-items: center;
   width: 100%;
   margin-top: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 40px;
   animation: fadeIn 0.5s ease-out;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes fadeIn {
@@ -741,6 +743,7 @@ export default defineComponent({
 .groups-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
   gap: 16px;
   width: 100%;
   max-width: 600px;
@@ -755,6 +758,8 @@ export default defineComponent({
   align-items: center;
   cursor: pointer;
   transition: transform 0.2s ease;
+  position: relative;
+  z-index: 1;
   
   &:hover {
     transform: scale(1.05);
@@ -820,9 +825,12 @@ export default defineComponent({
   background: transparent;
   border: none;
   cursor: pointer;
+  margin-top: 10px;
   margin-bottom: 16px;
   opacity: 0.7;
   transition: opacity 0.2s ease;
+  position: relative;
+  z-index: 2;
   
   &:hover {
     opacity: 1;
@@ -840,6 +848,8 @@ export default defineComponent({
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
+  position: relative;
+  z-index: 2;
   
   &:hover:not(.disabled) {
     background: #654EAC;
